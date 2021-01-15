@@ -14,17 +14,27 @@ using Google.Apis.Services;
 using Google.Apis.Util.Store;
 using System.IO;
 using System.Threading;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Edge;
 
 namespace GoogleCalender
 {
     public partial class Form1 : Form
     {
         System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
+        IWebDriver seleniumDriver;
         public Form1()
         {
-            
             InitializeComponent();
             GoogleAPI();
+            DisplayClock.Text = CurrentTime();
+            timer.Interval = 60000 - ReturnMinuteUnit() * 1000;
+            timer.Tick += new EventHandler(this.UpdateClock);
+            timer.Start();
+            
+            seleniumDriver = new EdgeDriver();
+            KillTab();
+
         }
         static string[] Scopes = { CalendarService.Scope.CalendarReadonly };
         static string ApplicationName = "Google Calendar API .NET Quickstart";
@@ -65,42 +75,87 @@ namespace GoogleCalender
 
             // List events.
             Events events = request.Execute();
+            UpdateTextBox(events);
+            
+
+            
+        }
+
+        private int ReturnMinuteUnit()
+        {
+            int minute ;
+            int currentMinute = DateTime.Now.Minute;
+            if (currentMinute > 9)
+            {
+                minute = int.Parse(DateTime.Now.Minute.ToString().ToArray()[1].ToString());
+            }
+            else
+            {
+                minute = currentMinute;
+            }
+            return minute;
+        }
+
+        private void KillTab()
+        {
+            //Rotate Tabs
+            seleniumDriver.SwitchTo().Window(seleniumDriver.WindowHandles[0]);
+            IJavaScriptExecutor jscript = seleniumDriver as IJavaScriptExecutor;
+            jscript.ExecuteScript("alert('Focus')");
+            seleniumDriver.SwitchTo().Alert().Accept();
+        }
+
+        private void ReadCalendarItem(Event item)
+        {
+            string payload = item.Description;
+            if (payload != null)
+            {
+                //Do Some Processing here 
+                string[] lines = payload.Split('\n');
+                foreach(string line in lines)
+                {
+                    if (line.StartsWith("https://")|| line.StartsWith("http://"))
+                    {
+                        OpenUri(line);
+                    }
+                }
+                
+            }
+        }
+
+        private void UpdateTextBox(Events events)
+        {
             if (events.Items != null && events.Items.Count > 0)
             {
                 NextUp.Text = "";
                 //label2.Text = "";
                 foreach (var eventItem in events.Items)
                 {
-                    NextUp.Text += eventItem.Summary + Environment.NewLine;
-                    // NextUp.Text += eventItem.Description+Environment.NewLine;
+                    NextUp.Text += eventItem.Summary;
+                    ReadCalendarItem(eventItem);
                 }
             }
             else
             {
                 NextUp.Text = "Nothing to do";
             }
-
-            int minute =0;
-            int currentMinute = DateTime.Now.Minute;
-            if (currentMinute > 9)
-                {
-                 minute = int.Parse(DateTime.Now.Minute.ToString().ToArray()[1].ToString());
-            }
-            else
-            {
-                 minute = currentMinute;
-            }
-            DisplayClock.Text = CurrentTime();
-            timer.Interval = 60000- minute*1000;
-            timer.Tick += new EventHandler(this.UpdateClock);
-
-            timer.Start();
-            
         }
 
-        private void UpdateTextBox()
-        { 
-            
+        public static bool IsValidUri(string uri)
+        {
+            if (!Uri.IsWellFormedUriString(uri, UriKind.Absolute))
+                return false;
+            if (!Uri.TryCreate(uri, UriKind.Absolute, out Uri tmp))
+                return false;
+            return tmp.Scheme == Uri.UriSchemeHttp || tmp.Scheme == Uri.UriSchemeHttps;
+        }
+
+        public static bool OpenUri(string uri)
+        {
+            if (!IsValidUri(uri))
+                return false;
+            System.Diagnostics.Process.Start(uri);
+            return true;
         }
 
         private string CurrentTime()
@@ -141,16 +196,5 @@ namespace GoogleCalender
 
         }
 
-
-        private void GetEvents_Tick(object sender, EventArgs e)
-        {
-            GoogleAPI();
-        }
-
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
