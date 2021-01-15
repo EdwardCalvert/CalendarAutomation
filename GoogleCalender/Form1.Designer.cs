@@ -60,7 +60,7 @@ namespace GoogleCalender
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(214, 61);
+            this.ClientSize = new System.Drawing.Size(306, 217);
             this.Controls.Add(this.NextUp);
             this.Controls.Add(this.DisplayClock);
             this.Cursor = System.Windows.Forms.Cursors.No;

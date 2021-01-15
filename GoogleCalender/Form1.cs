@@ -14,15 +14,14 @@ using Google.Apis.Services;
 using Google.Apis.Util.Store;
 using System.IO;
 using System.Threading;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Edge;
 
 namespace GoogleCalender
 {
     public partial class Form1 : Form
     {
         System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
-        IWebDriver seleniumDriver;
+
+
         public Form1()
         {
             InitializeComponent();
@@ -31,9 +30,7 @@ namespace GoogleCalender
             timer.Interval = 60000 - ReturnMinuteUnit() * 1000;
             timer.Tick += new EventHandler(this.UpdateClock);
             timer.Start();
-            
-            seleniumDriver = new EdgeDriver();
-            KillTab();
+
 
         }
         static string[] Scopes = { CalendarService.Scope.CalendarReadonly };
@@ -96,14 +93,7 @@ namespace GoogleCalender
             return minute;
         }
 
-        private void KillTab()
-        {
-            //Rotate Tabs
-            seleniumDriver.SwitchTo().Window(seleniumDriver.WindowHandles[0]);
-            IJavaScriptExecutor jscript = seleniumDriver as IJavaScriptExecutor;
-            jscript.ExecuteScript("alert('Focus')");
-            seleniumDriver.SwitchTo().Alert().Accept();
-        }
+
 
         private void ReadCalendarItem(Event item)
         {
@@ -114,9 +104,13 @@ namespace GoogleCalender
                 string[] lines = payload.Split('\n');
                 foreach(string line in lines)
                 {
-                    if (line.StartsWith("https://")|| line.StartsWith("http://"))
+                    if (line.StartsWith("https://")|| line.StartsWith("http://") || line.StartsWith("www."))
                     {
                         OpenUri(line);
+                    }
+                    if (line.StartsWith("delay"))
+                    { 
+                        
                     }
                 }
                 
@@ -150,10 +144,26 @@ namespace GoogleCalender
             return tmp.Scheme == Uri.UriSchemeHttp || tmp.Scheme == Uri.UriSchemeHttps;
         }
 
+        public static List<string> UnpackFrameURL(string frame)
+        {
+
+            var doc = new HtmlAgilityPack.HtmlDocument();
+            doc.LoadHtml(frame);
+            var nodes = doc.DocumentNode.SelectNodes("//a[@href]");
+            if (nodes == null)
+            {
+                return new List<string>();
+            }
+            else
+            {
+                return  nodes.ToList().ConvertAll(r => r.Attributes.ToList().ConvertAll(i => i.Value)).SelectMany(j => j).ToList();
+            }
+        }
+
         public static bool OpenUri(string uri)
         {
             if (!IsValidUri(uri))
-                return false;
+                    return false;
             System.Diagnostics.Process.Start(uri);
             return true;
         }
@@ -193,6 +203,7 @@ namespace GoogleCalender
            
             DisplayClock.Text = CurrentTime();
             GoogleAPI();
+            
 
         }
 
