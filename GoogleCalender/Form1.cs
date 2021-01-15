@@ -20,17 +20,19 @@ namespace GoogleCalender
     public partial class Form1 : Form
     {
         System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
+        private Dictionary<string, List<string>> tabMemory= new Dictionary<string, List<string>> { };
+        //Dictionary, where the time is the key ie "**:**", and string array represents visited URLS
+        private int day = DateTime.Now.Day;
 
 
         public Form1()
         {
             InitializeComponent();
-            GoogleAPI();
-            DisplayClock.Text = CurrentTime();
-            timer.Interval = 60000 - ReturnMinuteUnit() * 1000;
             timer.Tick += new EventHandler(this.UpdateClock);
+            DisplayClock.Text = CurrentTime();
+            int second = DateTime.Now.Second;
+            timer.Interval = (60000 - (second * 1000));
             timer.Start();
-
 
         }
         static string[] Scopes = { CalendarService.Scope.CalendarReadonly };
@@ -97,23 +99,123 @@ namespace GoogleCalender
 
         private void ReadCalendarItem(Event item)
         {
+            string  id = item.Id;
             string payload = item.Description;
             if (payload != null)
             {
                 //Do Some Processing here 
-                string[] lines = payload.Split('\n');
+                string[] stringSeparators = new string[] { "<br>" };
+                string[] lines = payload.Split(stringSeparators, StringSplitOptions.None);
                 foreach(string line in lines)
                 {
-                    if (line.StartsWith("https://")|| line.StartsWith("http://") || line.StartsWith("www."))
+                    //Possible casses
+                    //Before - open no webpage
+                    //During - ony open webpage if not already opend
+                    //Dealayed execution- open webpage at desired time
+                    //After? Do nothing. 
+
+                    //Actions Open URL
+                    //Open App <-Not started? Will I ever do this? 
+
+                    //Syntax
+                    //[delay;#########] where ####### represents a delay in minutes
+                    //[delay_until;##:##] where ##:## represents a clock hour
+                    //[delay_until_-#######] where -##### represents hours back from end time
+                    //[before_by;#####] where ##### represents minutes before. In practise, this will never be called, 
+                    //[start] or nothing (implied) opens at start
+
+                    //KNOWN BUG: domain entered without protocol, won't be handeled by URLHandler. Not much I can do about that.
+
+
+
+                    if (line.StartsWith("["))
                     {
-                        OpenUri(line);
+                        int endIndex = line.IndexOf(']');
+                        int textEnd = line.IndexOf(';');
+                        if (line.StartsWith("[delay_unitl;"))
+                        {
+
+
+                        }
+                        else if (line.StartsWith("[delay_by;"))
+                        { }
+                        else if (line.StartsWith("[before_by;"))
+                        { }
+                        else if (line.StartsWith("[start]"))
+                        { }
                     }
-                    if (line.StartsWith("delay"))
-                    { 
-                        
+                    else //If no wildcards are used, user is implying start once. 
+                    {
+                        URLHandler(line,id);
                     }
+                    
                 }
                 
+            }
+        }
+
+        private void MarkTabAsOpen(string url,string id)
+        {
+            if (DateTime.Now.Day == day)
+            {
+                if (!tabMemory.ContainsKey(id))
+                {
+                    tabMemory[id] = new List<string>();
+                }
+                tabMemory[id].Add(url);
+
+
+            }
+            else
+            {
+                tabMemory = new Dictionary<string, List<string>> { };
+            }
+        }
+
+        private bool TabOpened(string url,string id)
+        {
+            if (DateTime.Now.Day == day)
+            {
+                if (tabMemory.ContainsKey(id))
+                {
+                    if (tabMemory[id].Contains(url))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private void URLHandler(string line, string id)
+        {
+            if (line.StartsWith("https://") || line.StartsWith("http://") || line.StartsWith("www."))
+            {
+                OpenUri(line);
+            }
+            if (line.StartsWith("<a href="))
+            {
+                List<string> urls = UnpackFrameURL(line);
+                foreach (string url in urls)
+                {
+                    if (!TabOpened(url, id))
+                    {
+                        OpenUri(url);
+                        MarkTabAsOpen(url,id);
+                    }
+
+                }
             }
         }
 
@@ -122,10 +224,9 @@ namespace GoogleCalender
             if (events.Items != null && events.Items.Count > 0)
             {
                 NextUp.Text = "";
-                //label2.Text = "";
                 foreach (var eventItem in events.Items)
                 {
-                    NextUp.Text += eventItem.Summary;
+                    UpdateEvent(eventItem);
                     ReadCalendarItem(eventItem);
                 }
             }
@@ -133,6 +234,11 @@ namespace GoogleCalender
             {
                 NextUp.Text = "Nothing to do";
             }
+        }
+
+        private void UpdateEvent(Event item)
+        {
+            NextUp.Text += item.Summary;
         }
 
         public static bool IsValidUri(string uri)
@@ -160,12 +266,15 @@ namespace GoogleCalender
             }
         }
 
-        public static bool OpenUri(string uri)
+        public bool OpenUri(string uri)
         {
             if (!IsValidUri(uri))
                     return false;
+
             System.Diagnostics.Process.Start(uri);
+            //TabOpened(time);
             return true;
+
         }
 
         private string CurrentTime()
@@ -200,12 +309,13 @@ namespace GoogleCalender
 
         private void UpdateClock(object sender, EventArgs e)
         {
-           
             DisplayClock.Text = CurrentTime();
             GoogleAPI();
-            
-
         }
 
+        private void NextUp_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

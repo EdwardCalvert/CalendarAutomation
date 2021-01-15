@@ -52,9 +52,6 @@ C:\Users\ed\source\repos\CalenderCallout\CalenderClock\GoogleCalender\obj\Debug\
 C:\Users\ed\source\repos\CalenderCallout\CalenderClock\GoogleCalender\obj\Debug\GoogleCalender.csproj.CopyComplete
 C:\Users\ed\source\repos\CalenderCallout\CalenderClock\GoogleCalender\obj\Debug\GoogleCalender.exe
 C:\Users\ed\source\repos\CalenderCallout\CalenderClock\GoogleCalender\obj\Debug\GoogleCalender.pdb
-C:\Users\ed\source\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\WebDriver.dll
-C:\Users\ed\source\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\WebDriver.xml
-C:\Users\ed\source\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\msedgedriver.exe
 C:\Users\ed\source\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\HtmlAgilityPack.dll
 C:\Users\ed\source\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\HtmlAgilityPack.pdb
 C:\Users\ed\source\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\HtmlAgilityPack.xml

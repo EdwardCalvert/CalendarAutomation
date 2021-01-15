@@ -43,16 +43,17 @@ namespace GoogleCalender
             this.DisplayClock.Name = "DisplayClock";
             this.DisplayClock.Size = new System.Drawing.Size(91, 42);
             this.DisplayClock.TabIndex = 2;
-            this.DisplayClock.Text = "00:00";
+            this.DisplayClock.Text = "Loading...";
             // 
             // NextUp
             // 
             this.NextUp.AutoSize = true;
             this.NextUp.Location = new System.Drawing.Point(-1, 37);
             this.NextUp.Name = "NextUp";
-            this.NextUp.Size = new System.Drawing.Size(89, 15);
+            this.NextUp.Size = new System.Drawing.Size(169, 15);
             this.NextUp.TabIndex = 3;
-            this.NextUp.Text = "Nothing to do...";
+            this.NextUp.Text = "Please wait for synchronisation";
+            this.NextUp.Click += new System.EventHandler(this.NextUp_Click);
             // 
             // Form1
             // 
@@ -60,7 +61,7 @@ namespace GoogleCalender
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(306, 217);
+            this.ClientSize = new System.Drawing.Size(268, 58);
             this.Controls.Add(this.NextUp);
             this.Controls.Add(this.DisplayClock);
             this.Cursor = System.Windows.Forms.Cursors.No;
