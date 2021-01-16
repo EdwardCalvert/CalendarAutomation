@@ -200,9 +200,15 @@ namespace GoogleCalender
 
         private void URLHandler(string line, string id)
         {
+            //C:\Program Files (x86)\Microsoft\Skype for Desktop\Skype.exe
             if (line.StartsWith("https://") || line.StartsWith("http://") || line.StartsWith("www."))
             {
-                OpenUri(line);
+                if (!TabOpened(line, id))
+                {
+                    OpenUri(line);
+                    MarkTabAsOpen(line, id);
+                }
+
             }
             if (line.StartsWith("<a href="))
             {
@@ -214,6 +220,7 @@ namespace GoogleCalender
                         OpenUri(url);
                         MarkTabAsOpen(url,id);
                     }
+                    
 
                 }
             }

@@ -48,7 +48,7 @@ namespace GoogleCalender
             // NextUp
             // 
             this.NextUp.AutoSize = true;
-            this.NextUp.Location = new System.Drawing.Point(-1, 37);
+            this.NextUp.Location = new System.Drawing.Point(-1, 34);
             this.NextUp.Name = "NextUp";
             this.NextUp.Size = new System.Drawing.Size(169, 15);
             this.NextUp.TabIndex = 3;
@@ -61,7 +61,7 @@ namespace GoogleCalender
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(268, 58);
+            this.ClientSize = new System.Drawing.Size(189, 52);
             this.Controls.Add(this.NextUp);
             this.Controls.Add(this.DisplayClock);
             this.Cursor = System.Windows.Forms.Cursors.No;
