@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Google.Apis.Auth.OAuth2;
 using Google.Apis.Calendar.v3;
@@ -14,29 +9,36 @@ using Google.Apis.Services;
 using Google.Apis.Util.Store;
 using System.IO;
 using System.Threading;
+using System.Text.RegularExpressions;
 
 namespace GoogleCalender
 {
     public partial class Form1 : Form
     {
         System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
-        private Dictionary<string, List<string>> tabMemory= new Dictionary<string, List<string>> { };
+        private Dictionary<string, List<string>> commandHistory= new Dictionary<string, List<string>> { };
         //Dictionary, where the time is the key ie "**:**", and string array represents visited URLS
         private int day = DateTime.Now.Day;
+        string Id { get; set; }
+        //
+
+        //Added by google API
+        static string[] Scopes = { CalendarService.Scope.CalendarReadonly };
+        static string ApplicationName = "Google Calendar API .NET Quickstart";
+        
 
 
         public Form1()
         {
             InitializeComponent();
             timer.Tick += new EventHandler(this.UpdateClock);
-            DisplayClock.Text = CurrentTime();
+            DisplayClock.Text = CurrentTime;
             int second = DateTime.Now.Second;
             timer.Interval = (60000 - (second * 1000));
             timer.Start();
 
         }
-        static string[] Scopes = { CalendarService.Scope.CalendarReadonly };
-        static string ApplicationName = "Google Calendar API .NET Quickstart";
+        
 
         private void GoogleAPI()
         {
@@ -99,13 +101,13 @@ namespace GoogleCalender
 
         private void ReadCalendarItem(Event item)
         {
-            string  id = item.Id;
+            
             string payload = item.Description;
             if (payload != null)
             {
+                Id = item.Id;
                 //Do Some Processing here 
-                string[] stringSeparators = new string[] { "<br>" };
-                string[] lines = payload.Split(stringSeparators, StringSplitOptions.None);
+                string[] lines = payload.Split(new string[] { "<br>" }, StringSplitOptions.None);
                 foreach(string line in lines)
                 {
                     //Possible casses
@@ -117,80 +119,135 @@ namespace GoogleCalender
                     //Actions Open URL
                     //Open App <-Not started? Will I ever do this? 
 
-                    //Syntax
                     //[delay;#########] where ####### represents a delay in minutes
                     //[delay_until;##:##] where ##:## represents a clock hour
                     //[delay_until_-#######] where -##### represents hours back from end time
-                    //[before_by;#####] where ##### represents minutes before. In practise, this will never be called, 
-                    //[start] or nothing (implied) opens at start
+                    //[exe] will start a windows process with this name, however, no validation is checked (i trust myself)
 
                     //KNOWN BUG: domain entered without protocol, won't be handeled by URLHandler. Not much I can do about that.
-
-
-
-                    if (line.StartsWith("["))
+                    if (DebugMode)
                     {
-                        int endIndex = line.IndexOf(']');
-                        int textEnd = line.IndexOf(';');
-                        if (line.StartsWith("[delay_unitl;"))
+                        InfoMessage("Normal line:"+line, "Clock.exe");
+                    }
+                    string cleanLine = ParseHTML(line);
+                    if (DebugMode)
+                    {
+                        InfoMessage("Stripped line :"+cleanLine, "Clock.exe");
+                    }
+                    if (cleanLine.StartsWith("["))
+                    {
+                        if (cleanLine.StartsWith("[delay)"))
                         {
-
+                            if (DebugMode)
+                            {
+                                InfoMessage("Delay method still not functional", "Clock.exe");
+                            }
 
                         }
-                        else if (line.StartsWith("[delay_by;"))
-                        { }
-                        else if (line.StartsWith("[before_by;"))
-                        { }
-                        else if (line.StartsWith("[start]"))
-                        { }
+                        else if (cleanLine.StartsWith("[exe]"))
+                        {
+                            
+                            ExeHandler(cleanLine);
+                        }
                     }
                     else //If no wildcards are used, user is implying start once. 
                     {
-                        URLHandler(line,id);
+                        URLHandler(cleanLine);
                     }
                     
                 }
                 
             }
         }
+        
+        private string ParseHTML(string inputHTML)
+        {
+            string noHTML = Regex.Replace(inputHTML, @"<[^>]+>|&nbsp;", "").Trim();
+            string noHTMLNormalised = System.Text.RegularExpressions.Regex.Replace(noHTML, @"\s{2,}", " ");
+            return noHTMLNormalised;
+        }
 
-        private void MarkTabAsOpen(string url,string id)
+        private void DelayExecution(string line)
+        { 
+            
+        }
+
+        private void ExeHandler(string line)
+        {
+            try
+            {
+                string program = @line.Substring(line.IndexOf("]") + 1);
+                if (File.Exists(program)&&!TabOpened(program))
+                {
+
+                    System.Diagnostics.Process.Start(program);
+                    MarkTabAsOpen(program);
+                    if (DebugMode)
+                    {
+                        InfoMessage("Started process: " + program, "Clock.exe");
+                    }
+                }
+                else
+                {
+                    if (File.Exists(ParseHTML(program)) && !TabOpened(program))
+                    {
+                        System.Diagnostics.Process.Start(ParseHTML(program));
+                        MarkTabAsOpen(program);
+                        if (DebugMode)
+                        {
+                            InfoMessage("Started process: " + program, "Clock.exe");
+                        }
+                    }
+                    else
+                    {
+                        if (!TabOpened(program))
+                        {
+                            WarningMessage(program + " does not exist.", "Can't find program");
+                        }
+                        
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                //MessageBox.Show(exception.ToString());
+                WarningMessage("Fatal: " + exception.ToString(), "Can't find program");
+            }
+        }
+
+        private void InfoMessage(string message,string title)
+        {
+            MessageBox.Show(message, title,MessageBoxButtons.OK,MessageBoxIcon.Asterisk);
+        }
+        private void WarningMessage(string message, string title)
+        {
+            MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        }
+
+        private void MarkTabAsOpen(string url)
         {
             if (DateTime.Now.Day == day)
             {
-                if (!tabMemory.ContainsKey(id))
+                if (!commandHistory.ContainsKey(Id))
                 {
-                    tabMemory[id] = new List<string>();
+                    commandHistory[Id] = new List<string>();
                 }
-                tabMemory[id].Add(url);
+                commandHistory[Id].Add(url);
 
 
             }
             else
             {
-                tabMemory = new Dictionary<string, List<string>> { };
+                commandHistory = new Dictionary<string, List<string>> { };
             }
         }
 
-        private bool TabOpened(string url,string id)
+        private bool TabOpened(string url)
         {
-            if (DateTime.Now.Day == day)
+ 
+            if (DateTime.Now.Day == day&& commandHistory.ContainsKey(Id)&& commandHistory[Id].Contains(url))
             {
-                if (tabMemory.ContainsKey(id))
-                {
-                    if (tabMemory[id].Contains(url))
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
-                }
-                else
-                {
-                    return false;
-                }
+                return true;
             }
             else
             {
@@ -198,33 +255,25 @@ namespace GoogleCalender
             }
         }
 
-        private void URLHandler(string line, string id)
+        private void URLHandler(string line)
         {
             //C:\Program Files (x86)\Microsoft\Skype for Desktop\Skype.exe
             if (line.StartsWith("https://") || line.StartsWith("http://") || line.StartsWith("www."))
             {
-                if (!TabOpened(line, id))
-                {
-                    OpenUri(line);
-                    MarkTabAsOpen(line, id);
-                }
-
+                OpenUri(line);
             }
             if (line.StartsWith("<a href="))
             {
                 List<string> urls = UnpackFrameURL(line);
                 foreach (string url in urls)
                 {
-                    if (!TabOpened(url, id))
-                    {
-                        OpenUri(url);
-                        MarkTabAsOpen(url,id);
-                    }
-                    
+
+                    OpenUri(url);
 
                 }
             }
         }
+
 
         private void UpdateTextBox(Events events)
         {
@@ -273,56 +322,72 @@ namespace GoogleCalender
             }
         }
 
-        public bool OpenUri(string uri)
+        public void OpenUri(string uri)
         {
-            if (!IsValidUri(uri))
-                    return false;
-
-            System.Diagnostics.Process.Start(uri);
-            //TabOpened(time);
-            return true;
-
+            if (!TabOpened(uri)&&IsValidUri(uri))
+            {
+                System.Diagnostics.Process.Start(uri);
+                MarkTabAsOpen(uri);
+                if (DebugMode)
+                {
+                    InfoMessage(string.Format("Opened URL: {1} With Id :{0}",Id,uri), "Clock.exe");
+                }
+            } 
         }
 
-        private string CurrentTime()
+        private string CurrentTime
         {
-            timer.Interval = 60000;
-            int hh = DateTime.Now.Hour;
-            int mm = DateTime.Now.Minute;
-
-            string time = "";
-
-            if (hh < 10)
+            get
             {
-                time += "0" + hh;
+                
+                int hh = DateTime.Now.Hour;
+                int mm = DateTime.Now.Minute;
 
-            }
-            else
-            {
-                time += hh;
-            }
-            time += ":";
-            if (mm < 10)
-            {
-                time += "0" + mm;
+                string time = "";
 
+                if (hh < 10)
+                {
+                    time += "0" + hh;
+
+                }
+                else
+                {
+                    time += hh;
+                }
+                time += ":";
+                if (mm < 10)
+                {
+                    time += "0" + mm;
+
+                }
+                else
+                {
+                    time += mm;
+                }
+                return time;
             }
-            else
-            {
-                time += mm;
-            }
-            return time;
         }
 
         private void UpdateClock(object sender, EventArgs e)
         {
-            DisplayClock.Text = CurrentTime();
+            DisplayClock.Text = CurrentTime;
+            timer.Interval = 60000;
             GoogleAPI();
         }
 
         private void NextUp_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private bool DebugMode => debugMode.CheckState.ToString() == "Unchecked";
+
+        private void debugMode_CheckedChanged(object sender, EventArgs e)
+        {
+            if (DebugMode)
+            {
+                InfoMessage("Debugging started","Clock.exe");
+            }
         }
     }
 }

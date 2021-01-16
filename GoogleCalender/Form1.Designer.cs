@@ -32,6 +32,7 @@ namespace GoogleCalender
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.DisplayClock = new System.Windows.Forms.Label();
             this.NextUp = new System.Windows.Forms.Label();
+            this.debugMode = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // DisplayClock
@@ -55,6 +56,18 @@ namespace GoogleCalender
             this.NextUp.Text = "Please wait for synchronisation";
             this.NextUp.Click += new System.EventHandler(this.NextUp_Click);
             // 
+            // debugMode
+            // 
+            this.debugMode.AutoSize = true;
+            this.debugMode.Checked = true;
+            this.debugMode.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.debugMode.Location = new System.Drawing.Point(171, 12);
+            this.debugMode.Name = "debugMode";
+            this.debugMode.Size = new System.Drawing.Size(15, 14);
+            this.debugMode.TabIndex = 4;
+            this.debugMode.UseVisualStyleBackColor = true;
+            this.debugMode.CheckedChanged += new System.EventHandler(this.debugMode_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 15F);
@@ -62,6 +75,7 @@ namespace GoogleCalender
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(189, 52);
+            this.Controls.Add(this.debugMode);
             this.Controls.Add(this.NextUp);
             this.Controls.Add(this.DisplayClock);
             this.Cursor = System.Windows.Forms.Cursors.No;
@@ -81,6 +95,7 @@ namespace GoogleCalender
         #endregion
         private System.Windows.Forms.Label DisplayClock;
         private System.Windows.Forms.Label NextUp;
+        private System.Windows.Forms.CheckBox debugMode;
     }
 }
 

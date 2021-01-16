@@ -28,3 +28,8 @@ C:\Users\ed\source\repos\CalenderCallout\CalenderClock\GoogleCalender\obj\Releas
 C:\Users\ed\source\repos\CalenderCallout\CalenderClock\GoogleCalender\obj\Release\GoogleCalender.csproj.CopyComplete
 C:\Users\ed\source\repos\CalenderCallout\CalenderClock\GoogleCalender\obj\Release\GoogleCalender.exe
 C:\Users\ed\source\repos\CalenderCallout\CalenderClock\GoogleCalender\obj\Release\GoogleCalender.pdb
+C:\Users\ed\source\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Release\GoogleCalender.exe.manifest
+C:\Users\ed\source\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Release\GoogleCalender.application
+C:\Users\ed\source\repos\CalenderCallout\CalenderClock\GoogleCalender\obj\Release\GoogleCalender.exe.manifest
+C:\Users\ed\source\repos\CalenderCallout\CalenderClock\GoogleCalender\obj\Release\GoogleCalender.application
+C:\Users\ed\source\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Release\credentials.json
