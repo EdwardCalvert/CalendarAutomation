@@ -15,33 +15,65 @@ namespace GoogleCalender
 {
     public partial class Form1 : Form
     {
-        System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
-        private Dictionary<string, List<string>> commandHistory= new Dictionary<string, List<string>> { };
-        //Dictionary, where the time is the key ie "**:**", and string array represents visited URLS
+        System.Windows.Forms.Timer clockTimer = new System.Windows.Forms.Timer();
+        System.Windows.Forms.Timer APITimer = new System.Windows.Forms.Timer();
+        private Dictionary<string, List<string>> commandHistory = new Dictionary<string, List<string>> { };
         private int day = DateTime.Now.Day;
-        string Id { get; set; }
+        private string id;
+
+        private string GetId()
+        {
+            return id;
+        }
+
+        private void SetId(string value)
+        {
+            id = value;
+        }
+
+        Events events { get; set; }
         //
 
         //Added by google API
         static string[] Scopes = { CalendarService.Scope.CalendarReadonly };
         static string ApplicationName = "Google Calendar API .NET Quickstart";
-        
+
 
 
         public Form1()
         {
-            InitializeComponent();
-            timer.Tick += new EventHandler(this.UpdateClock);
-            DisplayClock.Text = CurrentTime;
             int second = DateTime.Now.Second;
-            timer.Interval = (60000 - (second * 1000));
-            timer.Start();
+            InitializeComponent();
+            DisplayClock.Text = CurrentTime;
+
+            CalibrateClockTimer();
+            clockTimer.Tick += new EventHandler(this.ClockTimerCallback);
+
+            
+            clockTimer.Start();
+
+            CalibrateAPITimer();
+            APITimer.Tick += new EventHandler(this.APITimerCallback);
+            APITimer.Start();
 
         }
-        
+
+        private void CalibrateAPITimer()
+        {
+            int second = DateTime.Now.Second;
+            APITimer.Interval = (60000 - (second * 1000));
+            //APITimer.Tick += new EventHandler(this.APITimerCallback);
+        }
+
+        private void CalibrateClockTimer()
+        {
+            int second = DateTime.Now.Second;
+            clockTimer.Interval = (60000 - (second * 1000));
+        }
 
         private void GoogleAPI()
         {
+
             UserCredential credential;
 
             using (var stream =
@@ -75,73 +107,83 @@ namespace GoogleCalender
 
 
             // List events.
-            Events events = request.Execute();
-            UpdateTextBox(events);
-            
+            try
+            {
+                events = request.Execute();
+                UpdateTextBox();
+            }
+            catch (Exception exception)
+            {
+                if (DebugMode)
+                {
+                    WarningMessage("Request could not be fuffiled: " + exception, "Clock.exe");
+                }
+                else
+                {
+                    NextUp.Text = "Error occurred, trying again.";
+                }
+                CalibrateAPITimer();
+                CalibrateClockTimer();
+            }
 
-            
+
+
+
         }
 
-        private int ReturnMinuteUnit()
+        
+
+        private bool StartedYet(DateTime dateTime)
         {
-            int minute ;
-            int currentMinute = DateTime.Now.Minute;
-            if (currentMinute > 9)
+            if (DateTime.Compare(DateTime.Now, dateTime) < 0)
             {
-                minute = int.Parse(DateTime.Now.Minute.ToString().ToArray()[1].ToString());
+                return false;
             }
             else
             {
-                minute = currentMinute;
+                return true;
             }
-            return minute;
         }
 
-
+        private bool FinishedYet(DateTime dateTime)
+        { 
+            if (DateTime.Compare(DateTime.Now, dateTime) < 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+         }
 
         private void ReadCalendarItem(Event item)
         {
-            
+            var startTime = item.Start.DateTime;
+            if (DebugMode)
+            {
+                InfoMessage(startTime.ToString(), "Clock.exe");
+                DateTime.Compare(DateTime.Now, (DateTime)startTime);
+            }
+
             string payload = item.Description;
             if (payload != null)
             {
-                Id = item.Id;
-                //Do Some Processing here 
+                SetId(item.Id);
                 string[] lines = payload.Split(new string[] { "<br>" }, StringSplitOptions.None);
                 foreach(string line in lines)
                 {
-                    //Possible casses
-                    //Before - open no webpage
-                    //During - ony open webpage if not already opend
-                    //Dealayed execution- open webpage at desired time
-                    //After? Do nothing. 
 
-                    //Actions Open URL
-                    //Open App <-Not started? Will I ever do this? 
+                    //InfoMessage("Normal line:"+line, "Clock.exe", DebugMode);
 
-                    //[delay;#########] where ####### represents a delay in minutes
-                    //[delay_until;##:##] where ##:## represents a clock hour
-                    //[delay_until_-#######] where -##### represents hours back from end time
-                    //[exe] will start a windows process with this name, however, no validation is checked (i trust myself)
-
-                    //KNOWN BUG: domain entered without protocol, won't be handeled by URLHandler. Not much I can do about that.
-                    if (DebugMode)
-                    {
-                        InfoMessage("Normal line:"+line, "Clock.exe");
-                    }
                     string cleanLine = ParseHTML(line);
-                    if (DebugMode)
-                    {
-                        InfoMessage("Stripped line :"+cleanLine, "Clock.exe");
-                    }
+                    InfoMessage("Stripped line :"+cleanLine, "Clock.exe", DebugMode);
                     if (cleanLine.StartsWith("["))
                     {
                         if (cleanLine.StartsWith("[delay)"))
                         {
-                            if (DebugMode)
-                            {
-                                InfoMessage("Delay method still not functional", "Clock.exe");
-                            }
+                            InfoMessage("Delay method still not functional", "Clock.exe", DebugMode);
+
 
                         }
                         else if (cleanLine.StartsWith("[exe]"))
@@ -150,8 +192,9 @@ namespace GoogleCalender
                             ExeHandler(cleanLine);
                         }
                     }
-                    else //If no wildcards are used, user is implying start once. 
+                    else
                     {
+
                         URLHandler(cleanLine);
                     }
                     
@@ -182,10 +225,7 @@ namespace GoogleCalender
 
                     System.Diagnostics.Process.Start(program);
                     MarkTabAsOpen(program);
-                    if (DebugMode)
-                    {
-                        InfoMessage("Started process: " + program, "Clock.exe");
-                    }
+                    InfoMessage("Started process: " + program, "Clock.exe", DebugMode);
                 }
                 else
                 {
@@ -193,10 +233,7 @@ namespace GoogleCalender
                     {
                         System.Diagnostics.Process.Start(ParseHTML(program));
                         MarkTabAsOpen(program);
-                        if (DebugMode)
-                        {
-                            InfoMessage("Started process: " + program, "Clock.exe");
-                        }
+                        InfoMessage("Started process: " + program, "Clock.exe", DebugMode);
                     }
                     else
                     {
@@ -209,8 +246,7 @@ namespace GoogleCalender
                 }
             }
             catch (Exception exception)
-            {
-                //MessageBox.Show(exception.ToString());
+            { 
                 WarningMessage("Fatal: " + exception.ToString(), "Can't find program");
             }
         }
@@ -218,6 +254,13 @@ namespace GoogleCalender
         private void InfoMessage(string message,string title)
         {
             MessageBox.Show(message, title,MessageBoxButtons.OK,MessageBoxIcon.Asterisk);
+        }
+        private void InfoMessage(string message, string title,bool show)
+        {
+            if (show)
+            {
+                MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            }
         }
         private void WarningMessage(string message, string title)
         {
@@ -228,11 +271,11 @@ namespace GoogleCalender
         {
             if (DateTime.Now.Day == day)
             {
-                if (!commandHistory.ContainsKey(Id))
+                if (!commandHistory.ContainsKey(GetId()))
                 {
-                    commandHistory[Id] = new List<string>();
+                    commandHistory[GetId()] = new List<string>();
                 }
-                commandHistory[Id].Add(url);
+                commandHistory[GetId()].Add(url);
 
 
             }
@@ -245,7 +288,7 @@ namespace GoogleCalender
         private bool TabOpened(string url)
         {
  
-            if (DateTime.Now.Day == day&& commandHistory.ContainsKey(Id)&& commandHistory[Id].Contains(url))
+            if (DateTime.Now.Day == day&& commandHistory.ContainsKey(GetId()) && commandHistory[GetId()].Contains(url))
             {
                 return true;
             }
@@ -275,26 +318,41 @@ namespace GoogleCalender
         }
 
 
-        private void UpdateTextBox(Events events)
+        private void UpdateTextBox()
         {
             if (events.Items != null && events.Items.Count > 0)
             {
-                NextUp.Text = "";
+                //NextUp.Text = "";
+                UpdateEventText("", 'o');
                 foreach (var eventItem in events.Items)
                 {
-                    UpdateEvent(eventItem);
-                    ReadCalendarItem(eventItem);
+                    InfoMessage("Started yet: " + StartedYet((DateTime)eventItem.Start.DateTime) + " Finished yet: " + FinishedYet((DateTime)eventItem.End.DateTime) , "Clock.exe", DebugMode);
+                    if (StartedYet((DateTime) eventItem.Start.DateTime)&& !FinishedYet((DateTime)eventItem.End.DateTime))
+                    {
+                        UpdateEventText(eventItem.Summary, 'a');
+                        ReadCalendarItem(eventItem);
+                    }
                 }
             }
             else
             {
-                NextUp.Text = "Nothing to do";
+                NextUp.Text = "Calendar Empty";
             }
         }
 
-        private void UpdateEvent(Event item)
+        /// <param name="item"></param>
+        /// <param name="mode"> Use 'a' for append or 'o' for override </param>
+        private void UpdateEventText(string text,char mode)
         {
-            NextUp.Text += item.Summary;
+            if (mode == 'a')
+            {
+                NextUp.Text += text;
+            }
+            else if (mode == 'o')
+            {
+                NextUp.Text = text;
+            }
+            
         }
 
         public static bool IsValidUri(string uri)
@@ -330,7 +388,7 @@ namespace GoogleCalender
                 MarkTabAsOpen(uri);
                 if (DebugMode)
                 {
-                    InfoMessage(string.Format("Opened URL: {1} With Id :{0}",Id,uri), "Clock.exe");
+                    InfoMessage(string.Format("Opened URL: {1} With Id :{0}", GetId(), uri), "Clock.exe");
                 }
             } 
         }
@@ -368,10 +426,16 @@ namespace GoogleCalender
             }
         }
 
-        private void UpdateClock(object sender, EventArgs e)
+        private void ClockTimerCallback(object sender, EventArgs e)
         {
             DisplayClock.Text = CurrentTime;
-            timer.Interval = 60000;
+            clockTimer.Interval = 60000;
+            //GoogleAPI();
+        }
+
+        private void APITimerCallback(object sender, EventArgs e)
+        {
+            APITimer.Interval = 60000;
             GoogleAPI();
         }
 
@@ -389,5 +453,26 @@ namespace GoogleCalender
                 InfoMessage("Debugging started","Clock.exe");
             }
         }
+
+        private void refreshButton_Click(object sender, EventArgs e)
+        {
+            InfoMessage("Calender will update after : " + APITimer.Interval + " miliseconds","Clock.exe");
+        }
+
+        //Archived methods *******************************************************************************************************************
+        //private int ReturnMinuteUnit()
+        //{
+        //    int minute;
+        //    int currentMinute = DateTime.Now.Minute;
+        //    if (currentMinute > 9)
+        //    {
+        //        minute = int.Parse(DateTime.Now.Minute.ToString().ToArray()[1].ToString());
+        //    }
+        //    else
+        //    {
+        //        minute = currentMinute;
+        //    }
+        //    return minute;
+        //}
     }
 }

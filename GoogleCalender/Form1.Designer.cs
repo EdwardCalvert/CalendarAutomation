@@ -33,6 +33,7 @@ namespace GoogleCalender
             this.DisplayClock = new System.Windows.Forms.Label();
             this.NextUp = new System.Windows.Forms.Label();
             this.debugMode = new System.Windows.Forms.CheckBox();
+            this.refreshButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // DisplayClock
@@ -68,6 +69,17 @@ namespace GoogleCalender
             this.debugMode.UseVisualStyleBackColor = true;
             this.debugMode.CheckedChanged += new System.EventHandler(this.debugMode_CheckedChanged);
             // 
+            // refreshButton
+            // 
+            this.refreshButton.Font = new System.Drawing.Font("Open Sans", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.refreshButton.Location = new System.Drawing.Point(148, 7);
+            this.refreshButton.Name = "refreshButton";
+            this.refreshButton.Size = new System.Drawing.Size(17, 19);
+            this.refreshButton.TabIndex = 5;
+            this.refreshButton.Text = "↻";
+            this.refreshButton.UseVisualStyleBackColor = true;
+            this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 15F);
@@ -75,6 +87,7 @@ namespace GoogleCalender
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(189, 52);
+            this.Controls.Add(this.refreshButton);
             this.Controls.Add(this.debugMode);
             this.Controls.Add(this.NextUp);
             this.Controls.Add(this.DisplayClock);
@@ -96,6 +109,7 @@ namespace GoogleCalender
         private System.Windows.Forms.Label DisplayClock;
         private System.Windows.Forms.Label NextUp;
         private System.Windows.Forms.CheckBox debugMode;
+        private System.Windows.Forms.Button refreshButton;
     }
 }
 
