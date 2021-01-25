@@ -60,15 +60,12 @@ namespace GoogleCalender
 
         private void CalibrateAPITimer()
         {
-            int second = DateTime.Now.Second;
-            APITimer.Interval = (60000 - (second * 1000));
-            //APITimer.Tick += new EventHandler(this.APITimerCallback);
+            APITimer.Interval = (60000 - (DateTime.Now.Second * 1000));
         }
 
         private void CalibrateClockTimer()
         {
-            int second = DateTime.Now.Second;
-            clockTimer.Interval = (60000 - (second * 1000));
+            clockTimer.Interval = (60000 - (DateTime.Now.Second * 1000));
         }
 
         private void GoogleAPI()
@@ -322,7 +319,6 @@ namespace GoogleCalender
         {
             if (events.Items != null && events.Items.Count > 0)
             {
-                //NextUp.Text = "";
                 UpdateEventText("", 'o');
                 foreach (var eventItem in events.Items)
                 {
@@ -429,13 +425,12 @@ namespace GoogleCalender
         private void ClockTimerCallback(object sender, EventArgs e)
         {
             DisplayClock.Text = CurrentTime;
-            clockTimer.Interval = 60000;
-            //GoogleAPI();
+            CalibrateClockTimer();
         }
 
         private void APITimerCallback(object sender, EventArgs e)
         {
-            APITimer.Interval = 60000;
+            CalibrateAPITimer();
             GoogleAPI();
         }
 
