@@ -430,8 +430,9 @@ namespace GoogleCalender
 
         private void APITimerCallback(object sender, EventArgs e)
         {
-            CalibrateAPITimer();
+            
             GoogleAPI();
+            CalibrateAPITimer();
         }
 
         private void NextUp_Click(object sender, EventArgs e)
