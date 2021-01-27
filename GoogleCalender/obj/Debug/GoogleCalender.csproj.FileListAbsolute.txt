@@ -25,7 +25,6 @@ C:\Users\ed\source\repos\CalenderCallout\GoogleCalender\GoogleCalender\obj\Debug
 C:\Users\ed\source\repos\CalenderCallout\GoogleCalender\GoogleCalender\obj\Debug\GoogleCalender.exe
 C:\Users\ed\source\repos\CalenderCallout\GoogleCalender\GoogleCalender\obj\Debug\GoogleCalender.pdb
 C:\Users\ed\source\repos\CalenderCallout\GoogleCalender\GoogleCalender\obj\Debug\GoogleCalender.Form1.resources
-C:\Users\ed\source\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\credentials.json
 C:\Users\ed\source\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\GoogleCalender.exe.config
 C:\Users\ed\source\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\GoogleCalender.exe.manifest
 C:\Users\ed\source\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\GoogleCalender.application
@@ -59,4 +58,4 @@ C:\Users\ed\source\repos\CalenderCallout\CalenderClock\GoogleCalender\obj\Debug\
 C:\Users\ed\source\repos\CalenderCallout\CalenderClock\GoogleCalender\obj\Debug\GoogleCalender.csproj.CopyComplete
 C:\Users\ed\source\repos\CalenderCallout\CalenderClock\GoogleCalender\obj\Debug\GoogleCalender.exe
 C:\Users\ed\source\repos\CalenderCallout\CalenderClock\GoogleCalender\obj\Debug\GoogleCalender.pdb
-C:\Users\ed\source\repos\CalenderCallout\CalenderClock\GoogleCalender\obj\Debug\GoogleCalender.csprojAssemblyReference.cache
+C:\Users\ed\source\repos\CalenderCallout\CalenderClock\GoogleCalender\obj\Debug\GoogleCalender.g.resources
