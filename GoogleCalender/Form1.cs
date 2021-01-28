@@ -49,12 +49,13 @@ namespace GoogleCalender
             CalibrateClockTimer();
             clockTimer.Tick += new EventHandler(this.ClockTimerCallback);
 
-            
-            clockTimer.Start();
 
+
+            GoogleAPI();
             CalibrateAPITimer();
             APITimer.Tick += new EventHandler(this.APITimerCallback);
             APITimer.Start();
+            clockTimer.Start();
 
         }
 
@@ -66,6 +67,7 @@ namespace GoogleCalender
         private void CalibrateClockTimer()
         {
             clockTimer.Interval = (60000 - (DateTime.Now.Second * 1000));
+            //)+1000
         }
 
         private void GoogleAPI()
@@ -142,7 +144,7 @@ namespace GoogleCalender
 
         private bool StartedYet(DateTime dateTime)
         {
-            if (DateTime.Compare(DateTime.Now, dateTime) < 0)
+            if (DateTime.Compare(DateTime.Now, dateTime) <= 0)
             {
                 return false;
             }
@@ -332,8 +334,21 @@ namespace GoogleCalender
                 UpdateEventText("", 'o');
                 foreach (var eventItem in events.Items)
                 {
-                    InfoMessage("Started yet: " + StartedYet((DateTime)eventItem.Start.DateTime) + " Finished yet: " + FinishedYet((DateTime)eventItem.End.DateTime) , "Clock.exe", DebugMode);
-                    if (StartedYet((DateTime) eventItem.Start.DateTime)&& !FinishedYet((DateTime)eventItem.End.DateTime))
+                   //// InfoMessage(eventItem.Kind.ToString(), "Clcok.exe", DebugMode);
+                   // InfoMessage((eventItem.Start.DateTime != null).ToString() +"Start Time Null", "Clock.exe", DebugMode);
+                   // InfoMessage((eventItem.End.DateTime != null).ToString() + "End Time Null", "Clock.exe", DebugMode);
+
+                   // DateTime startTime;
+                   // if(DateTime.TryParse(eventItem.Start.DateTime, out startTime))
+                   // {
+                        
+
+                   // }
+
+                   // InfoMessage("Starte yet" + StartedYet((DateTime.TryParse())eventItem.Start.DateTime).ToString(),"Clock.ex",DebugMode);
+                    //InfoMessage(eventItem.Summary.ToString(), "clock.exe", DebugMode);
+                    //InfoMessage("Started yet: " + StartedYet((DateTime)eventItem.Start.DateTime) + " Finished yet: " + FinishedYet((DateTime)eventItem.End.DateTime) , "Clock.exe", DebugMode);
+                    if (StartedYet((DateTime)eventItem.Start.DateTime) && !FinishedYet((DateTime)eventItem.End.DateTime))
                     {
                         UpdateEventText(eventItem.Summary, 'a');
                         ReadCalendarItem(eventItem);
