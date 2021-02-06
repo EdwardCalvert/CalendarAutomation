@@ -1,0 +1,9 @@
+C:\Users\ed\source\repos\CalenderCallout\CalenderClock\CalendarAPI\bin\Debug\netstandard2.0\APIMethods.deps.json
+C:\Users\ed\source\repos\CalenderCallout\CalenderClock\CalendarAPI\bin\Debug\netstandard2.0\APIMethods.dll
+C:\Users\ed\source\repos\CalenderCallout\CalenderClock\CalendarAPI\bin\Debug\netstandard2.0\APIMethods.pdb
+C:\Users\ed\source\repos\CalenderCallout\CalenderClock\CalendarAPI\obj\Debug\netstandard2.0\APIMethods.csprojAssemblyReference.cache
+C:\Users\ed\source\repos\CalenderCallout\CalenderClock\CalendarAPI\obj\Debug\netstandard2.0\APIMethods.AssemblyInfoInputs.cache
+C:\Users\ed\source\repos\CalenderCallout\CalenderClock\CalendarAPI\obj\Debug\netstandard2.0\APIMethods.AssemblyInfo.cs
+C:\Users\ed\source\repos\CalenderCallout\CalenderClock\CalendarAPI\obj\Debug\netstandard2.0\APIMethods.csproj.CoreCompileInputs.cache
+C:\Users\ed\source\repos\CalenderCallout\CalenderClock\CalendarAPI\obj\Debug\netstandard2.0\APIMethods.dll
+C:\Users\ed\source\repos\CalenderCallout\CalenderClock\CalendarAPI\obj\Debug\netstandard2.0\APIMethods.pdb

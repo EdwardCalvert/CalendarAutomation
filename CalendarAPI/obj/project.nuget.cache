@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "dgSpecHash": "qMzgW5CQ9Ro1GULFbgIuBl0E+Gc01he1IWIK+pTZQNHjGQd5VdwBOHmIjiUQ4w0jaaTLdAFgN6J8/x0mbi+86A==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\ed\\source\\repos\\CalenderCallout\\CalenderClock\\CalendarAPI\\APIMethods.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ed\\.nuget\\packages\\google.apis\\1.49.0\\google.apis.1.49.0.nupkg.sha512",
+    "C:\\Users\\ed\\.nuget\\packages\\google.apis.auth\\1.49.0\\google.apis.auth.1.49.0.nupkg.sha512",
+    "C:\\Users\\ed\\.nuget\\packages\\google.apis.calendar.v3\\1.49.0.2224\\google.apis.calendar.v3.1.49.0.2224.nupkg.sha512",
+    "C:\\Users\\ed\\.nuget\\packages\\google.apis.classroom.v1\\1.49.0.2223\\google.apis.classroom.v1.1.49.0.2223.nupkg.sha512",
+    "C:\\Users\\ed\\.nuget\\packages\\google.apis.core\\1.49.0\\google.apis.core.1.49.0.nupkg.sha512",
+    "C:\\Users\\ed\\.nuget\\packages\\htmlagilitypack\\1.11.29\\htmlagilitypack.1.11.29.nupkg.sha512",
+    "C:\\Users\\ed\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\ed\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\ed\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
