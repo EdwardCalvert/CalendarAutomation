@@ -2820,6 +2820,12 @@
         <member name="P:Google.Apis.Calendar.v3.Data.Event.ETag">
             <summary>ETag of the resource.</summary>
         </member>
+        <member name="P:Google.Apis.Calendar.v3.Data.Event.EventType">
+            <summary>
+            Specific type of the event. Read-only. Possible values are:   - "default" - A regular event or not further
+            specified.  - "outOfOffice" - An out-of-office event.
+            </summary>
+        </member>
         <member name="P:Google.Apis.Calendar.v3.Data.Event.ExtendedProperties">
             <summary>Extended properties of the event.</summary>
         </member>

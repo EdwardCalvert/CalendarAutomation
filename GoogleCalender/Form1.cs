@@ -2,16 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using Google.Apis.Auth.OAuth2;
-using Google.Apis.Calendar.v3;
+
 using Google.Apis.Calendar.v3.Data;
-using Google.Apis.Services;
-using Google.Apis.Util.Store;
+
 using System.IO;
-using System.Threading;
+
 using System.Text.RegularExpressions;
-using Google.Apis.Classroom.v1;
-using Google.Apis.Classroom.v1.Data;
+
 using APIMethods;
 
 namespace GoogleCalender
@@ -38,15 +35,9 @@ namespace GoogleCalender
         //
 
         //Added by google API
-        static string[] CalendarScope = { CalendarService.Scope.CalendarReadonly };
-        static string CalendarAppName = "Google Calendar API .NET Quickstart";
-
-        static string[] ClassroomScopes = { ClassroomService.Scope.ClassroomCoursesReadonly };
-        static string ClassroomAppName = "Classroom API .NET Quickstart";
-
 
         /// <summary>
-        /// 
+        /// Constructor
         /// </summary>
         public Form1()
         {
@@ -79,67 +70,14 @@ namespace GoogleCalender
             //)+1000
         }
 
-        private void ClassroomAPI()
-        {
-            UserCredential credential;
-
-            using (var stream =
-                new FileStream("classroomCredentials.json", FileMode.Open, FileAccess.Read))
-            {
-                // The file token.json stores the user's access and refresh tokens, and is created
-                // automatically when the authorization flow completes for the first time.
-                string credPath = "token.json";
-                credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
-                    GoogleClientSecrets.Load(stream).Secrets,
-                    ClassroomScopes,
-                    "user",
-                    CancellationToken.None,
-                    new FileDataStore(credPath, true)).Result;
-                Console.WriteLine("Credential file saved to: " + credPath);
-            }
-
-            // Create Classroom API service.
-            var service = new ClassroomService(new BaseClientService.Initializer()
-            {
-                HttpClientInitializer = credential,
-                ApplicationName = ClassroomAppName,
-            });
-
-            // Define request parameters.
-            CoursesResource.ListRequest request = service.Courses.List();
-            request.PageSize = 10;
-
-            // List courses.
-            ListCoursesResponse response = request.Execute();
-            Console.WriteLine("Courses:");
-            if (response.Courses != null && response.Courses.Count > 0)
-            {
-                foreach (var course in response.Courses)
-                {
-                    InfoMessage(("{0} ({1})", course.Name, course.Id).ToString(),"Clock.exe");
-                    //Console.WriteLine("{0} ({1})", course.Name, course.Id);
-                }
-            }
-            else
-            {
-                Console.WriteLine("No courses found.");
-            }
-            Console.Read();
-
-        }
+       
 
         private void GoogleAPI()
         {
-
-            UserCredential credential;
-            var path = System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "credentials.json";
-            InfoMessage(File.Exists(path).ToString(), "Clock.exe", DebugMode);
-           
-
                 // List events.
                 try
                 {
-                events = CalendarAPI.CalendarAPI.CallendarCallout(System.IO.Path.Combine( System.IO.Path.GetDirectoryName(Application.ExecutablePath) , "credentials.json"));
+                    events = CalendarAPI.CallendarCallout(System.IO.Path.Combine( System.IO.Path.GetDirectoryName(Application.ExecutablePath) , "credentials.json"));
                     UpdateTextBox();
                 }
                 catch (Exception exception)
@@ -155,14 +93,6 @@ namespace GoogleCalender
                     CalibrateAPITimer();
                     CalibrateClockTimer();
                 }
-            
-            
-            
-                UpdateEventText("Error: credentials.json doesn't exist.", 'o');
-                DisplayClock.Text = "00:00";
-            
-
-
 
         }
 
@@ -368,10 +298,6 @@ namespace GoogleCalender
                         UpdateEventText(eventItem.Summary, 'a');
                         ReadCalendarItem(eventItem);
                     }
-                    //if (StartingNow((DateTime)eventItem.Start.DateTime))
-                    //{ 
-                    //    GoogleFormCallout(); 
-                    //}
                     
                 }
             }

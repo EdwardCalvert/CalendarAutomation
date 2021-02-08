@@ -7,14 +7,14 @@
     <framework targetVersion="4.7.2" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="GoogleCalender.exe.manifest" size="10152">
+    <dependentAssembly dependencyType="install" codebase="GoogleCalender.exe.manifest" size="10789">
       <assemblyIdentity name="GoogleCalender.exe" version="1.0.0.5" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>UOc/+wDk5yph8DEK8WIH7Kuzo+5yHOCg3Bcoz5kP1vs=</dsig:DigestValue>
+        <dsig:DigestValue>jQZZ5u71QD5G2PLwmaAiQW0V0SMN8m+e5EVbSxaqGNE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

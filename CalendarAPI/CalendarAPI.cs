@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using Google.Apis.Auth.OAuth2;
 using Google.Apis.Calendar.v3;
 using Google.Apis.Calendar.v3.Data;
@@ -8,9 +6,7 @@ using Google.Apis.Services;
 using Google.Apis.Util.Store;
 using System.IO;
 using System.Threading;
-using System.Text.RegularExpressions;
-using Google.Apis.Classroom.v1;
-using Google.Apis.Classroom.v1.Data;
+
 
 namespace APIMethods
 {
@@ -62,7 +58,7 @@ namespace APIMethods
             }
             else
             {
-                return null;
+                throw new FileNotFoundException();
             }
         }
     }
