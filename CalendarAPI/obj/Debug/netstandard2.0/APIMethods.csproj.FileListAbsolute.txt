@@ -7,3 +7,5 @@ C:\Users\ed\source\repos\CalenderCallout\CalenderClock\CalendarAPI\obj\Debug\net
 C:\Users\ed\source\repos\CalenderCallout\CalenderClock\CalendarAPI\obj\Debug\netstandard2.0\APIMethods.csproj.CoreCompileInputs.cache
 C:\Users\ed\source\repos\CalenderCallout\CalenderClock\CalendarAPI\obj\Debug\netstandard2.0\APIMethods.dll
 C:\Users\ed\source\repos\CalenderCallout\CalenderClock\CalendarAPI\obj\Debug\netstandard2.0\APIMethods.pdb
+C:\Users\ed\source\repos\CalenderCallout\CalenderClock\CalendarAPI\bin\Debug\netstandard2.0\classroomCredentials.json
+C:\Users\ed\source\repos\CalenderCallout\CalenderClock\CalendarAPI\bin\Debug\netstandard2.0\credentials.json

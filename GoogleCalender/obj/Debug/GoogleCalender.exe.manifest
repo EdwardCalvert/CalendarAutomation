@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="APIMethods.dll" size="6656">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="APIMethods.dll" size="7168">
       <assemblyIdentity name="APIMethods" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>f9S2MR0clEwMbjT+JjxKLAYuwVjAgO0/P1Ww3JDMEto=</dsig:DigestValue>
+        <dsig:DigestValue>QeWuvizHfvNY/YG/pJTaXvj3mY0rCnvvyFYtMxhpUVY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -138,14 +138,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GoogleCalender.exe" size="190928">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GoogleCalender.exe" size="190416">
       <assemblyIdentity name="GoogleCalender" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Xbj13Ckiq85n04GaEanXTWAz7i2VOaQoBU6+7eR0Zos=</dsig:DigestValue>
+        <dsig:DigestValue>C4ItoXrHA7xHGL6MlXqRHchNQB5SChEEwMR3HC64m2Q=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

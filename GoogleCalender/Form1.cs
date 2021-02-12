@@ -7,7 +7,7 @@ using Google.Apis.Calendar.v3.Data;
 
 using System.IO;
 
-using System.Text.RegularExpressions;
+
 
 using APIMethods;
 
@@ -169,15 +169,10 @@ namespace GoogleCalender
         
         private string ParseHTML(string inputHTML)
         {
-            string noHTML = Regex.Replace(inputHTML, @"<[^>]+>|&nbsp;", "").Trim();
-            string noHTMLNormalised = System.Text.RegularExpressions.Regex.Replace(noHTML, @"\s{2,}", " ");
+            string noHTMLNormalised = System.Text.RegularExpressions.Regex.Replace(System.Text.RegularExpressions.Regex.Replace(inputHTML, @"<[^>]+>|&nbsp;", "").Trim(), @"\s{2,}", " ");
             return noHTMLNormalised;
         }
 
-        private void DelayExecution(string line)
-        { 
-            
-        }
 
         private void ExeHandler(string line)
         {
@@ -307,10 +302,7 @@ namespace GoogleCalender
             }
         }
 
-        private void GoogleFormCallout()
-        {
-            System.Diagnostics.Process.Start("https://docs.google.com/forms/u/0/d/e/1FAIpQLSfjS_T8EOhdYCqYI836QIj10EIqwSn4oJCNvA-C6VLlOnHQfg/formResponse");
-        }
+
 
         /// <param name="item"></param>
         /// <param name="mode"> Use 'a' for append or 'o' for override </param>
@@ -357,7 +349,6 @@ namespace GoogleCalender
             if (!TabOpened(uri)&&IsValidUri(uri))
             {
                 System.Diagnostics.Process.Start(uri);
-                GoogleFormCallout();
                 MarkTabAsOpen(uri);
                 
                 if (DebugMode)
@@ -430,23 +421,10 @@ namespace GoogleCalender
 
         private void refreshButton_Click(object sender, EventArgs e)
         {
-            InfoMessage("Calender will update after : " + APITimer.Interval + " miliseconds","Clock.exe");
+            GoogleAPI();
+            //InfoMessage("Calender will update after : " + APITimer.Interval + " miliseconds","Clock.exe");
         }
 
-        //Archived methods *******************************************************************************************************************
-        //private int ReturnMinuteUnit()
-        //{
-        //    int minute;
-        //    int currentMinute = DateTime.Now.Minute;
-        //    if (currentMinute > 9)
-        //    {
-        //        minute = int.Parse(DateTime.Now.Minute.ToString().ToArray()[1].ToString());
-        //    }
-        //    else
-        //    {
-        //        minute = currentMinute;
-        //    }
-        //    return minute;
-        //}
+       
     }
 }

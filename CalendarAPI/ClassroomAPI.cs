@@ -10,50 +10,57 @@ using System.IO;
 using System.Threading;
 namespace APIMethods
 {
-    class ClassroomAPI
+    public class ClassroomAPI
     {
 
         static string[] ClassroomScopes = { ClassroomService.Scope.ClassroomCoursesReadonly };
         static string ClassroomAppName = "APIMethods.ClassroomAPI";
 
 
-        public static ListCoursesResponse ListActiveClasses()
-        {
-            UserCredential credential;
-
-            using (var stream =
-                new FileStream("classroomCredentials.json", FileMode.Open, FileAccess.Read))
+            public static ListCoursesResponse ListActiveClasses()
             {
-                // The file token.json stores the user's access and refresh tokens, and is created
-                // automatically when the authorization flow completes for the first time.
-                string credPath = "token.json";
-                credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
-                    GoogleClientSecrets.Load(stream).Secrets,
-                    ClassroomScopes,
-                    "user",
-                    CancellationToken.None,
-                    new FileDataStore(credPath, true)).Result;
-                Console.WriteLine("Credential file saved to: " + credPath);
+                UserCredential credential;
+                if (File.Exists("classroomCredentials.json"))
+                {
+                    using (var stream =
+                    new FileStream("classroomCredentials.json", FileMode.Open, FileAccess.Read))
+                {
+                    // The file token.json stores the user's access and refresh tokens, and is created
+                    // automatically when the authorization flow completes for the first time.
+                    string credPath = "token.json";
+                    credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
+                        GoogleClientSecrets.Load(stream).Secrets,
+                        ClassroomScopes,
+                        "user",
+                        CancellationToken.None,
+                        new FileDataStore(credPath, true)).Result;
+                    Console.WriteLine("Credential file saved to: " + credPath);
+                }
+
+                // Create Classroom API service.
+                var service = new ClassroomService(new BaseClientService.Initializer()
+                {
+                    HttpClientInitializer = credential,
+                    ApplicationName = ClassroomAppName,
+
+                });
+
+
+                //Request a list of the active courses
+                CoursesResource.ListRequest request = service.Courses.List();
+
+                //Only list active courses
+                request.CourseStates = CoursesResource.ListRequest.CourseStatesEnum.ACTIVE;
+
+                ListCoursesResponse response = request.Execute();
+
+                return response;
+            }
+            else
+            {
+                throw new FileNotFoundException();
             }
 
-            // Create Classroom API service.
-            var service = new ClassroomService(new BaseClientService.Initializer()
-            {
-                HttpClientInitializer = credential,
-                ApplicationName = ClassroomAppName,
-
-            });
-
-
-            //Request a list of the active courses
-            CoursesResource.ListRequest request = service.Courses.List();
-
-            //Only list active courses
-            request.CourseStates = CoursesResource.ListRequest.CourseStatesEnum.ACTIVE;
-
-            ListCoursesResponse response = request.Execute();
-
-            return response;
         }
 
         public static Course GetCourse(string id)
