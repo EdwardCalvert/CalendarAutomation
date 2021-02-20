@@ -145,7 +145,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>C4ItoXrHA7xHGL6MlXqRHchNQB5SChEEwMR3HC64m2Q=</dsig:DigestValue>
+        <dsig:DigestValue>hI3ANa3ti9qU080ngS0tD1MyCCja+pwJzF1CYldCXrY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -158,6 +158,18 @@
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
         <dsig:DigestValue>TRakGW+CgOwOKY4rGO8eyu+YlIqBc8b1z7ouFpLyn7A=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MonitorBrightnessDriver.dll" size="12800">
+      <assemblyIdentity name="MonitorBrightnessDriver" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>Jm+hMj/mkdFvxoaOLak5n01AtFLUQOhteW9yXftkeFs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

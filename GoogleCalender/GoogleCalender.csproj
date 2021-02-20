@@ -122,12 +122,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="classroomCredentials.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="credentials.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -164,6 +158,10 @@
     <ProjectReference Include="..\CalendarAPI\APIMethods.csproj">
       <Project>{405a46e5-b3d3-4c01-b556-823e5f8502a6}</Project>
       <Name>APIMethods</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MonitorBrightnessDriver\MonitorBrightnessDriver.csproj">
+      <Project>{e7624b64-ad76-48a2-90a3-33914d6edc23}</Project>
+      <Name>MonitorBrightnessDriver</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

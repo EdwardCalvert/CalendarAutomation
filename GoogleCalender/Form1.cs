@@ -15,6 +15,7 @@ namespace GoogleCalender
 {
     public partial class Form1 : System.Windows.Forms.Form
     {
+        public MonitorBrightnessDriver.CallDDM monitorDriver;
         System.Windows.Forms.Timer clockTimer = new System.Windows.Forms.Timer();
         System.Windows.Forms.Timer APITimer = new System.Windows.Forms.Timer();
         private Dictionary<string, List<string>> commandHistory = new Dictionary<string, List<string>> { };
@@ -41,6 +42,8 @@ namespace GoogleCalender
         /// </summary>
         public Form1()
         {
+            monitorDriver = new MonitorBrightnessDriver.CallDDM();
+            monitorDriver.Refresh();
             int second = DateTime.Now.Second;
             InitializeComponent();
             DisplayClock.Text = CurrentTime;
@@ -74,8 +77,9 @@ namespace GoogleCalender
 
         private void GoogleAPI()
         {
-                // List events.
-                try
+            monitorDriver.Refresh();
+            // List events.
+            try
                 {
                     events = CalendarAPI.CallendarCallout(System.IO.Path.Combine( System.IO.Path.GetDirectoryName(Application.ExecutablePath) , "credentials.json"));
                     UpdateTextBox();
@@ -306,7 +310,7 @@ namespace GoogleCalender
 
         /// <param name="item"></param>
         /// <param name="mode"> Use 'a' for append or 'o' for override </param>
-        private void UpdateEventText(string text,char mode)
+        public void UpdateEventText(string text,char mode)
         {
             if (mode == 'a')
             {

@@ -1,42 +1,44 @@
 ﻿using System;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace Handlers
 {
-    public static class ExeHandler
+    public class ExeHandler
     {
-        public static void DelayExecution(string line)
+        private MemoryManager _memoryManager;
+
+        public ExeHandler()
         {
-            
+            MemoryManager _memoryManager = new MemoryManager();
+        }
+
+        public void DelayExecution(int delay, string ProgramPath, string id)
+        {
+            Task.Delay(delay).ContinueWith(_ => RunExe(ProgramPath,id));
+
         }
 
         /// <summary>
-        /// This method attemtps to open the program with the provided filepath. 
+        /// Uses Process.Start, to open Exe. This will throw errors if it doesn't exist.
+        /// InvalidOperationException
+        /// ObjectDisposedException
+        /// Win32Exception
         /// </summary>
         /// <param name="ProgramPath"></param>
-        /// <returns> True if successful, and false if not </returns>
-        public static bool TryOpenProgram(string ProgramPath)
+        /// <param name="id"></param>
+        public void RunExe(string ProgramPath, string id)
         {
-            try
+            if (!_memoryManager.TabOpened(ProgramPath, id))
             {
-                if (File.Exists(ProgramPath))
-                {
-
-                    System.Diagnostics.Process.Start(ProgramPath);
-
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-             
+                System.Diagnostics.Process.Start(ProgramPath);
+                _memoryManager.MarkTabAsOpen(ProgramPath, id);
             }
-            catch (Exception)
-            {
-                return false;
-            }
+        }
 
+        private static bool ExeExists(string ProgramPath)
+        {
+            return File.Exists(ProgramPath);
         }
     }
 }

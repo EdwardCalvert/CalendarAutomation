@@ -11,7 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Handlers", "Handlers\Handle
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeMethods", "TimeMethods\TimeMethods.csproj", "{0735AA1E-5321-4E40-B4E0-CB91804FFB87}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandlersTests1", "HandlersTests1\HandlersTests1.csproj", "{737F75E6-2E90-452B-A764-E8294681AB8C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HandlersTests1", "HandlersTests1\HandlersTests1.csproj", "{737F75E6-2E90-452B-A764-E8294681AB8C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonitorBrightnessDriver", "MonitorBrightnessDriver\MonitorBrightnessDriver.csproj", "{E7624B64-AD76-48A2-90A3-33914D6EDC23}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonitorBrightnessDriverTests", "MonitorBrightnessDriverTests\MonitorBrightnessDriverTests.csproj", "{5E527101-701E-4D5D-9146-D835A6F8F4A6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,14 @@ Global
 		{737F75E6-2E90-452B-A764-E8294681AB8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{737F75E6-2E90-452B-A764-E8294681AB8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{737F75E6-2E90-452B-A764-E8294681AB8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7624B64-AD76-48A2-90A3-33914D6EDC23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7624B64-AD76-48A2-90A3-33914D6EDC23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7624B64-AD76-48A2-90A3-33914D6EDC23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7624B64-AD76-48A2-90A3-33914D6EDC23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E527101-701E-4D5D-9146-D835A6F8F4A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E527101-701E-4D5D-9146-D835A6F8F4A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E527101-701E-4D5D-9146-D835A6F8F4A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E527101-701E-4D5D-9146-D835A6F8F4A6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,8 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Handlers;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Handlers.Tests
 {
@@ -10,21 +6,13 @@ namespace Handlers.Tests
     public class URLHandlerTests
     {
         [TestMethod()]
-        public void UnpackFrameURLTest()
+        public void CheckValidURL()
         {
-            Assert.Fail();
+
+            Assert.IsTrue(URLHandler.IsValidUri("https://jimdo.com"));
+            Assert.IsFalse(URLHandler.IsValidUri("cheese"));
+            Assert.IsTrue(URLHandler.IsValidUri("https://192.168.1.1"));
         }
 
-        [TestMethod()]
-        public void IsValidUriTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void OpenUriTest()
-        {
-            Assert.Fail();
-        }
     }
 }

@@ -66,3 +66,5 @@ C:\Users\ed\source\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\
 C:\Users\ed\source\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\classroomCredentials.json
 C:\Users\ed\source\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\APIMethods.dll
 C:\Users\ed\source\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\APIMethods.pdb
+C:\Users\ed\source\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\MonitorBrightnessDriver.dll
+C:\Users\ed\source\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\MonitorBrightnessDriver.pdb
