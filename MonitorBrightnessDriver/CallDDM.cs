@@ -20,8 +20,11 @@ namespace MonitorBrightnessDriver
 
         public void Refresh()
         {
-            Brightness = weatherReport.GetBrightness();
-            SetDDMBrightness();
+            if (DateTime.Now.Minute == 0)
+            {
+                Brightness = weatherReport.GetBrightness();
+                SetDDMBrightness();
+            }
         }
 
         private void SetDDMBrightness()

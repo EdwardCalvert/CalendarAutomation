@@ -29,15 +29,34 @@ namespace MonitorBrightnessDriver
             {
                 GETWeather();
             }
-            float? sunshine = Weather.weather[DateTime.Now.Hour].Sunshine;
-            if (sunshine != null)
+            int hour;
+
+            if (DateTime.Now.Hour < 24)
             {
-                return (float) sunshine;
+                hour = DateTime.Now.Hour;
             }
             else
             {
-                return 0;
+                hour = 0;
             }
+            try
+            {
+                float? sunshine = Weather.weather[DateTime.Now.Hour].Sunshine;
+                if (sunshine != null)
+                {
+                    return (float)sunshine;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+
+            catch
+            {
+                return 60; 
+            }
+            
             
         }
 

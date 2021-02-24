@@ -413,7 +413,7 @@ namespace GoogleCalender
 
         }
 
-        private bool DebugMode => debugMode.CheckState.ToString() == "Unchecked";
+        public  bool DebugMode => debugMode.CheckState.ToString() == "Unchecked";
 
         private void debugMode_CheckedChanged(object sender, EventArgs e)
         {
