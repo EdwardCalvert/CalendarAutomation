@@ -6,15 +6,22 @@ namespace MonitorBrightnessDriver
 {
     public class CallDDM
     {
-        BrightskyWeatherAPI weatherReport;
+        private BrightskyWeatherAPI weatherReport = new BrightskyWeatherAPI();
         private string Exepath = @"C:\Program Files (x86)\Dell\Dell Display Manager\ddm.exe";
-        private float Brightness { get; set; }
-        private int PercentageBrigthness => 40 + (int)Brightness;
+        private int DdmBrightness { get {
+               
+                int ddmBrightness = 40 + (int)(3 * weatherReport.GetBrightness());
+                if (ddmBrightness > 100)
+                {
+                    ddmBrightness = 100;
+                }
+                return ddmBrightness;
+            }
+        
+        }
 
         public CallDDM()
         {
-            weatherReport = new BrightskyWeatherAPI();
-            Brightness = weatherReport.GetBrightness();
             SetDDMBrightness();
         }
 
@@ -22,18 +29,16 @@ namespace MonitorBrightnessDriver
         {
             if (DateTime.Now.Minute == 0)
             {
-                Brightness = weatherReport.GetBrightness();
                 SetDDMBrightness();
             }
         }
 
         private void SetDDMBrightness()
         {
-
             // if sunshine = 0 then brightness = 40
             //if sunshine = 60 then brightness = 1000 => 40 + brigthness
-            System.Diagnostics.Process.Start(Exepath, "1:/SetBrightnessLevel " + PercentageBrigthness.ToString());
-            System.Diagnostics.Process.Start(Exepath, "2:/ SetBrightnessLevel " + PercentageBrigthness.ToString());
+            System.Diagnostics.Process.Start(Exepath, "1:/SetBrightnessLevel " + DdmBrightness.ToString());
+            System.Diagnostics.Process.Start(Exepath, "2:/ SetBrightnessLevel " + DdmBrightness.ToString());
 
         }
     }

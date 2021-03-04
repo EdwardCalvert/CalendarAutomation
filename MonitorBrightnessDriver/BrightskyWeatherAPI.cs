@@ -41,7 +41,7 @@ namespace MonitorBrightnessDriver
             }
             try
             {
-                float? sunshine = Weather.weather[DateTime.Now.Hour].Sunshine;
+                float? sunshine = Weather.weather[DateTime.Now.Hour+1].Sunshine;
                 if (sunshine != null)
                 {
                     return (float)sunshine;
