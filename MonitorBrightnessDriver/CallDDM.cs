@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MonitorBrightnessDriver
 {
@@ -8,8 +6,11 @@ namespace MonitorBrightnessDriver
     {
         private BrightskyWeatherAPI weatherReport = new BrightskyWeatherAPI();
         private string Exepath = @"C:\Program Files (x86)\Dell\Dell Display Manager\ddm.exe";
-        private int DdmBrightness { get {
-               
+        private int DdmBrightness
+        {
+            get
+            {
+
                 int ddmBrightness = 40 + (int)(3 * weatherReport.GetBrightness());
                 if (ddmBrightness > 100)
                 {
@@ -17,7 +18,7 @@ namespace MonitorBrightnessDriver
                 }
                 return ddmBrightness;
             }
-        
+
         }
 
         public CallDDM()

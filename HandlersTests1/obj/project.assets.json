@@ -5793,24 +5793,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ed\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\ed\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ed\\source\\repos\\CalenderCallout\\CalenderClock\\HandlersTests1\\HandlersTests1.csproj",
+      "projectUniqueName": "C:\\Users\\ed\\OneDrive\\Documents\\repos\\CalenderCallout\\CalenderClock\\HandlersTests1\\HandlersTests1.csproj",
       "projectName": "HandlersTests1",
-      "projectPath": "C:\\Users\\ed\\source\\repos\\CalenderCallout\\CalenderClock\\HandlersTests1\\HandlersTests1.csproj",
+      "projectPath": "C:\\Users\\ed\\OneDrive\\Documents\\repos\\CalenderCallout\\CalenderClock\\HandlersTests1\\HandlersTests1.csproj",
       "packagesPath": "C:\\Users\\ed\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ed\\source\\repos\\CalenderCallout\\CalenderClock\\HandlersTests1\\obj\\",
+      "outputPath": "C:\\Users\\ed\\OneDrive\\Documents\\repos\\CalenderCallout\\CalenderClock\\HandlersTests1\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
         "C:\\Users\\ed\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5824,8 +5819,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\ed\\source\\repos\\CalenderCallout\\CalenderClock\\Handlers\\Handlers.csproj": {
-              "projectPath": "C:\\Users\\ed\\source\\repos\\CalenderCallout\\CalenderClock\\Handlers\\Handlers.csproj"
+            "C:\\Users\\ed\\OneDrive\\Documents\\repos\\CalenderCallout\\CalenderClock\\Handlers\\Handlers.csproj": {
+              "projectPath": "C:\\Users\\ed\\OneDrive\\Documents\\repos\\CalenderCallout\\CalenderClock\\Handlers\\Handlers.csproj"
             }
           }
         }
@@ -5872,7 +5867,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

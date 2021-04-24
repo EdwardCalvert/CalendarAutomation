@@ -1,8 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Handlers;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Handlers.Tests
 {

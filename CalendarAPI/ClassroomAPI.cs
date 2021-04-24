@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Google.Apis.Auth.OAuth2;
 using Google.Apis.Classroom.v1;
 using Google.Apis.Classroom.v1.Data;
-using Google.Apis.Auth.OAuth2;
 using Google.Apis.Services;
 using Google.Apis.Util.Store;
+using System;
 using System.IO;
 using System.Threading;
 namespace APIMethods
@@ -17,13 +15,13 @@ namespace APIMethods
         static string ClassroomAppName = "APIMethods.ClassroomAPI";
 
 
-            public static ListCoursesResponse ListActiveClasses()
+        public static ListCoursesResponse ListActiveClasses()
+        {
+            UserCredential credential;
+            if (File.Exists("classroomCredentials.json"))
             {
-                UserCredential credential;
-                if (File.Exists("classroomCredentials.json"))
-                {
-                    using (var stream =
-                    new FileStream("classroomCredentials.json", FileMode.Open, FileAccess.Read))
+                using (var stream =
+                new FileStream("classroomCredentials.json", FileMode.Open, FileAccess.Read))
                 {
                     // The file token.json stores the user's access and refresh tokens, and is created
                     // automatically when the authorization flow completes for the first time.

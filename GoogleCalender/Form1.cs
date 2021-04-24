@@ -1,15 +1,10 @@
-﻿using System;
+﻿using APIMethods;
+using Google.Apis.Calendar.v3.Data;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-
-using Google.Apis.Calendar.v3.Data;
-
-using System.IO;
-
-
-
-using APIMethods;
 
 namespace GoogleCalender
 {
@@ -73,30 +68,30 @@ namespace GoogleCalender
             //)+1000
         }
 
-       
+
 
         private void GoogleAPI()
         {
             monitorDriver.Refresh();
             // List events.
             try
+            {
+                events = CalendarAPI.CallendarCallout(System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Application.ExecutablePath), "credentials.json"));
+                UpdateTextBox();
+            }
+            catch (Exception exception)
+            {
+                if (DebugMode)
                 {
-                    events = CalendarAPI.CallendarCallout(System.IO.Path.Combine( System.IO.Path.GetDirectoryName(Application.ExecutablePath) , "credentials.json"));
-                    UpdateTextBox();
+                    WarningMessage("Request could not be fuffiled: " + exception, "Clock.exe");
                 }
-                catch (Exception exception)
+                else
                 {
-                    if (DebugMode)
-                    {
-                        WarningMessage("Request could not be fuffiled: " + exception, "Clock.exe");
-                    }
-                    else
-                    {
-                        NextUp.Text = "Error occurred, trying again.";
-                    }
-                    CalibrateAPITimer();
-                    CalibrateClockTimer();
+                    NextUp.Text = "Error occurred, trying again." + exception + "Clock.exe";
                 }
+                CalibrateAPITimer();
+                CalibrateClockTimer();
+            }
 
         }
 
@@ -113,7 +108,7 @@ namespace GoogleCalender
         }
 
         private bool FinishedYet(DateTime dateTime)
-        { 
+        {
             if (DateTime.Compare(DateTime.Now, dateTime) < 0)
             {
                 return false;
@@ -122,7 +117,7 @@ namespace GoogleCalender
             {
                 return true;
             }
-         }
+        }
 
         private void ReadCalendarItem(Event item)
         {
@@ -138,13 +133,13 @@ namespace GoogleCalender
             {
                 SetId(item.Id);
                 string[] lines = payload.Split(new string[] { "<br>" }, StringSplitOptions.None);
-                foreach(string line in lines)
+                foreach (string line in lines)
                 {
 
                     //InfoMessage("Normal line:"+line, "Clock.exe", DebugMode);
 
                     string cleanLine = ParseHTML(line);
-                    InfoMessage("Stripped line :"+cleanLine, "Clock.exe", DebugMode);
+                    InfoMessage("Stripped line :" + cleanLine, "Clock.exe", DebugMode);
                     if (cleanLine.StartsWith("["))
                     {
                         if (cleanLine.StartsWith("[delay)"))
@@ -155,7 +150,7 @@ namespace GoogleCalender
                         }
                         else if (cleanLine.StartsWith("[exe]"))
                         {
-                            
+
                             ExeHandler(cleanLine);
                         }
                     }
@@ -164,13 +159,13 @@ namespace GoogleCalender
 
                         URLHandler(cleanLine);
                     }
-                    
+
                 }
-                
+
             }
-            
+
         }
-        
+
         private string ParseHTML(string inputHTML)
         {
             string noHTMLNormalised = System.Text.RegularExpressions.Regex.Replace(System.Text.RegularExpressions.Regex.Replace(inputHTML, @"<[^>]+>|&nbsp;", "").Trim(), @"\s{2,}", " ");
@@ -183,7 +178,7 @@ namespace GoogleCalender
             try
             {
                 string program = @line.Substring(line.IndexOf("]") + 1);
-                if (File.Exists(program)&&!TabOpened(program))
+                if (File.Exists(program) && !TabOpened(program))
                 {
 
                     System.Diagnostics.Process.Start(program);
@@ -204,21 +199,21 @@ namespace GoogleCalender
                         {
                             WarningMessage(program + " does not exist.", "Can't find program");
                         }
-                        
+
                     }
                 }
             }
             catch (Exception exception)
-            { 
+            {
                 WarningMessage("Fatal: " + exception.ToString(), "Can't find program");
             }
         }
 
-        private void InfoMessage(string message,string title)
+        private void InfoMessage(string message, string title)
         {
-            MessageBox.Show(message, title,MessageBoxButtons.OK,MessageBoxIcon.Asterisk);
+            MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
-        private void InfoMessage(string message, string title,bool show)
+        private void InfoMessage(string message, string title, bool show)
         {
             if (show)
             {
@@ -250,8 +245,8 @@ namespace GoogleCalender
 
         private bool TabOpened(string url)
         {
- 
-            if (DateTime.Now.Day == day&& commandHistory.ContainsKey(GetId()) && commandHistory[GetId()].Contains(url))
+
+            if (DateTime.Now.Day == day && commandHistory.ContainsKey(GetId()) && commandHistory[GetId()].Contains(url))
             {
                 return true;
             }
@@ -282,7 +277,7 @@ namespace GoogleCalender
 
         private bool StartingNow(DateTime dateTime)
         {
-             return DateTime.Compare(DateTime.Now, dateTime) == 0;
+            return DateTime.Compare(DateTime.Now, dateTime) == 0;
         }
 
         private void UpdateTextBox()
@@ -297,7 +292,7 @@ namespace GoogleCalender
                         UpdateEventText(eventItem.Summary, 'a');
                         ReadCalendarItem(eventItem);
                     }
-                    
+
                 }
             }
             else
@@ -310,7 +305,7 @@ namespace GoogleCalender
 
         /// <param name="item"></param>
         /// <param name="mode"> Use 'a' for append or 'o' for override </param>
-        public void UpdateEventText(string text,char mode)
+        public void UpdateEventText(string text, char mode)
         {
             if (mode == 'a')
             {
@@ -320,7 +315,7 @@ namespace GoogleCalender
             {
                 NextUp.Text = text;
             }
-            
+
         }
 
         public static bool IsValidUri(string uri)
@@ -344,29 +339,29 @@ namespace GoogleCalender
             }
             else
             {
-                return  nodes.ToList().ConvertAll(r => r.Attributes.ToList().ConvertAll(i => i.Value)).SelectMany(j => j).ToList();
+                return nodes.ToList().ConvertAll(r => r.Attributes.ToList().ConvertAll(i => i.Value)).SelectMany(j => j).ToList();
             }
         }
 
         public void OpenUri(string uri)
         {
-            if (!TabOpened(uri)&&IsValidUri(uri))
+            if (!TabOpened(uri) && IsValidUri(uri))
             {
                 System.Diagnostics.Process.Start(uri);
                 MarkTabAsOpen(uri);
-                
+
                 if (DebugMode)
                 {
                     InfoMessage(string.Format("Opened URL: {1} With Id :{0}", GetId(), uri), "Clock.exe");
                 }
-            } 
+            }
         }
 
         private string CurrentTime
         {
             get
             {
-                
+
                 int hh = DateTime.Now.Hour;
                 int mm = DateTime.Now.Minute;
 
@@ -403,7 +398,7 @@ namespace GoogleCalender
 
         private void APITimerCallback(object sender, EventArgs e)
         {
-            
+
             GoogleAPI();
             CalibrateAPITimer();
         }
@@ -413,13 +408,13 @@ namespace GoogleCalender
 
         }
 
-        public  bool DebugMode => debugMode.CheckState.ToString() == "Unchecked";
+        public bool DebugMode => debugMode.CheckState.ToString() == "Unchecked";
 
         private void debugMode_CheckedChanged(object sender, EventArgs e)
         {
             if (DebugMode)
             {
-                InfoMessage("Debugging started","Clock.exe");
+                InfoMessage("Debugging started", "Clock.exe");
             }
         }
 
@@ -429,6 +424,6 @@ namespace GoogleCalender
             //InfoMessage("Calender will update after : " + APITimer.Interval + " miliseconds","Clock.exe");
         }
 
-       
+
     }
 }

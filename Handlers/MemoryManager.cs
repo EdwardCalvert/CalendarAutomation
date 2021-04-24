@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Handlers
 {
@@ -30,7 +29,7 @@ namespace Handlers
         {
 
             return DateTime.Now.Day == day && commandHistory.ContainsKey(id) && commandHistory[id].Contains(path);
-           
+
         }
     }
 }

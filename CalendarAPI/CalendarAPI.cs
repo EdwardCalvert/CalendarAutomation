@@ -1,9 +1,9 @@
-﻿using System;
-using Google.Apis.Auth.OAuth2;
+﻿using Google.Apis.Auth.OAuth2;
 using Google.Apis.Calendar.v3;
 using Google.Apis.Calendar.v3.Data;
 using Google.Apis.Services;
 using Google.Apis.Util.Store;
+using System;
 using System.IO;
 using System.Threading;
 
@@ -18,6 +18,7 @@ namespace APIMethods
         //Added by google API
         static string[] CalendarScope = { CalendarService.Scope.CalendarReadonly };
         static string CalendarAppName = "Callendar Clock Callout";
+
 
         public static Events CallendarCallout(string credentialsFilePath)
         {
@@ -54,13 +55,16 @@ namespace APIMethods
                 request.MaxResults = 1;
                 request.OrderBy = EventsResource.ListRequest.OrderByEnum.StartTime;
 
-                return  request.Execute();
+                return request.Execute();
             }
             else
             {
                 throw new FileNotFoundException();
             }
         }
+
+
+
     }
 
 }

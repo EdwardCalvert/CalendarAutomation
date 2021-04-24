@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Threading.Tasks;
 
 namespace Handlers
@@ -15,7 +14,7 @@ namespace Handlers
 
         public void DelayExecution(int delay, string ProgramPath, string id)
         {
-            Task.Delay(delay).ContinueWith(_ => RunExe(ProgramPath,id));
+            Task.Delay(delay).ContinueWith(_ => RunExe(ProgramPath, id));
 
         }
 

@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Linq;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Handlers
 {
     public static class URLHandler
     {
 
-      
+
 
         public static bool IsValidUri(string uri)
         {
@@ -25,7 +22,7 @@ namespace Handlers
             {
                 System.Diagnostics.Process.Start(uri);
             }
-            
+
         }
 
     }

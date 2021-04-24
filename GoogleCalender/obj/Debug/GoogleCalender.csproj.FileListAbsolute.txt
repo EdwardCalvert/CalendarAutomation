@@ -68,3 +68,9 @@ C:\Users\ed\source\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\
 C:\Users\ed\source\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\APIMethods.pdb
 C:\Users\ed\source\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\MonitorBrightnessDriver.dll
 C:\Users\ed\source\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\MonitorBrightnessDriver.pdb
+C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\obj\Debug\GoogleCalender.csprojAssemblyReference.cache
+C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\obj\Debug\GoogleCalender.Form1.resources
+C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\obj\Debug\GoogleCalender.Properties.Resources.resources
+C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\obj\Debug\GoogleCalender.csproj.GenerateResource.cache
+C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\obj\Debug\GoogleCalender.exe
+C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\obj\Debug\GoogleCalender.pdb

@@ -62,7 +62,7 @@ namespace GoogleCalender
             this.debugMode.AutoSize = true;
             this.debugMode.Checked = true;
             this.debugMode.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.debugMode.Location = new System.Drawing.Point(171, 12);
+            this.debugMode.Location = new System.Drawing.Point(108, 12);
             this.debugMode.Name = "debugMode";
             this.debugMode.Size = new System.Drawing.Size(15, 14);
             this.debugMode.TabIndex = 4;
@@ -72,7 +72,7 @@ namespace GoogleCalender
             // refreshButton
             // 
             this.refreshButton.Font = new System.Drawing.Font("Open Sans", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.refreshButton.Location = new System.Drawing.Point(148, 7);
+            this.refreshButton.Location = new System.Drawing.Point(129, 7);
             this.refreshButton.Name = "refreshButton";
             this.refreshButton.Size = new System.Drawing.Size(17, 19);
             this.refreshButton.TabIndex = 5;
@@ -86,7 +86,7 @@ namespace GoogleCalender
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(189, 52);
+            this.ClientSize = new System.Drawing.Size(161, 51);
             this.Controls.Add(this.refreshButton);
             this.Controls.Add(this.debugMode);
             this.Controls.Add(this.NextUp);
