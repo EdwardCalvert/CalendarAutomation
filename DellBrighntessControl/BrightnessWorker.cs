@@ -19,30 +19,27 @@ namespace WinAPIBrightnessControl
             _timer = new Timer(60000) { AutoReset = true };
 
             _timer.Elapsed += TimerElapsed;
-            TimerElapsed(this, null);
+            
 
         }
 
 
-        public void GetBrightness()
-        {
-
-        }
         private void TimerElapsed(object sender, ElapsedEventArgs e)
         {
-            Console.WriteLine("Brightnes is :" + _sunsetAPI.brightness);
-            Console.WriteLine(_sunsetAPI.SunriseAsMinute);
-            Console.WriteLine(_sunsetAPI.SunsetAsMinute);
-            phisicalMonitorBrightnessController.Set(_sunsetAPI.brightness);
+            Console.WriteLine("Brightnes is :" + _sunsetAPI.Brightness);
+            //Console.WriteLine(_sunsetAPI.SunriseAsMinute);
+            //Console.WriteLine(_sunsetAPI.SunsetAsMinute);
+            phisicalMonitorBrightnessController.Set(_sunsetAPI.Brightness);
 
         }
 
         public void Start()
         {
+            
             _timer.Start();
         }
 
-        public void Stop()
+        public void Stop()      
         {
             _timer.Stop();
         }

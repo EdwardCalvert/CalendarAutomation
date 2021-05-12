@@ -1,12 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 using Topshelf;
 
 namespace WinAPIBrightnessControl
 {
     class Program
     {
+
         static void Main(string[] args)
         {
+
             var exitCode = HostFactory.Run(x =>
             {
                 x.Service<BrightnessWorker>(s =>
@@ -17,7 +20,6 @@ namespace WinAPIBrightnessControl
                     s.WhenStopped(brightnessWorker => brightnessWorker.Stop());
                 });
 
-                x.RunAsLocalSystem();
 
                 x.SetServiceName("DellBrightnessControlService");
                 x.SetDisplayName("Custom brighnes controler for DDM");
@@ -28,6 +30,8 @@ namespace WinAPIBrightnessControl
             //Convert from enum to int.
             int exitCodeValue = (int)Convert.ChangeType(exitCode, exitCode.GetType());
             Environment.ExitCode = exitCodeValue;
+            Console.WriteLine();
+            Console.ReadLine();
         }
     }
 }

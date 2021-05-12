@@ -76,9 +76,6 @@ namespace APIMethods
         {
             get
             {
-
-
-
                 // Define parameters of request.
                 EventsResource.ListRequest request = _calendarReadService.Events.List("primary");
                 request.TimeMin = DateTime.Now;

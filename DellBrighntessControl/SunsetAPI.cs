@@ -17,10 +17,6 @@ namespace WinAPIBrightnessControl
             GETWeather();
         }
 
-        /// <summary>
-        ///  Sunshine duration during previous 60 minutes
-        /// </summary>
-        /// <returns></returns>
         private SunsetAPIResponse GetResponse
         {
             get
@@ -36,12 +32,12 @@ namespace WinAPIBrightnessControl
             }
         }
 
-        public uint brightness
+        public uint Brightness
         {
             get
             {
                 double x_time = DateTime.Now.Hour + DateTime.Now.Minute / 60.0;
-                uint brightness = (uint)((int)((x_time - SunriseAsMinute) * (x_time - SunsetAsMinute) * (-6)));
+                uint brightness = (uint)((x_time - SunriseAsMinute) * (x_time - SunsetAsMinute) * (-6));
                 if (brightness > 100)
                 {
                     return 100;
