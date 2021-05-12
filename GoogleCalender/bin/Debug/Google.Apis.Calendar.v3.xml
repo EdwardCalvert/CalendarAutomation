@@ -1169,8 +1169,8 @@
         </member>
         <member name="F:Google.Apis.Calendar.v3.EventsResource.DeleteRequest.SendUpdatesEnum.None">
             <summary>
-            No notifications are sent. This value should only be used for migration use cases (note that in most
-            migration cases the import method should be used).
+            No notifications are sent. For calendar migration tasks, consider using the Events.import method
+            instead.
             </summary>
         </member>
         <member name="P:Google.Apis.Calendar.v3.EventsResource.DeleteRequest.MethodName">
@@ -1354,8 +1354,8 @@
         </member>
         <member name="F:Google.Apis.Calendar.v3.EventsResource.InsertRequest.SendUpdatesEnum.None">
             <summary>
-            No notifications are sent. This value should only be used for migration use cases (note that in most
-            migration cases the import method should be used).
+            No notifications are sent. For calendar migration tasks, consider using the Events.import method
+            instead.
             </summary>
         </member>
         <member name="P:Google.Apis.Calendar.v3.EventsResource.InsertRequest.SupportsAttachments">
@@ -1661,8 +1661,8 @@
         </member>
         <member name="F:Google.Apis.Calendar.v3.EventsResource.MoveRequest.SendUpdatesEnum.None">
             <summary>
-            No notifications are sent. This value should only be used for migration use cases (note that in most
-            migration cases the import method should be used).
+            No notifications are sent. For calendar migration tasks, consider using the Events.import method
+            instead.
             </summary>
         </member>
         <member name="P:Google.Apis.Calendar.v3.EventsResource.MoveRequest.MethodName">
@@ -1747,8 +1747,8 @@
         </member>
         <member name="F:Google.Apis.Calendar.v3.EventsResource.PatchRequest.SendUpdatesEnum.None">
             <summary>
-            No notifications are sent. This value should only be used for migration use cases (note that in most
-            migration cases the import method should be used).
+            No notifications are sent. For calendar migration tasks, consider using the Events.import method
+            instead.
             </summary>
         </member>
         <member name="P:Google.Apis.Calendar.v3.EventsResource.PatchRequest.SupportsAttachments">
@@ -1818,8 +1818,8 @@
         </member>
         <member name="F:Google.Apis.Calendar.v3.EventsResource.QuickAddRequest.SendUpdatesEnum.None">
             <summary>
-            No notifications are sent. This value should only be used for migration use cases (note that in most
-            migration cases the import method should be used).
+            No notifications are sent. For calendar migration tasks, consider using the Events.import method
+            instead.
             </summary>
         </member>
         <member name="P:Google.Apis.Calendar.v3.EventsResource.QuickAddRequest.MethodName">
@@ -1904,8 +1904,8 @@
         </member>
         <member name="F:Google.Apis.Calendar.v3.EventsResource.UpdateRequest.SendUpdatesEnum.None">
             <summary>
-            No notifications are sent. This value should only be used for migration use cases (note that in most
-            migration cases the import method should be used).
+            No notifications are sent. For calendar migration tasks, consider using the Events.import method
+            instead.
             </summary>
         </member>
         <member name="P:Google.Apis.Calendar.v3.EventsResource.UpdateRequest.SupportsAttachments">
@@ -2272,7 +2272,7 @@
             <summary>ETag of the resource.</summary>
         </member>
         <member name="P:Google.Apis.Calendar.v3.Data.AclRule.Id">
-            <summary>Identifier of the ACL rule.</summary>
+            <summary>Identifier of the Access Control List (ACL) rule. See Sharing calendars.</summary>
         </member>
         <member name="P:Google.Apis.Calendar.v3.Data.AclRule.Kind">
             <summary>Type of the resource ("calendar#aclRule").</summary>
@@ -2288,10 +2288,10 @@
             </summary>
         </member>
         <member name="P:Google.Apis.Calendar.v3.Data.AclRule.Scope">
-            <summary>The scope of the rule.</summary>
+            <summary>The extent to which calendar access is granted by this ACL rule.</summary>
         </member>
         <member name="T:Google.Apis.Calendar.v3.Data.AclRule.ScopeData">
-            <summary>The scope of the rule.</summary>
+            <summary>The extent to which calendar access is granted by this ACL rule.</summary>
         </member>
         <member name="P:Google.Apis.Calendar.v3.Data.AclRule.ScopeData.Type">
             <summary>
@@ -2506,7 +2506,10 @@
             </summary>
         </member>
         <member name="P:Google.Apis.Calendar.v3.Data.Channel.Type">
-            <summary>The type of delivery mechanism used for this channel.</summary>
+            <summary>
+            The type of delivery mechanism used for this channel. Valid values are "web_hook" (or "webhook"). Both
+            values refer to a channel where Http requests are used to deliver messages.
+            </summary>
         </member>
         <member name="P:Google.Apis.Calendar.v3.Data.Channel.ETag">
             <summary>The ETag of the item.</summary>
@@ -2525,13 +2528,13 @@
         <member name="P:Google.Apis.Calendar.v3.Data.Colors.Calendar">
             <summary>
             A global palette of calendar colors, mapping from the color ID to its definition. A calendarListEntry
-            resource refers to one of these color IDs in its color field. Read-only.
+            resource refers to one of these color IDs in its colorId field. Read-only.
             </summary>
         </member>
         <member name="P:Google.Apis.Calendar.v3.Data.Colors.Event__">
             <summary>
             A global palette of event colors, mapping from the color ID to its definition. An event resource may refer
-            to one of these color IDs in its color field. Read-only.
+            to one of these color IDs in its colorId field. Read-only.
             </summary>
         </member>
         <member name="P:Google.Apis.Calendar.v3.Data.Colors.Kind">
@@ -2549,9 +2552,9 @@
         <member name="P:Google.Apis.Calendar.v3.Data.ConferenceData.ConferenceId">
             <summary>
             The ID of the conference. Can be used by developers to keep track of conferences, should not be displayed to
-            users. Values for solution types:   - "eventHangout": unset. - "eventNamedHangout": the name of the Hangout.
-            - "hangoutsMeet": the 10-letter meeting code, for example "aaa-bbbb-ccc". - "addOn": defined by 3P
-            conference provider.  Optional.
+            users. The ID value is formed differently for each conference solution type: ` - eventHangout: ID is not
+            set. - eventNamedHangout: ID is the name of the Hangout. - hangoutsMeet: ID is the 10-letter meeting code,
+            for example aaa-bbbb-ccc. - addOn: ID is defined by the third-party provider.  Optional.
             </summary>
         </member>
         <member name="P:Google.Apis.Calendar.v3.Data.ConferenceData.ConferenceSolution">

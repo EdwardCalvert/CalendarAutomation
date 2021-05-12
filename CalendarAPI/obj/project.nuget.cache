@@ -1,18 +1,18 @@
 {
   "version": 2,
-  "dgSpecHash": "TSSkOgemcFsMgZ2kh1tB9cpi7I0kCQGGAigCzf6yAAtUqPN9SJ2oUKzgvoWKqMQI3ATjgUiG1WPj1h7Ga74/xA==",
+  "dgSpecHash": "og/zldMj/CZyasqAp9XQaMD2PKBelh5AmXr/9cyRaafk7QdFl6qW+ubxkeG+ogRnBndoo+y1IEg6cO9MJiTO3g==",
   "success": true,
   "projectFilePath": "C:\\Users\\ed\\OneDrive\\Documents\\repos\\CalenderCallout\\CalenderClock\\CalendarAPI\\APIMethods.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\ed\\.nuget\\packages\\google.apis\\1.49.0\\google.apis.1.49.0.nupkg.sha512",
-    "C:\\Users\\ed\\.nuget\\packages\\google.apis.auth\\1.49.0\\google.apis.auth.1.49.0.nupkg.sha512",
-    "C:\\Users\\ed\\.nuget\\packages\\google.apis.calendar.v3\\1.49.0.2224\\google.apis.calendar.v3.1.49.0.2224.nupkg.sha512",
-    "C:\\Users\\ed\\.nuget\\packages\\google.apis.classroom.v1\\1.49.0.2223\\google.apis.classroom.v1.1.49.0.2223.nupkg.sha512",
-    "C:\\Users\\ed\\.nuget\\packages\\google.apis.core\\1.49.0\\google.apis.core.1.49.0.nupkg.sha512",
-    "C:\\Users\\ed\\.nuget\\packages\\htmlagilitypack\\1.11.29\\htmlagilitypack.1.11.29.nupkg.sha512",
+    "C:\\Users\\ed\\.nuget\\packages\\google.apis\\1.51.0\\google.apis.1.51.0.nupkg.sha512",
+    "C:\\Users\\ed\\.nuget\\packages\\google.apis.auth\\1.51.0\\google.apis.auth.1.51.0.nupkg.sha512",
+    "C:\\Users\\ed\\.nuget\\packages\\google.apis.calendar.v3\\1.51.0.2312\\google.apis.calendar.v3.1.51.0.2312.nupkg.sha512",
+    "C:\\Users\\ed\\.nuget\\packages\\google.apis.classroom.v1\\1.51.0.2235\\google.apis.classroom.v1.1.51.0.2235.nupkg.sha512",
+    "C:\\Users\\ed\\.nuget\\packages\\google.apis.core\\1.51.0\\google.apis.core.1.51.0.nupkg.sha512",
+    "C:\\Users\\ed\\.nuget\\packages\\htmlagilitypack\\1.11.33\\htmlagilitypack.1.11.33.nupkg.sha512",
     "C:\\Users\\ed\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\ed\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
-    "C:\\Users\\ed\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+    "C:\\Users\\ed\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
   ],
   "logs": []
 }

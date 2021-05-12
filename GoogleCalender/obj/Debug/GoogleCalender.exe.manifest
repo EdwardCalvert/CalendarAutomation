@@ -49,91 +49,103 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>xcY8s0L9lxmxzxWkBL++W36lZAvsSZ3Xv0zPsaXd3UA=</dsig:DigestValue>
+        <dsig:DigestValue>l9PI79kRfpOA2UTJkdi2whZsdLZzVoeRpxX8pf2m1Oc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Google.Apis.dll" size="79360">
-      <assemblyIdentity name="Google.Apis" version="1.49.0.0" publicKeyToken="4B01FA6E34DB77AB" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DellBrighntessControl.exe" size="16384">
+      <assemblyIdentity name="DellBrighntessControl" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>JGpnBEVmOgImtbW1afMu+UmoohPd+uSyI4YJFm68Ysg=</dsig:DigestValue>
+        <dsig:DigestValue>fp9D/0wo1L+m7FQhQbPngpKV7BWoCReaxWKQURV04f8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Google.Apis.Auth.dll" size="141312">
-      <assemblyIdentity name="Google.Apis.Auth" version="1.49.0.0" publicKeyToken="4B01FA6E34DB77AB" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Google.Apis.dll" size="80896">
+      <assemblyIdentity name="Google.Apis" version="1.51.0.0" publicKeyToken="4B01FA6E34DB77AB" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>ucaPpOK+wXqxbKrM5KN36s8Oy7Cc8uuf2ibFNUzjs4Q=</dsig:DigestValue>
+        <dsig:DigestValue>0yGTkw7Qp4kJOg8u2zQVRjEQHuy3MHgYoqvxZ3oLUoQ=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Google.Apis.Auth.dll" size="143360">
+      <assemblyIdentity name="Google.Apis.Auth" version="1.51.0.0" publicKeyToken="4B01FA6E34DB77AB" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>YJrd23zV0EQTeVipn7CmoWnQ1YZ30zbfkvlbef72O/8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Google.Apis.Auth.PlatformServices.dll" size="5120">
-      <assemblyIdentity name="Google.Apis.Auth.PlatformServices" version="1.49.0.0" publicKeyToken="4B01FA6E34DB77AB" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="Google.Apis.Auth.PlatformServices" version="1.51.0.0" publicKeyToken="4B01FA6E34DB77AB" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>nzh2LwV44QD62xm2oSa5sVMqQICPd90LkNAVpgwKKa0=</dsig:DigestValue>
+        <dsig:DigestValue>i8GtspIiDYvKgPTDh8aLTXlItxPcbXUu7KV8Rujz08A=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Google.Apis.Calendar.v3.dll" size="93696">
-      <assemblyIdentity name="Google.Apis.Calendar.v3" version="1.49.0.2224" publicKeyToken="4B01FA6E34DB77AB" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="Google.Apis.Calendar.v3" version="1.51.0.2312" publicKeyToken="4B01FA6E34DB77AB" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>ASpYafQlo2lTNf9vrNlUGbmU9tmth261eDFv+kuBa6c=</dsig:DigestValue>
+        <dsig:DigestValue>m9Z3pvUke3SX/hwG3Ypqcoioxewk9/6g2pXdYtIR+XI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Google.Apis.Classroom.v1.dll" size="114688">
-      <assemblyIdentity name="Google.Apis.Classroom.v1" version="1.49.0.2223" publicKeyToken="4B01FA6E34DB77AB" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="Google.Apis.Classroom.v1" version="1.51.0.2235" publicKeyToken="4B01FA6E34DB77AB" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>dyewcFxL6yqQpTCgX4closLiE6+YUCSNsksbeK9zN80=</dsig:DigestValue>
+        <dsig:DigestValue>l5MAYaeUiZh6HQrrv8KvfPHc6pTbbf6H96GDcPAWhxA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Google.Apis.Core.dll" size="73728">
-      <assemblyIdentity name="Google.Apis.Core" version="1.49.0.0" publicKeyToken="4B01FA6E34DB77AB" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Google.Apis.Core.dll" size="76800">
+      <assemblyIdentity name="Google.Apis.Core" version="1.51.0.0" publicKeyToken="4B01FA6E34DB77AB" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>vJAEOarA4ZFCSSMqklhFi8zzSSRnsdtBQYmfrZ6A/3M=</dsig:DigestValue>
+        <dsig:DigestValue>BwYC4NQ6t/XPuBBdfeIrP6o+HPCxmXcM2Q1MnCPUE30=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Google.Apis.PlatformServices.dll" size="4608">
-      <assemblyIdentity name="Google.Apis.PlatformServices" version="1.49.0.0" publicKeyToken="4B01FA6E34DB77AB" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="Google.Apis.PlatformServices" version="1.51.0.0" publicKeyToken="4B01FA6E34DB77AB" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>VsGPXZOZzhYRYFObcu3rbi5Agc+PZHtqjHWGpMmKDqA=</dsig:DigestValue>
+        <dsig:DigestValue>YJW+JmXblBOS+mbGg+kcz4RvPjc3LmR4U/K51P14DRo=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -145,19 +157,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>4TgYl3Or0RSlOgEft2aou7IMgRN6wFz/7VPYqKKkr+8=</dsig:DigestValue>
+        <dsig:DigestValue>Q50ha5K4gr3Zj6H7j5BsG1jvnG0/CTHJs7Q6MeStWIg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HtmlAgilityPack.dll" size="165888">
-      <assemblyIdentity name="HtmlAgilityPack" version="1.11.29.0" publicKeyToken="BD319B19EAF3B43A" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HtmlAgilityPack.dll" size="166912">
+      <assemblyIdentity name="HtmlAgilityPack" version="1.11.33.0" publicKeyToken="BD319B19EAF3B43A" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>TRakGW+CgOwOKY4rGO8eyu+YlIqBc8b1z7ouFpLyn7A=</dsig:DigestValue>
+        <dsig:DigestValue>X6+VaHslNOuyYc3r5thOk+4W7lBxpfZtqDGgKYAvdFw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -169,29 +181,41 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Ffe0VUDg+sSPk4VMnvLTeZixpY/lp7mrnQjV8IVBon8=</dsig:DigestValue>
+        <dsig:DigestValue>lkh73tc/bQAsdiBPkFmAdNKD6mdQoSAMOhvTkPLDHIU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Newtonsoft.Json.dll" size="700336">
-      <assemblyIdentity name="Newtonsoft.Json" version="12.0.0.0" publicKeyToken="30AD4FE6B2A6AEED" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Newtonsoft.Json.dll" size="701992">
+      <assemblyIdentity name="Newtonsoft.Json" version="13.0.0.0" publicKeyToken="30AD4FE6B2A6AEED" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>f5ErKKB8Im4L46z7L1fwUFOKugEA+h8L8sOfGh8dqBQ=</dsig:DigestValue>
+        <dsig:DigestValue>tiSUnfiw46YVP9+3MKfG9JkLZZLuDZIuF4hDPSdmEPM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="GoogleCalender.exe.config" size="236">
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Topshelf.dll" size="190464">
+      <assemblyIdentity name="Topshelf" version="4.3.0.0" publicKeyToken="B800C4CFCDEEA87B" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>vXClgyEk42hARS/0bkQu+goJpM66hCrqcsebLTItf+g=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="GoogleCalender.exe.config" size="591">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>661ovlnbBknDwsqQs116HWdXON+BV9j/vkJtGJ172ZE=</dsig:DigestValue>
+      <dsig:DigestValue>b0V+vHkRsJa6vkLOTuQCBQdXp3lOwx9hDx8iSdOFaYc=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Graphicloads-100-Flat-Clock.ico" size="171963">

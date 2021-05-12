@@ -5,12 +5,13 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using WinAPIBrightnessControl;
 
 namespace GoogleCalender
 {
     public partial class Form1 : System.Windows.Forms.Form
     {
-        public MonitorBrightnessDriver.CallDDM monitorDriver;
+        public BrightnessWorker _brightnessWorker;
         System.Windows.Forms.Timer clockTimer = new System.Windows.Forms.Timer();
         System.Windows.Forms.Timer APITimer = new System.Windows.Forms.Timer();
         private Dictionary<string, List<string>> commandHistory = new Dictionary<string, List<string>> { };
@@ -37,8 +38,7 @@ namespace GoogleCalender
         /// </summary>
         public Form1()
         {
-            monitorDriver = new MonitorBrightnessDriver.CallDDM();
-            monitorDriver.Refresh();
+            _brightnessWorker = new BrightnessWorker();
             int second = DateTime.Now.Second;
             InitializeComponent();
             DisplayClock.Text = CurrentTime;
@@ -72,7 +72,6 @@ namespace GoogleCalender
 
         private void GoogleAPI()
         {
-            monitorDriver.Refresh();
             // List events.
             try
             {

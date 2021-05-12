@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     ".NETStandard,Version=v2.0": {
-      "HtmlAgilityPack/1.11.29": {
+      "HtmlAgilityPack/1.11.33": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/HtmlAgilityPack.dll": {}
@@ -38,14 +38,14 @@
     }
   },
   "libraries": {
-    "HtmlAgilityPack/1.11.29": {
-      "sha512": "aCMPdyDUPU7z4fwMJ+4pbsUd669BWhIbC2rCo0upxBpYyblJHXNUjg5pxnk2iyqBg1C8gWF2fSxA1XERxcVZow==",
+    "HtmlAgilityPack/1.11.33": {
+      "sha512": "ccsOdeRuObzQNy3FGLHd0MTmPvEu9nKUYDAqLham1XD3azbU+gcyRF6Hu87A68b7WqGpCdBZiLU7CwJVVmTb6A==",
       "type": "package",
-      "path": "htmlagilitypack/1.11.29",
+      "path": "htmlagilitypack/1.11.33",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "htmlagilitypack.1.11.29.nupkg.sha512",
+        "htmlagilitypack.1.11.33.nupkg.sha512",
         "htmlagilitypack.nuspec",
         "lib/Net35/HtmlAgilityPack.dll",
         "lib/Net35/HtmlAgilityPack.pdb",
@@ -233,7 +233,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
-      "HtmlAgilityPack >= 1.11.29",
+      "HtmlAgilityPack >= 1.11.33",
       "NETStandard.Library >= 2.0.3"
     ]
   },
@@ -278,7 +278,7 @@
         "dependencies": {
           "HtmlAgilityPack": {
             "target": "Package",
-            "version": "[1.11.29, )"
+            "version": "[1.11.33, )"
           },
           "NETStandard.Library": {
             "suppressParent": "All",

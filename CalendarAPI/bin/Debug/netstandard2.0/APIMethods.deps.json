@@ -9,85 +9,85 @@
     ".NETStandard,Version=v2.0/": {
       "APIMethods/1.0.0": {
         "dependencies": {
-          "Google.Apis": "1.49.0",
-          "Google.Apis.Calendar.v3": "1.49.0.2224",
-          "Google.Apis.Classroom.v1": "1.49.0.2223",
-          "Google.Apis.Core": "1.49.0",
-          "HtmlAgilityPack": "1.11.29",
+          "Google.Apis": "1.51.0",
+          "Google.Apis.Calendar.v3": "1.51.0.2312",
+          "Google.Apis.Classroom.v1": "1.51.0.2235",
+          "Google.Apis.Core": "1.51.0",
+          "HtmlAgilityPack": "1.11.33",
           "NETStandard.Library": "2.0.3",
-          "Newtonsoft.Json": "12.0.3"
+          "Newtonsoft.Json": "13.0.1"
         },
         "runtime": {
           "APIMethods.dll": {}
         }
       },
-      "Google.Apis/1.49.0": {
+      "Google.Apis/1.51.0": {
         "dependencies": {
-          "Google.Apis.Core": "1.49.0"
+          "Google.Apis.Core": "1.51.0"
         },
         "runtime": {
           "lib/netstandard2.0/Google.Apis.dll": {
-            "assemblyVersion": "1.49.0.0",
-            "fileVersion": "1.49.0.0"
+            "assemblyVersion": "1.51.0.0",
+            "fileVersion": "1.51.0.0"
           }
         }
       },
-      "Google.Apis.Auth/1.49.0": {
+      "Google.Apis.Auth/1.51.0": {
         "dependencies": {
-          "Google.Apis": "1.49.0",
-          "Google.Apis.Core": "1.49.0"
+          "Google.Apis": "1.51.0",
+          "Google.Apis.Core": "1.51.0"
         },
         "runtime": {
           "lib/netstandard2.0/Google.Apis.Auth.PlatformServices.dll": {
-            "assemblyVersion": "1.49.0.0",
-            "fileVersion": "1.49.0.0"
+            "assemblyVersion": "1.51.0.0",
+            "fileVersion": "1.51.0.0"
           },
           "lib/netstandard2.0/Google.Apis.Auth.dll": {
-            "assemblyVersion": "1.49.0.0",
-            "fileVersion": "1.49.0.0"
+            "assemblyVersion": "1.51.0.0",
+            "fileVersion": "1.51.0.0"
           }
         }
       },
-      "Google.Apis.Calendar.v3/1.49.0.2224": {
+      "Google.Apis.Calendar.v3/1.51.0.2312": {
         "dependencies": {
-          "Google.Apis": "1.49.0",
-          "Google.Apis.Auth": "1.49.0"
+          "Google.Apis": "1.51.0",
+          "Google.Apis.Auth": "1.51.0"
         },
         "runtime": {
           "lib/netstandard2.0/Google.Apis.Calendar.v3.dll": {
-            "assemblyVersion": "1.49.0.2224",
-            "fileVersion": "1.49.0.2224"
+            "assemblyVersion": "1.51.0.2312",
+            "fileVersion": "1.51.0.2312"
           }
         }
       },
-      "Google.Apis.Classroom.v1/1.49.0.2223": {
+      "Google.Apis.Classroom.v1/1.51.0.2235": {
         "dependencies": {
-          "Google.Apis": "1.49.0",
-          "Google.Apis.Auth": "1.49.0"
+          "Google.Apis": "1.51.0",
+          "Google.Apis.Auth": "1.51.0"
         },
         "runtime": {
           "lib/netstandard2.0/Google.Apis.Classroom.v1.dll": {
-            "assemblyVersion": "1.49.0.2223",
-            "fileVersion": "1.49.0.2223"
+            "assemblyVersion": "1.51.0.2235",
+            "fileVersion": "1.51.0.2235"
           }
         }
       },
-      "Google.Apis.Core/1.49.0": {
+      "Google.Apis.Core/1.51.0": {
         "dependencies": {
-          "Newtonsoft.Json": "12.0.3"
+          "Newtonsoft.Json": "13.0.1"
         },
         "runtime": {
           "lib/netstandard2.0/Google.Apis.Core.dll": {
-            "assemblyVersion": "1.49.0.0",
-            "fileVersion": "1.49.0.0"
+            "assemblyVersion": "1.51.0.0",
+            "fileVersion": "1.51.0.0"
           }
         }
       },
-      "HtmlAgilityPack/1.11.29": {
+      "HtmlAgilityPack/1.11.33": {
         "runtime": {
           "lib/netstandard2.0/HtmlAgilityPack.dll": {
-            "assemblyVersion": "1.11.29.0",
-            "fileVersion": "1.11.29.0"
+            "assemblyVersion": "1.11.33.0",
+            "fileVersion": "1.11.33.0"
           }
         }
       },
@@ -97,11 +97,11 @@
           "Microsoft.NETCore.Platforms": "1.1.0"
         }
       },
-      "Newtonsoft.Json/12.0.3": {
+      "Newtonsoft.Json/13.0.1": {
         "runtime": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {
-            "assemblyVersion": "12.0.0.0",
-            "fileVersion": "12.0.3.23909"
+            "assemblyVersion": "13.0.0.0",
+            "fileVersion": "13.0.1.25517"
           }
         }
       }
@@ -113,47 +113,47 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Google.Apis/1.49.0": {
+    "Google.Apis/1.51.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-fmXQQTxZFOBlnvokvdQMzq0Lt+g2QzpZ4H6U8lMMFHgAR8ZqxQnPN5yHDpoHf7a++hJHb5W3pALxauGsq+afKQ==",
-      "path": "google.apis/1.49.0",
-      "hashPath": "google.apis.1.49.0.nupkg.sha512"
+      "sha512": "sha512-4QL7S1PnDN/VumfzrLOGw8tiFLYRL/oPVQkCuIVltAh/gSPWxLu7UFZeum4S3B/ry7794Wigg53jclLlYX/haQ==",
+      "path": "google.apis/1.51.0",
+      "hashPath": "google.apis.1.51.0.nupkg.sha512"
     },
-    "Google.Apis.Auth/1.49.0": {
+    "Google.Apis.Auth/1.51.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-3V9ohvixQtjaEvk7T9Ac7E/KvwEPa7eL4aMNreJDI0CEPzCdQdk2zCvaJPRrNIjhe+UuBeOeom1oAOMFB74JHg==",
-      "path": "google.apis.auth/1.49.0",
-      "hashPath": "google.apis.auth.1.49.0.nupkg.sha512"
+      "sha512": "sha512-rwyLkiXev6esCRXq+srUcEb8zWylNg7eyE9zO8GxiQplrn1+Jhn8WlwhyJ/xXM83Mrd7Fi0p/UpnOo+m8NBI2g==",
+      "path": "google.apis.auth/1.51.0",
+      "hashPath": "google.apis.auth.1.51.0.nupkg.sha512"
     },
-    "Google.Apis.Calendar.v3/1.49.0.2224": {
+    "Google.Apis.Calendar.v3/1.51.0.2312": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-4ZsPvrUrfb4t+JtzS7kuoM5h0qOrReObpwQhUpFbSwMUn/yDrf81ciYWtgGwcN6R/YhAaVvsVYxNbobuUE7cug==",
-      "path": "google.apis.calendar.v3/1.49.0.2224",
-      "hashPath": "google.apis.calendar.v3.1.49.0.2224.nupkg.sha512"
+      "sha512": "sha512-8iskPPgvvZ3VtGhWIjeP9R5ouQasGMUj66Z5G5VHLfriKIVm+MTqyC6XGYTxjeJhXYU6yRQLnNk8f6fAFYxb2A==",
+      "path": "google.apis.calendar.v3/1.51.0.2312",
+      "hashPath": "google.apis.calendar.v3.1.51.0.2312.nupkg.sha512"
     },
-    "Google.Apis.Classroom.v1/1.49.0.2223": {
+    "Google.Apis.Classroom.v1/1.51.0.2235": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-ydxE7DgJWDkK+/3Y77A6T9xyLGkgj5jMOQqFSZ3ZgRkjuqV4Yi2Vt5owahAhgUbQ+R9o5p1I4LAYUDgAI+hX+g==",
-      "path": "google.apis.classroom.v1/1.49.0.2223",
-      "hashPath": "google.apis.classroom.v1.1.49.0.2223.nupkg.sha512"
+      "sha512": "sha512-tir/Px1ggNAj/9o+1+XUZWuJh9T55qfeN13d3JCF82sxXz730SdPtIOxkxKpTi5DHyqcNq7d0llQGARqHoMchQ==",
+      "path": "google.apis.classroom.v1/1.51.0.2235",
+      "hashPath": "google.apis.classroom.v1.1.51.0.2235.nupkg.sha512"
     },
-    "Google.Apis.Core/1.49.0": {
+    "Google.Apis.Core/1.51.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-9DgGdtyzgrCfHWwc/HiDXDbykNMeKQozbEHYEUEcezRuH+YR3fvq7YGVBDmUM8g6qEL3kDk6h5EU4h0IJwue1w==",
-      "path": "google.apis.core/1.49.0",
-      "hashPath": "google.apis.core.1.49.0.nupkg.sha512"
+      "sha512": "sha512-2HBwN81SB5DBI/TKbJr6y6u2I5sBlLxUHYUkc26Y4FSFachdDlWISZZreO0AVKdJrHsbmKDhHdqkRjkLSGeiNw==",
+      "path": "google.apis.core/1.51.0",
+      "hashPath": "google.apis.core.1.51.0.nupkg.sha512"
     },
-    "HtmlAgilityPack/1.11.29": {
+    "HtmlAgilityPack/1.11.33": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-aCMPdyDUPU7z4fwMJ+4pbsUd669BWhIbC2rCo0upxBpYyblJHXNUjg5pxnk2iyqBg1C8gWF2fSxA1XERxcVZow==",
-      "path": "htmlagilitypack/1.11.29",
-      "hashPath": "htmlagilitypack.1.11.29.nupkg.sha512"
+      "sha512": "sha512-ccsOdeRuObzQNy3FGLHd0MTmPvEu9nKUYDAqLham1XD3azbU+gcyRF6Hu87A68b7WqGpCdBZiLU7CwJVVmTb6A==",
+      "path": "htmlagilitypack/1.11.33",
+      "hashPath": "htmlagilitypack.1.11.33.nupkg.sha512"
     },
     "Microsoft.NETCore.Platforms/1.1.0": {
       "type": "package",
@@ -169,12 +169,12 @@
       "path": "netstandard.library/2.0.3",
       "hashPath": "netstandard.library.2.0.3.nupkg.sha512"
     },
-    "Newtonsoft.Json/12.0.3": {
+    "Newtonsoft.Json/13.0.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-6mgjfnRB4jKMlzHSl+VD+oUc1IebOZabkbyWj2RiTgWwYPPuaK1H97G1sHqGwPlS5npiF5Q0OrxN1wni2n5QWg==",
-      "path": "newtonsoft.json/12.0.3",
-      "hashPath": "newtonsoft.json.12.0.3.nupkg.sha512"
+      "sha512": "sha512-ppPFpBcvxdsfUonNcvITKqLl3bqxWbDCZIzDWHzjpdAHRFfZe0Dw9HmA0+za13IdyrgJwpkDTDA9fHaxOrt20A==",
+      "path": "newtonsoft.json/13.0.1",
+      "hashPath": "newtonsoft.json.13.0.1.nupkg.sha512"
     }
   }
 }

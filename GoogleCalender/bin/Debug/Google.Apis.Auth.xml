@@ -499,7 +499,8 @@
             </summary>
         </member>
         <member name="F:Google.Apis.Auth.OAuth2.ComputeCredential.MetadataServerUrl">
-            <summary>The metadata server url.</summary>
+            <summary>The metadata server url. This can be overridden (for the purposes of Compute environment detection and
+            auth token retrieval) using the GCE_METADATA_HOST environment variable.</summary>
         </member>
         <member name="F:Google.Apis.Auth.OAuth2.ComputeCredential.isRunningOnComputeEngineCached">
             <summary>Caches result from first call to <c>IsRunningOnComputeEngine</c> </summary>
@@ -525,7 +526,7 @@
         <member name="T:Google.Apis.Auth.OAuth2.ComputeCredential.Initializer">
             <summary>
             An initializer class for the Compute credential. It uses <see cref="F:Google.Apis.Auth.OAuth2.GoogleAuthConsts.ComputeTokenUrl"/>
-            as the token server URL.
+            as the token server URL (optionally overriding the host using the GCE_METADATA_HOST environment variable).
             </summary>
         </member>
         <member name="P:Google.Apis.Auth.OAuth2.ComputeCredential.Initializer.OidcTokenUrl">
@@ -543,7 +544,7 @@
         </member>
         <member name="M:Google.Apis.Auth.OAuth2.ComputeCredential.Initializer.#ctor(System.String,System.String)">
             <summary>Constructs a new initializer using the given token URL
-            and OIDC token URL.</summary>
+            and OIDC token URL (optionally overriding the host using the GCE_METADATA_HOST environment variable).</summary>
         </member>
         <member name="M:Google.Apis.Auth.OAuth2.ComputeCredential.#ctor">
             <summary>Constructs a new Compute credential instance.</summary>
@@ -612,9 +613,6 @@
         </member>
         <member name="M:Google.Apis.Auth.OAuth2.DefaultCredentialProvider.CreateDefaultCredentialAsync">
             <summary>Creates a new default credential.</summary>
-        </member>
-        <member name="M:Google.Apis.Auth.OAuth2.DefaultCredentialProvider.CreateDefaultCredentialFromFile(System.String)">
-            <summary>Creates a default credential from a JSON file.</summary>
         </member>
         <member name="M:Google.Apis.Auth.OAuth2.DefaultCredentialProvider.CreateDefaultCredentialFromStream(System.IO.Stream)">
             <summary>Creates a default credential from a stream that contains JSON credential data.</summary>
@@ -984,10 +982,6 @@
             <summary>The Compute Engine authorization token server URL</summary>
             <remarks>IP address instead of name to avoid DNS resolution</remarks>
         </member>
-        <member name="F:Google.Apis.Auth.OAuth2.GoogleAuthConsts.ComputeOidcTokenUrl">
-            <summary>The Compute Engine authorization token server URL for OIDC. This requires an audience parameter to be added.</summary>
-            <remarks>IP address instead of name to avoid DNS resolution</remarks>
-        </member>
         <member name="F:Google.Apis.Auth.OAuth2.GoogleAuthConsts.RevokeTokenUrl">
             <summary>The path to the Google revocation endpoint.</summary>
         </member>
@@ -1002,6 +996,24 @@
         </member>
         <member name="F:Google.Apis.Auth.OAuth2.GoogleAuthConsts.LocalhostRedirectUri">
             <summary>Installed application localhost redirect URI.</summary>
+        </member>
+        <member name="P:Google.Apis.Auth.OAuth2.GoogleAuthConsts.EffectiveComputeTokenUrl">
+            <summary>
+            The effective Compute Engine authorization token server URL.
+            This takes account of the GCE_METADATA_HOST environment variable.
+            </summary>
+        </member>
+        <member name="P:Google.Apis.Auth.OAuth2.GoogleAuthConsts.EffectiveComputeOidcTokenUrl">
+            <summary>
+            The effective Compute Engine authorization token server URL for OIDC. This requires an audience parameter to be added.
+            This takes account of the GCE_METADATA_HOST environment variable.
+            </summary>
+        </member>
+        <member name="P:Google.Apis.Auth.OAuth2.GoogleAuthConsts.EffectiveMetadataServerUrl">
+            <summary>
+            The effective Compute Engine metadata token server URL (with no path).
+            This takes account of the GCE_METADATA_HOST environment variable.
+            </summary>
         </member>
         <member name="T:Google.Apis.Auth.OAuth2.GoogleClientSecrets">
             <summary>
@@ -2003,6 +2015,11 @@
         <member name="P:Google.Apis.Auth.OAuth2.Responses.AuthorizationCodeResponseUrl.ErrorUri">
             <summary>
             Gets or sets the URI identifying a human-readable web page with provides information about the error.
+            </summary>
+        </member>
+        <member name="P:Google.Apis.Auth.OAuth2.Responses.AuthorizationCodeResponseUrl.AdditionalParameters">
+            <summary>
+            Contains any extra parameters in the authorization code response URL query string.
             </summary>
         </member>
         <member name="M:Google.Apis.Auth.OAuth2.Responses.AuthorizationCodeResponseUrl.#ctor(System.Collections.Generic.IDictionary{System.String,System.String})">

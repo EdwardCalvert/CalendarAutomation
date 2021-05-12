@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 using System.Timers;
 namespace WinAPIBrightnessControl
 {
-    class BrightnessWorker
+    public class BrightnessWorker
     {
         private readonly Timer _timer;
 

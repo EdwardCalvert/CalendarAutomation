@@ -42,23 +42,23 @@
           "dependencies": {
             "Google.Apis": {
               "target": "Package",
-              "version": "[1.49.0, )"
+              "version": "[1.51.0, )"
             },
             "Google.Apis.Calendar.v3": {
               "target": "Package",
-              "version": "[1.49.0.2224, )"
+              "version": "[1.51.0.2312, )"
             },
             "Google.Apis.Classroom.v1": {
               "target": "Package",
-              "version": "[1.49.0.2223, )"
+              "version": "[1.51.0.2235, )"
             },
             "Google.Apis.Core": {
               "target": "Package",
-              "version": "[1.49.0, )"
+              "version": "[1.51.0, )"
             },
             "HtmlAgilityPack": {
               "target": "Package",
-              "version": "[1.11.29, )"
+              "version": "[1.11.33, )"
             },
             "NETStandard.Library": {
               "suppressParent": "All",
@@ -68,7 +68,7 @@
             },
             "Newtonsoft.Json": {
               "target": "Package",
-              "version": "[12.0.3, )"
+              "version": "[13.0.1, )"
             }
           },
           "imports": [
