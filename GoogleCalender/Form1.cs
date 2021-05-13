@@ -39,6 +39,7 @@ namespace GoogleCalender
         public Form1()
         {
             _brightnessWorker = new BrightnessWorker();
+            _brightnessWorker.Start();
             int second = DateTime.Now.Second;
             InitializeComponent();
             DisplayClock.Text = CurrentTime;
