@@ -39,7 +39,7 @@ namespace GoogleCalender
             // DisplayClock
             // 
             this.DisplayClock.BackColor = System.Drawing.Color.Transparent;
-            this.DisplayClock.Font = new System.Drawing.Font("Open Sans", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DisplayClock.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DisplayClock.ForeColor = System.Drawing.Color.DimGray;
             this.DisplayClock.Location = new System.Drawing.Point(-5, -5);
             this.DisplayClock.Name = "DisplayClock";
@@ -52,7 +52,7 @@ namespace GoogleCalender
             this.NextUp.AutoSize = true;
             this.NextUp.Location = new System.Drawing.Point(-1, 34);
             this.NextUp.Name = "NextUp";
-            this.NextUp.Size = new System.Drawing.Size(169, 15);
+            this.NextUp.Size = new System.Drawing.Size(152, 13);
             this.NextUp.TabIndex = 3;
             this.NextUp.Text = "Please wait for synchronisation";
             this.NextUp.Click += new System.EventHandler(this.NextUp_Click);
@@ -71,7 +71,7 @@ namespace GoogleCalender
             // 
             // refreshButton
             // 
-            this.refreshButton.Font = new System.Drawing.Font("Open Sans", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.refreshButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.refreshButton.Location = new System.Drawing.Point(129, 7);
             this.refreshButton.Name = "refreshButton";
             this.refreshButton.Size = new System.Drawing.Size(17, 19);
@@ -82,7 +82,7 @@ namespace GoogleCalender
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
@@ -92,7 +92,7 @@ namespace GoogleCalender
             this.Controls.Add(this.NextUp);
             this.Controls.Add(this.DisplayClock);
             this.Cursor = System.Windows.Forms.Cursors.No;
-            this.Font = new System.Drawing.Font("Open Sans", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";

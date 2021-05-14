@@ -7,3 +7,12 @@ C:\Users\ed\source\repos\CalenderCallout\CalenderClock\Handlers\obj\Debug\netsta
 C:\Users\ed\source\repos\CalenderCallout\CalenderClock\Handlers\obj\Debug\netstandard2.0\Handlers.csproj.CoreCompileInputs.cache
 C:\Users\ed\source\repos\CalenderCallout\CalenderClock\Handlers\obj\Debug\netstandard2.0\Handlers.dll
 C:\Users\ed\source\repos\CalenderCallout\CalenderClock\Handlers\obj\Debug\netstandard2.0\Handlers.pdb
+C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\Handlers\bin\Debug\netstandard2.0\Handlers.deps.json
+C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\Handlers\bin\Debug\netstandard2.0\Handlers.dll
+C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\Handlers\bin\Debug\netstandard2.0\Handlers.pdb
+C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\Handlers\obj\Debug\netstandard2.0\Handlers.csprojAssemblyReference.cache
+C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\Handlers\obj\Debug\netstandard2.0\Handlers.AssemblyInfoInputs.cache
+C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\Handlers\obj\Debug\netstandard2.0\Handlers.AssemblyInfo.cs
+C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\Handlers\obj\Debug\netstandard2.0\Handlers.csproj.CoreCompileInputs.cache
+C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\Handlers\obj\Debug\netstandard2.0\Handlers.dll
+C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\Handlers\obj\Debug\netstandard2.0\Handlers.pdb

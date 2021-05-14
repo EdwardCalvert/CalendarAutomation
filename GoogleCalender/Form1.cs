@@ -2,6 +2,7 @@
 using Google.Apis.Calendar.v3.Data;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -38,10 +39,16 @@ namespace GoogleCalender
         /// </summary>
         public Form1()
         {
+
             _brightnessWorker = new BrightnessWorker();
             _brightnessWorker.Start();
             int second = DateTime.Now.Second;
             InitializeComponent();
+            this.Location = new Point(Screen.PrimaryScreen.Bounds.Right-170, //should be (0,0)
+                          Screen.PrimaryScreen.Bounds.Height-90);
+            this.TopMost = true;
+            this.StartPosition = FormStartPosition.Manual;
+
             DisplayClock.Text = CurrentTime;
 
             CalibrateClockTimer();

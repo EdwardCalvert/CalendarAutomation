@@ -54,14 +54,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DellBrighntessControl.exe" size="16384">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DellBrighntessControl.exe" size="16896">
       <assemblyIdentity name="DellBrighntessControl" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>fp9D/0wo1L+m7FQhQbPngpKV7BWoCReaxWKQURV04f8=</dsig:DigestValue>
+        <dsig:DigestValue>s1sEZPaUFae89DUbROvHZC6YY3Hyged42HXy5l3QIi8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -157,7 +157,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>zR2hIjKvjeoAMJxBBenIRV1EECfotIOYMBEfk3c0XLg=</dsig:DigestValue>
+        <dsig:DigestValue>pcPV9N2h6fzHpyNWMXIBLiwJFxy5vEPImM6VA+ET/HU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -16,19 +16,35 @@ namespace WinAPIBrightnessControl
         {
             phisicalMonitorBrightnessController = new PhisicalMonitorBrightnessController();
             _sunsetAPI = new SunsetAPI();
-            _timer = new Timer(60000) { AutoReset = true };
+            _timer = new Timer(6000) { AutoReset = true };
 
             _timer.Elapsed += TimerElapsed;
             
 
         }
 
+        public void TestMethod()
+        {
+
+            //for(uint i =0; i< 100; i++)
+            //{
+            //    phisicalMonitorBrightnessControllerv2.Set(i, false);
+            //}
+            //for (uint j = 0; j < 100; j++)
+            //{
+            //    phisicalMonitorBrightnessControllerv2.Set(j, false);
+            //}
+            for (double d = 0; d < 24; d += 0.5)
+            {
+                double brightness = _sunsetAPI.TestMethod(d);
+                phisicalMonitorBrightnessController.Set((uint)brightness);
+                Console.WriteLine($"Time is {d} and brightness is {brightness}");
+            }
+        }
 
         private void TimerElapsed(object sender, ElapsedEventArgs e)
         {
             Console.WriteLine("Brightnes is :" + _sunsetAPI.Brightness);
-            //Console.WriteLine(_sunsetAPI.SunriseAsMinute);
-            //Console.WriteLine(_sunsetAPI.SunsetAsMinute);
             phisicalMonitorBrightnessController.Set(_sunsetAPI.Brightness);
 
         }
@@ -46,8 +62,14 @@ namespace WinAPIBrightnessControl
 
 
     }
+
+
+
+        
+    }
     public class PhisicalMonitorBrightnessController : IDisposable
     {
+        //https://stackoverflow.com/questions/4013622/adjust-screen-brightness-using-c-sharp
         #region DllImport
         [DllImport("dxva2.dll", EntryPoint = "GetNumberOfPhysicalMonitorsFromHMONITOR")]
         [return: MarshalAs(UnmanagedType.Bool)]
@@ -97,7 +119,7 @@ namespace WinAPIBrightnessControl
             foreach (var monitor in Monitors)
             {
                 uint realNewValue = (monitor.MaxValue - monitor.MinValue) * brightness / 100 + monitor.MinValue;
-                if (SetMonitorBrightness(monitor.Handle, realNewValue))
+                if (SetMonitorBrightness(monitor.Handle, realNewValue))//Errors here? 
                 {
                     monitor.CurrentValue = realNewValue;
                 }
@@ -217,4 +239,4 @@ namespace WinAPIBrightnessControl
 
 
     }
-}
+

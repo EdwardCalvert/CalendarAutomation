@@ -10,6 +10,11 @@ namespace WinAPIBrightnessControl
         SunsetAPIResponse sunsetResponse;
         private int Day;
 
+        public enum SuccessCodes{
+            Success,
+            Error
+        }
+
         public SunsetAPI()
 
         {
@@ -32,12 +37,33 @@ namespace WinAPIBrightnessControl
             }
         }
 
+        public double TestMethod(double time)
+        {
+            double brightness = ((time - SunriseAsMinute) * (time - SunsetAsMinute) * (-6));
+            Console.WriteLine($"time: {time} => (({time}-{SunriseAsMinute}))*(({time}-{SunsetAsMinute}))*(-6) =>({time - SunriseAsMinute}*{time - SunsetAsMinute}*{(-6)} => {brightness}");
+            if (brightness > 100)
+            {
+                return 100;
+            }
+            else if (brightness < 40)
+            {
+                return 40;
+            }
+            else
+            {
+                return brightness;
+            }
+            
+        }
+
         public uint Brightness
         {
             get
             {
                 double x_time = DateTime.Now.Hour + DateTime.Now.Minute / 60.0;
-                uint brightness = (uint)((x_time - SunriseAsMinute) * (x_time - SunsetAsMinute) * (-6));
+                
+                double brightness = ((x_time - SunriseAsMinute) * (x_time - SunsetAsMinute) * (-6));
+                
                 if (brightness > 100)
                 {
                     return 100;
@@ -48,7 +74,7 @@ namespace WinAPIBrightnessControl
                 }
                 else
                 {
-                    return brightness;
+                    return (uint) brightness;
                 }
             }
         }
@@ -69,7 +95,7 @@ namespace WinAPIBrightnessControl
             }
         }
 
-        private void GETWeather()
+        private SuccessCodes GETWeather()
         {
             try
             {
@@ -87,10 +113,15 @@ namespace WinAPIBrightnessControl
                 }
 
                 sunsetResponse = JsonConvert.DeserializeObject<SunsetAPIResponse>(file);
+                //Attempt to loalise time
+                sunsetResponse.results.sunrise.ToLocalTime();
+                sunsetResponse.results.sunset.ToLocalTime();
+                return SuccessCodes.Success;
             }
             catch //Error. 
             {
                 sunsetResponse = null;
+                return SuccessCodes.Error;
             }
         }
     }
