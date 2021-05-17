@@ -5,14 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="classroomCredentials.json" />
     <None Remove="credentials.json" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="classroomCredentials.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="credentials.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

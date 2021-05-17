@@ -428,7 +428,7 @@ namespace GoogleCalender
         private void refreshButton_Click(object sender, EventArgs e)
         {
             GoogleAPI();
-            //InfoMessage("Calender will update after : " + APITimer.Interval + " miliseconds","Clock.exe");
+            InfoMessage("Calender will update after : " + APITimer.Interval + " miliseconds","Clock.exe");
         }
 
 

@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleCalender", "GoogleCalender\GoogleCalender.csproj", "{9205028F-1815-4431-85A0-7FD5BFE42F59}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APIMethods", "CalendarAPI\APIMethods.csproj", "{405A46E5-B3D3-4C01-B556-823E5F8502A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoogleCalendarAPIs", "CalendarAPI\GoogleCalendarAPIs.csproj", "{405A46E5-B3D3-4C01-B556-823E5F8502A6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Handlers", "Handlers\Handlers.csproj", "{B411E479-CB5A-4CA4-A196-C7E8B6D8744B}"
 EndProject
@@ -14,6 +14,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MonitorBrightnessDriver", "MonitorBrightnessDriver\MonitorBrightnessDriver.csproj", "{E7624B64-AD76-48A2-90A3-33914D6EDC23}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinAPIBrightnessControl", "DellBrighntessControl\WinAPIBrightnessControl.csproj", "{104FA3FE-506F-4E8E-AF57-02357394C708}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EDDEV101.HelperMethods.V2", "..\..\EDDEV101.HelperMethods.V2\EDDEV101.HelperMethods.V2\EDDEV101.HelperMethods.V2.csproj", "{F55CC427-816A-4884-B6C5-FF9A3E731248}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EDDEV101.HelperMethods", "..\..\EDDEV101.HelperMethods\EDDEV101.HelperMethods\EDDEV101.HelperMethods\EDDEV101.HelperMethods.csproj", "{6BA49E53-E287-47F9-81DF-BE29D06D85BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +49,14 @@ Global
 		{104FA3FE-506F-4E8E-AF57-02357394C708}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{104FA3FE-506F-4E8E-AF57-02357394C708}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{104FA3FE-506F-4E8E-AF57-02357394C708}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F55CC427-816A-4884-B6C5-FF9A3E731248}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F55CC427-816A-4884-B6C5-FF9A3E731248}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F55CC427-816A-4884-B6C5-FF9A3E731248}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F55CC427-816A-4884-B6C5-FF9A3E731248}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BA49E53-E287-47F9-81DF-BE29D06D85BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BA49E53-E287-47F9-81DF-BE29D06D85BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BA49E53-E287-47F9-81DF-BE29D06D85BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BA49E53-E287-47F9-81DF-BE29D06D85BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -19,6 +19,7 @@ namespace WinAPIBrightnessControl
             public DateTime nautical_twilight_end { get; set; }
             public DateTime astronomical_twilight_begin { get; set; }
             public DateTime astronomical_twilight_end { get; set; }
+            public string calendarId { get; set; }
         }
 
     }

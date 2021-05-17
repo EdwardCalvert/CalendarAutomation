@@ -476,9 +476,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ed\\OneDrive\\Documents\\repos\\CalenderCallout\\CalenderClock\\CalendarAPI\\APIMethods.csproj",
-      "projectName": "APIMethods",
-      "projectPath": "C:\\Users\\ed\\OneDrive\\Documents\\repos\\CalenderCallout\\CalenderClock\\CalendarAPI\\APIMethods.csproj",
+      "projectUniqueName": "C:\\Users\\ed\\OneDrive\\Documents\\repos\\CalenderCallout\\CalenderClock\\CalendarAPI\\GoogleCalendarAPIs.csproj",
+      "projectName": "GoogleCalendarAPIs",
+      "projectPath": "C:\\Users\\ed\\OneDrive\\Documents\\repos\\CalenderCallout\\CalenderClock\\CalendarAPI\\GoogleCalendarAPIs.csproj",
       "packagesPath": "C:\\Users\\ed\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\ed\\OneDrive\\Documents\\repos\\CalenderCallout\\CalenderClock\\CalendarAPI\\obj\\",
       "projectStyle": "PackageReference",

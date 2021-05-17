@@ -13,10 +13,10 @@ namespace APIMethods
     /// <summary>
     /// A Class which encapsulates all the Google Calendar methods. Self updating. Use data from this class to keep everything up-to date. 
     /// </summary>
-    class GoogleCalendar
+    class GoogleCalendarEventReader
     {
         static string[] CalendarScope = { CalendarService.Scope.CalendarReadonly };
-        static string CalendarAppName = "Callendar Clock Callout";
+        static string CalendarAppName = "EDDEV101 Google Calendar API Service";
 
         Events events;
 
@@ -27,7 +27,7 @@ namespace APIMethods
         private UserCredential _calendarReadCredential;
         private CalendarService _calendarReadService;
 
-        private GoogleCalendar()
+        private GoogleCalendarEventReader()
         {
             using (var stream =
                new FileStream("credentials.json", FileMode.Open, FileAccess.Read))
@@ -70,7 +70,20 @@ namespace APIMethods
         {
 
         }
+        
+        public Events GetTodaysEvents()
+        {
+            // Define parameters of request.
+            EventsResource.ListRequest request = _calendarReadService.Events.List("primary");
+            request.TimeMin = DateTime.Now;
+            request.TimeMax = DateTime.Today.AddHours(24);
+            request.ShowDeleted = false;
+            request.SingleEvents = true;
+            //request.MaxResults = 1;
+            request.OrderBy = EventsResource.ListRequest.OrderByEnum.StartTime;
 
+            return request.Execute();
+        }
 
         public Events GetCurrentEvent
         {
