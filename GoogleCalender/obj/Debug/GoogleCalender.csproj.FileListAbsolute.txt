@@ -69,12 +69,10 @@ C:\Users\ed\source\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\
 C:\Users\ed\source\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\MonitorBrightnessDriver.dll
 C:\Users\ed\source\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\MonitorBrightnessDriver.pdb
 C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\obj\Debug\GoogleCalender.csprojAssemblyReference.cache
-C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\obj\Debug\GoogleCalender.Form1.resources
 C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\obj\Debug\GoogleCalender.Properties.Resources.resources
 C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\obj\Debug\GoogleCalender.csproj.GenerateResource.cache
 C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\obj\Debug\GoogleCalender.exe
 C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\obj\Debug\GoogleCalender.pdb
-C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\credentials.json
 C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\GoogleCalender.exe.config
 C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\GoogleCalender.exe.manifest
 C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\GoogleCalender.application
@@ -88,9 +86,7 @@ C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalende
 C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Google.Apis.dll
 C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Google.Apis.PlatformServices.dll
 C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\HtmlAgilityPack.dll
-C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\MonitorBrightnessDriver.dll
 C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Newtonsoft.Json.dll
-C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\MonitorBrightnessDriver.pdb
 C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Google.Apis.pdb
 C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Google.Apis.xml
 C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Google.Apis.Auth.pdb
@@ -113,5 +109,5 @@ C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalende
 C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\DellBrighntessControl.pdb
 C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\DellBrighntessControl.exe.config
 C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Topshelf.xml
-C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\GoogleCalendarAPIs.dll
-C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\GoogleCalendarAPIs.pdb
+C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\obj\Debug\GoogleCalendarWPF.Form1.resources
+C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\credentials.json

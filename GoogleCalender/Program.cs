@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace GoogleCalender
+namespace GoogleCalendarWPF
 {
     static class Program
     {

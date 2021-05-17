@@ -15,11 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LegacyMonitorBrightnessDriv
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinAPIBrightnessControl", "DellBrighntessControl\WinAPIBrightnessControl.csproj", "{104FA3FE-506F-4E8E-AF57-02357394C708}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EDDEV101.HelperMethods.V2", "..\..\EDDEV101.HelperMethods.V2\EDDEV101.HelperMethods.V2\EDDEV101.HelperMethods.V2.csproj", "{F55CC427-816A-4884-B6C5-FF9A3E731248}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EDDEV101.HelperMethods", "..\..\EDDEV101.HelperMethods\EDDEV101.HelperMethods\EDDEV101.HelperMethods\EDDEV101.HelperMethods.csproj", "{6BA49E53-E287-47F9-81DF-BE29D06D85BD}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleMethod", "Console\ConsoleMethod.csproj", "{6184A2C8-CB02-4EBF-B0CA-86108792B698}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,18 +47,10 @@ Global
 		{104FA3FE-506F-4E8E-AF57-02357394C708}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{104FA3FE-506F-4E8E-AF57-02357394C708}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{104FA3FE-506F-4E8E-AF57-02357394C708}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F55CC427-816A-4884-B6C5-FF9A3E731248}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F55CC427-816A-4884-B6C5-FF9A3E731248}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F55CC427-816A-4884-B6C5-FF9A3E731248}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F55CC427-816A-4884-B6C5-FF9A3E731248}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6BA49E53-E287-47F9-81DF-BE29D06D85BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6BA49E53-E287-47F9-81DF-BE29D06D85BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6BA49E53-E287-47F9-81DF-BE29D06D85BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6BA49E53-E287-47F9-81DF-BE29D06D85BD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6184A2C8-CB02-4EBF-B0CA-86108792B698}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6184A2C8-CB02-4EBF-B0CA-86108792B698}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6184A2C8-CB02-4EBF-B0CA-86108792B698}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6184A2C8-CB02-4EBF-B0CA-86108792B698}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

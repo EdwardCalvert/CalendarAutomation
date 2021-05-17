@@ -1,5 +1,5 @@
 ﻿
-namespace GoogleCalender
+namespace GoogleCalendarWPF
 {
     partial class Form1
     {

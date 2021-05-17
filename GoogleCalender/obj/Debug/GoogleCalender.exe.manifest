@@ -138,26 +138,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GoogleCalendarAPIs.dll" size="8192">
-      <assemblyIdentity name="GoogleCalendarAPIs" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>YsMJlstDxKUfK5fnHoJK/YRfVbu1D55H9Vu6LgqqOzw=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GoogleCalender.exe" size="189952">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GoogleCalender.exe" size="190976">
       <assemblyIdentity name="GoogleCalender" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>2sShkEG/ppf+p8HmskxUTk/SUR6UFmd40ug9JGGMV20=</dsig:DigestValue>
+        <dsig:DigestValue>nY0pgncuJjb7jCTEniMtgAfjBa7+XaXW6DPvl8wuZHA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -170,18 +158,6 @@
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
         <dsig:DigestValue>X6+VaHslNOuyYc3r5thOk+4W7lBxpfZtqDGgKYAvdFw=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MonitorBrightnessDriver.dll" size="12800">
-      <assemblyIdentity name="MonitorBrightnessDriver" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>lkh73tc/bQAsdiBPkFmAdNKD6mdQoSAMOhvTkPLDHIU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -225,6 +201,15 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
       <dsig:DigestValue>ntiGQNDJjxDt0fo4cCG0gHifpyE9AzZZPpwvBwGdBvI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="LegacyMethods.txt" size="8901">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>P5zHAWoxwZ+n0RfVb09yu+UrrG8TcBkpw6ujf0twlRw=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

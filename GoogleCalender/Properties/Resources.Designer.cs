@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GoogleCalender.Properties {
+namespace GoogleCalendarWPF.Properties {
     using System;
     
     

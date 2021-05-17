@@ -8,7 +8,7 @@ using System.IO;
 using System.Threading;
 using System.Timers;
 
-namespace GoogleCalendarAPIs
+namespace GoogleCalendar
 {
     /// <summary>
     /// A Class which encapsulates all the Google Calendar methods. Self updating. Use data from this class to keep everything up-to date. 
