@@ -22,11 +22,21 @@ namespace GoogleCalendarAPIs
         private Events _lastCalloutEvents;
         private string _nextPageToken;
         private int _pageSize;
+        private DateTime _lastRefreshTime;
+        private int _refreshTimeInMinutes;
+        const int MAXRECURSIONDEPTH = 3; //Prevents the Get request from getting out of hand. Will fail with more than 15 all day events!
+        private int _calloutsMade = 0;
         private System.Timers.Timer _oauthRefreshTimer;
         private UserCredential _calendarReadCredential;
         private CalendarService _calendarReadService;
 
-        public GoogleCalendarEventReader(int pagesize)
+
+        public enum Result
+        {
+            Success,
+        }
+
+        public GoogleCalendarEventReader(int pagesize, int refreshTime)
         {
             //Create new credeintial set.
             using (var stream =
@@ -44,6 +54,7 @@ namespace GoogleCalendarAPIs
             }
 
             _pageSize = pagesize;
+            _refreshTimeInMinutes = refreshTime;
 
             _oauthRefreshTimer = new System.Timers.Timer(60 * 60 * 999); //one hour in milliseconds
 
@@ -57,7 +68,7 @@ namespace GoogleCalendarAPIs
             });
         }
 
-        public GoogleCalendarEventReader() : this(5)
+        public GoogleCalendarEventReader() : this(5,1)
         {
 
         }
@@ -81,6 +92,7 @@ namespace GoogleCalendarAPIs
 
         private  void MakeAPICallout()
         {
+            
             // Define parameters of request.
             EventsResource.ListRequest request = _calendarReadService.Events.List("primary");
             request.TimeMin = DateTime.Now;
@@ -92,6 +104,7 @@ namespace GoogleCalendarAPIs
             request.MaxResults = _pageSize;
             request.OrderBy = EventsResource.ListRequest.OrderByEnum.StartTime;
             _lastCalloutEvents = request.Execute();
+            _calloutsMade++;
         }
 
         private void UpdateNextPageToken()
@@ -106,18 +119,30 @@ namespace GoogleCalendarAPIs
 
         private void RefreshLastCalloutEvents()
         {
-            _nextPageToken = "";
-            MakeAPICallout();
-
-            // Define parameters of request.
-            //Only requesting vital information. 
-
-            while (!OneTaskWasReturned())
+            if (TimeSinceLastRefresh() >  _refreshTimeInMinutes || _calloutsMade ==0)
             {
-                UpdateNextPageToken();
+                _nextPageToken = "";
+
                 MakeAPICallout();
+                int requestDepth = 1;
+
+                // Define parameters of request.
+                //Only requesting vital information. 
+
+                while (!OneTaskWasReturned() && requestDepth < MAXRECURSIONDEPTH)
+                {
+                    UpdateNextPageToken();
+                    MakeAPICallout();
+                    requestDepth++;
+                }
+                _lastRefreshTime = DateTime.Now;
             }
 
+        }
+
+        public int TimeSinceLastRefresh()
+        {
+            return (int)DateTime.Now.Subtract(_lastRefreshTime).TotalMinutes;
         }
 
 
@@ -134,11 +159,27 @@ namespace GoogleCalendarAPIs
             return false;
         }
 
-        private bool StartedYet(DateTime? dateTime)
+        public Event WhatIsTheCurrentTask()
         {
-            if (dateTime != null)
+            RefreshLastCalloutEvents();
+            foreach (Event eventItem in _lastCalloutEvents.Items)
             {
-                if (DateTime.Compare(DateTime.Now, (DateTime)dateTime) <= 0)
+                if (CurrentEvent(eventItem.Start.DateTime,eventItem.End.DateTime)) 
+                {
+                    return eventItem;
+                }
+            }
+
+            return null;
+        }
+
+
+
+        private bool CurrentEvent(DateTime? startTime, DateTime? endTime)
+        {
+            if (startTime != null && endTime != null)
+            {
+                if (DateTime.Compare(DateTime.Now, (DateTime)startTime) <= 0 &&DateTime.Compare(DateTime.Now, (DateTime)endTime) < 0)
                 {
                     return false;
                 }
@@ -150,20 +191,6 @@ namespace GoogleCalendarAPIs
             return false;
         }
 
-        private bool FinishedYet(DateTime? dateTime)
-        {
-            if (dateTime != null)
-            {
-                if (DateTime.Compare(DateTime.Now, (DateTime)dateTime) < 0)
-                {
-                    return false;
-                }
-                else
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
+      
     }
 }

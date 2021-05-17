@@ -163,9 +163,9 @@
       <Project>{104fa3fe-506f-4e8e-af57-02357394c708}</Project>
       <Name>WinAPIBrightnessControl</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MonitorBrightnessDriver\MonitorBrightnessDriver.csproj">
+    <ProjectReference Include="..\MonitorBrightnessDriver\LegacyMonitorBrightnessDriver.csproj">
       <Project>{e7624b64-ad76-48a2-90a3-33914d6edc23}</Project>
-      <Name>MonitorBrightnessDriver</Name>
+      <Name>LegacyMonitorBrightnessDriver</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

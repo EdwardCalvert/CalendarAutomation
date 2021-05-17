@@ -56,7 +56,7 @@ namespace GoogleCalender
 
 
 
-            GoogleAPI();
+            //GoogleAPI();
             //ClassroomAPI();
             CalibrateAPITimer();
             APITimer.Tick += new EventHandler(this.APITimerCallback);
@@ -78,29 +78,29 @@ namespace GoogleCalender
 
 
 
-        private void GoogleAPI()
-        {
-            // List events.
-            try
-            {
-                events = APIMethods.CalendarAPI.CallendarCallout(System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Application.ExecutablePath), "credentials.json"));
-                UpdateTextBox();
-            }
-            catch (Exception exception)
-            {
-                if (DebugMode)
-                {
-                    WarningMessage("Request could not be fuffiled: " + exception, "Clock.exe");
-                }
-                else
-                {
-                    NextUp.Text = "Error occurred, trying again." + exception + "Clock.exe";
-                }
-                CalibrateAPITimer();
-                CalibrateClockTimer();
-            }
+        //private void GoogleAPI()
+        //{
+        //    // List events.
+        //    try
+        //    {
+        //        events = APIMethods.CalendarAPI.CallendarCallout(System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Application.ExecutablePath), "credentials.json"));
+        //        UpdateTextBox();
+        //    }
+        //    catch (Exception exception)
+        //    {
+        //        if (DebugMode)
+        //        {
+        //            WarningMessage("Request could not be fuffiled: " + exception, "Clock.exe");
+        //        }
+        //        else
+        //        {
+        //            NextUp.Text = "Error occurred, trying again." + exception + "Clock.exe";
+        //        }
+        //        CalibrateAPITimer();
+        //        CalibrateClockTimer();
+        //    }
 
-        }
+        //}
 
         private bool StartedYet(DateTime dateTime)
         {

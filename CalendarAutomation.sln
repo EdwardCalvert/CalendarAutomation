@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LegacyHandlers", "Handlers\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeMethods", "TimeMethods\TimeMethods.csproj", "{0735AA1E-5321-4E40-B4E0-CB91804FFB87}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MonitorBrightnessDriver", "MonitorBrightnessDriver\MonitorBrightnessDriver.csproj", "{E7624B64-AD76-48A2-90A3-33914D6EDC23}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LegacyMonitorBrightnessDriver", "MonitorBrightnessDriver\LegacyMonitorBrightnessDriver.csproj", "{E7624B64-AD76-48A2-90A3-33914D6EDC23}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinAPIBrightnessControl", "DellBrighntessControl\WinAPIBrightnessControl.csproj", "{104FA3FE-506F-4E8E-AF57-02357394C708}"
 EndProject
