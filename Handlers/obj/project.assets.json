@@ -244,9 +244,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ed\\OneDrive\\Documents\\repos\\CalenderCallout\\CalenderClock\\Handlers\\Handlers.csproj",
-      "projectName": "Handlers",
-      "projectPath": "C:\\Users\\ed\\OneDrive\\Documents\\repos\\CalenderCallout\\CalenderClock\\Handlers\\Handlers.csproj",
+      "projectUniqueName": "C:\\Users\\ed\\OneDrive\\Documents\\repos\\CalenderCallout\\CalenderClock\\Handlers\\LegacyHandlers.csproj",
+      "projectName": "LegacyHandlers",
+      "projectPath": "C:\\Users\\ed\\OneDrive\\Documents\\repos\\CalenderCallout\\CalenderClock\\Handlers\\LegacyHandlers.csproj",
       "packagesPath": "C:\\Users\\ed\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\ed\\OneDrive\\Documents\\repos\\CalenderCallout\\CalenderClock\\Handlers\\obj\\",
       "projectStyle": "PackageReference",

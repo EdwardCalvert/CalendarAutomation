@@ -1,4 +1,4 @@
-﻿using APIMethods;
+﻿using GoogleCalendarAPIs;
 using Google.Apis.Calendar.v3.Data;
 using System;
 using System.Collections.Generic;
@@ -83,7 +83,7 @@ namespace GoogleCalender
             // List events.
             try
             {
-                events = CalendarAPI.CallendarCallout(System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Application.ExecutablePath), "credentials.json"));
+                events = APIMethods.CalendarAPI.CallendarCallout(System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Application.ExecutablePath), "credentials.json"));
                 UpdateTextBox();
             }
             catch (Exception exception)

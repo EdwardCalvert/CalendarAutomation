@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "m1bvQkg3T0JcTAy1/WCK+z2x6qq+Xptr009xHXXQGAzwAIkczDbXFXwmSCZrnTy/s64f+/IVSaOwgz0rlzqnsA==",
+  "dgSpecHash": "IMHn/fWYGi8OPkAgZcdJ+D/HTXIgsrHXD+hkSjDZ9Swd6P7cx5GUTYnYaBCSt539ciFEEVomavRf8Z2RLyw3yw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ed\\OneDrive\\Documents\\repos\\CalenderCallout\\CalenderClock\\Handlers\\Handlers.csproj",
+  "projectFilePath": "C:\\Users\\ed\\OneDrive\\Documents\\repos\\CalenderCallout\\CalenderClock\\Handlers\\LegacyHandlers.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ed\\.nuget\\packages\\htmlagilitypack\\1.11.33\\htmlagilitypack.1.11.33.nupkg.sha512",
     "C:\\Users\\ed\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",

@@ -8,27 +8,27 @@ using System.IO;
 using System.Threading;
 using System.Timers;
 
-namespace APIMethods
+namespace GoogleCalendarAPIs
 {
     /// <summary>
     /// A Class which encapsulates all the Google Calendar methods. Self updating. Use data from this class to keep everything up-to date. 
     /// </summary>
-    class GoogleCalendarEventReader
+    public class GoogleCalendarEventReader
     {
         static string[] CalendarScope = { CalendarService.Scope.CalendarReadonly };
         static string CalendarAppName = "EDDEV101 Google Calendar API Service";
 
-        Events events;
-
-        private System.Timers.Timer _timer;
-
-
-
+        //Events events;
+        private Events _lastCalloutEvents;
+        private string _nextPageToken;
+        private int _pageSize;
+        private System.Timers.Timer _oauthRefreshTimer;
         private UserCredential _calendarReadCredential;
         private CalendarService _calendarReadService;
 
-        private GoogleCalendarEventReader()
+        public GoogleCalendarEventReader(int pagesize)
         {
+            //Create new credeintial set.
             using (var stream =
                new FileStream("credentials.json", FileMode.Open, FileAccess.Read))
             {
@@ -43,16 +43,23 @@ namespace APIMethods
                     new FileDataStore(credPath, true)).Result;
             }
 
-            _timer = new System.Timers.Timer(60 * 60 * 999); //one hour in milliseconds
+            _pageSize = pagesize;
 
-            _timer.Elapsed += new ElapsedEventHandler(RefreshOauthToken);
-            _timer.Start();
+            _oauthRefreshTimer = new System.Timers.Timer(60 * 60 * 999); //one hour in milliseconds
+
+            _oauthRefreshTimer.Elapsed += new ElapsedEventHandler(RefreshOauthToken);
+            _oauthRefreshTimer.Start();
 
             _calendarReadService = new CalendarService(new BaseClientService.Initializer()
             {
                 HttpClientInitializer = _calendarReadCredential,
                 ApplicationName = CalendarAppName,
             });
+        }
+
+        public GoogleCalendarEventReader() : this(5)
+        {
+
         }
 
         /// <summary>
@@ -66,12 +73,13 @@ namespace APIMethods
             _calendarReadCredential.RefreshTokenAsync(CancellationToken.None);
         }
 
-        public void GetEvents()
+        public Events GetCurrentEvents()
         {
-
+            RefreshLastCalloutEvents();
+            return _lastCalloutEvents;
         }
-        
-        public Events GetTodaysEvents()
+
+        private  void MakeAPICallout()
         {
             // Define parameters of request.
             EventsResource.ListRequest request = _calendarReadService.Events.List("primary");
@@ -79,51 +87,83 @@ namespace APIMethods
             request.TimeMax = DateTime.Today.AddHours(24);
             request.ShowDeleted = false;
             request.SingleEvents = true;
-            //request.MaxResults = 1;
+            request.PageToken = _nextPageToken;
+            request.Fields = "items(summary,description,start,end),nextPageToken";
+            request.MaxResults = _pageSize;
             request.OrderBy = EventsResource.ListRequest.OrderByEnum.StartTime;
-
-            return request.Execute();
+            _lastCalloutEvents = request.Execute();
         }
 
-        public Events GetCurrentEvent
+        private void UpdateNextPageToken()
         {
-            get
+            if (_lastCalloutEvents.NextPageToken != null)
             {
-                // Define parameters of request.
-                EventsResource.ListRequest request = _calendarReadService.Events.List("primary");
-                request.TimeMin = DateTime.Now;
-                request.ShowDeleted = false;
-                request.SingleEvents = true;
-                request.MaxResults = 1;
-                request.OrderBy = EventsResource.ListRequest.OrderByEnum.StartTime;
-
-                return request.Execute();
+                _nextPageToken = _lastCalloutEvents.NextPageToken;
             }
+        }
+        //It would be bonkers to ask for all events from Google!
+        //So we'll batch it until we find the current task!
+
+        private void RefreshLastCalloutEvents()
+        {
+            _nextPageToken = "";
+            MakeAPICallout();
+
+            // Define parameters of request.
+            //Only requesting vital information. 
+
+            while (!OneTaskWasReturned())
+            {
+                UpdateNextPageToken();
+                MakeAPICallout();
+            }
+
         }
 
 
-        private bool StartedYet(DateTime dateTime)
+        private bool OneTaskWasReturned()
         {
-            if (DateTime.Compare(DateTime.Now, dateTime) <= 0)
+            foreach(Event EventItem in _lastCalloutEvents.Items)
             {
-                return false;
+                if(EventItem.Start.DateTime != null) 
+                {
+                    //This condition is only met if the event has a start time, hence, can't be all day event!
+                    return true;
+                }
             }
-            else
-            {
-                return true;
-            }
+            return false;
         }
 
-        private bool FinishedYet(DateTime dateTime)
+        private bool StartedYet(DateTime? dateTime)
         {
-            if (DateTime.Compare(DateTime.Now, dateTime) < 0)
+            if (dateTime != null)
             {
-                return false;
+                if (DateTime.Compare(DateTime.Now, (DateTime)dateTime) <= 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
             }
-            else
+            return false;
+        }
+
+        private bool FinishedYet(DateTime? dateTime)
+        {
+            if (dateTime != null)
             {
-                return true;
+                if (DateTime.Compare(DateTime.Now, (DateTime)dateTime) < 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
             }
+            return false;
         }
     }
 }

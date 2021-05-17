@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleCalender", "GoogleCal
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoogleCalendarAPIs", "CalendarAPI\GoogleCalendarAPIs.csproj", "{405A46E5-B3D3-4C01-B556-823E5F8502A6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Handlers", "Handlers\Handlers.csproj", "{B411E479-CB5A-4CA4-A196-C7E8B6D8744B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LegacyHandlers", "Handlers\LegacyHandlers.csproj", "{B411E479-CB5A-4CA4-A196-C7E8B6D8744B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeMethods", "TimeMethods\TimeMethods.csproj", "{0735AA1E-5321-4E40-B4E0-CB91804FFB87}"
 EndProject
@@ -18,6 +18,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EDDEV101.HelperMethods.V2", "..\..\EDDEV101.HelperMethods.V2\EDDEV101.HelperMethods.V2\EDDEV101.HelperMethods.V2.csproj", "{F55CC427-816A-4884-B6C5-FF9A3E731248}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EDDEV101.HelperMethods", "..\..\EDDEV101.HelperMethods\EDDEV101.HelperMethods\EDDEV101.HelperMethods\EDDEV101.HelperMethods.csproj", "{6BA49E53-E287-47F9-81DF-BE29D06D85BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleMethod", "Console\ConsoleMethod.csproj", "{6184A2C8-CB02-4EBF-B0CA-86108792B698}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{6BA49E53-E287-47F9-81DF-BE29D06D85BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6BA49E53-E287-47F9-81DF-BE29D06D85BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6BA49E53-E287-47F9-81DF-BE29D06D85BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6184A2C8-CB02-4EBF-B0CA-86108792B698}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6184A2C8-CB02-4EBF-B0CA-86108792B698}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6184A2C8-CB02-4EBF-B0CA-86108792B698}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6184A2C8-CB02-4EBF-B0CA-86108792B698}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

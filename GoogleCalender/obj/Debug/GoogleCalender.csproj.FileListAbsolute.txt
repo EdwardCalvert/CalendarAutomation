@@ -74,7 +74,6 @@ C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalende
 C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\obj\Debug\GoogleCalender.csproj.GenerateResource.cache
 C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\obj\Debug\GoogleCalender.exe
 C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\obj\Debug\GoogleCalender.pdb
-C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\classroomCredentials.json
 C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\credentials.json
 C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\GoogleCalender.exe.config
 C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\GoogleCalender.exe.manifest
