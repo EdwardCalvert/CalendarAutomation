@@ -39,6 +39,7 @@ namespace GoogleCalendar
                 if (!_alreadyLaunched && validUri)
                 {
                     System.Diagnostics.Process.Start(_uri);
+                    _alreadyLaunched = true;
                     return ResultCode.URIStarted;
                 }
                 return ResultCode.Sucess;

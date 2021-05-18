@@ -10,10 +10,13 @@ namespace MonitorBrightnessDriver
 
 public class WeatherObject
 {
+#pragma warning disable IDE1006 // Naming Styles
     public Weather[] weather { get; set; }
+#pragma warning restore IDE1006 // Naming Styles
     public Source[] sources { get; set; }
 }
 
+#pragma warning disable IDE1006 // Naming Styles
 public class Weather
 {
     [JsonProperty(PropertyName = "timestamp")]

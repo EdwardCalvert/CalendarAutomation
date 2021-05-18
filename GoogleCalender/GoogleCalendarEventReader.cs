@@ -4,8 +4,10 @@ using Google.Apis.Calendar.v3.Data;
 using Google.Apis.Services;
 using Google.Apis.Util.Store;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Timers;
 
 namespace GoogleCalendar
@@ -15,28 +17,36 @@ namespace GoogleCalendar
     /// </summary>
     public class GoogleCalendarEventReader
     {
+        //*************** Google calendar API Stuff
         static string[] CalendarScope = { CalendarService.Scope.CalendarReadonly };
         static string CalendarAppName = "EDDEV101 Google Calendar API Service";
-
-        //Events events;
-        private Events _lastCalloutEvents;
-        private string _nextPageToken;
-        private int _pageSize;
-        private DateTime _lastRefreshTime;
-        private int _refreshTimeInMinutes;
-        const int MAXRECURSIONDEPTH = 3; //Prevents the Get request from getting out of hand. Will fail with more than 15 all day events!
-        private int _calloutsMade = 0;
-        private System.Timers.Timer _oauthRefreshTimer;
         private UserCredential _calendarReadCredential;
         private CalendarService _calendarReadService;
+        //*******************************************
 
+        //*********************Constants for Google calendar
+        private string _nextPageToken;
+        private int _pageSize;
+        const int MAXRECURSIONDEPTH = 3; //Prevents the Get request from getting out of hand. Will fail with more than 15 all day events!
+        private double _refreshTimeInMinutes;
+        //***************************************
+
+        //**Acutal variables
+        private Events _lastCalloutEvents;
+        private DateTime _lastRefreshTime;
+        private Event _currentEvent;
+        private List<URI> _uriList;
+        private readonly System.Timers.Timer _autoRefreshTimer;
+        private int _calloutsMade = 0;
+       // private System.Timers.Timer _oauthRefreshTimer;
+       //****************************************************
 
         public enum Result
         {
             Success,
         }
 
-        public GoogleCalendarEventReader(int pagesize, int refreshTime)
+        private GoogleCalendarEventReader(int pagesize, double refreshTime)
         {
             //Create new credeintial set.
             using (var stream =
@@ -56,10 +66,14 @@ namespace GoogleCalendar
             _pageSize = pagesize;
             _refreshTimeInMinutes = refreshTime;
 
-            _oauthRefreshTimer = new System.Timers.Timer(60 * 60 * 999); //one hour in milliseconds
+            //_autoRefreshTimer = new System.Timers.Timer(6000) { AutoReset = true };
+            //_autoRefreshTimer.Elapsed += RefreshTimerEllapsed;
+            //StartAutoRefresh();
 
-            _oauthRefreshTimer.Elapsed += new ElapsedEventHandler(RefreshOauthToken);
-            _oauthRefreshTimer.Start();
+            //_oauthRefreshTimer = new System.Timers.Timer(3596400); //one hour in milliseconds
+
+            // _oauthRefreshTimer.Elapsed += new ElapsedEventHandler(RefreshOauthToken);
+            // _oauthRefreshTimer.Start();
 
             _calendarReadService = new CalendarService(new BaseClientService.Initializer()
             {
@@ -68,7 +82,7 @@ namespace GoogleCalendar
             });
         }
 
-        public GoogleCalendarEventReader() : this(5,1)
+        public GoogleCalendarEventReader() : this(5,1.0)
         {
 
         }
@@ -80,20 +94,35 @@ namespace GoogleCalendar
         /// <param name="e"></param>
         private void RefreshOauthToken(object source, ElapsedEventArgs e)
         {
-            //THe refresh Token method returns true if it was sucessful. What to do if not. ???
             _calendarReadCredential.RefreshTokenAsync(CancellationToken.None);
         }
 
-        public Events GetCurrentEvents()
-        {
-            RefreshLastCalloutEvents();
-            return _lastCalloutEvents;
-        }
+        //public void StopAutoRefresh()
+        //{
+        //    _autoRefreshTimer.Stop();
+        //}
 
-        private  void MakeAPICallout()
+        //private void SyncTimer()
+        //{
+        //    _autoRefreshTimer.Interval = 60000 - (DateTime.Now.Second * 1000);
+
+        //}
+
+        //public void StartAutoRefresh()
+        //{
+        //    SyncTimer();
+        //    _autoRefreshTimer.Start();
+        //}
+
+        //private void RefreshTimerEllapsed(object sender, ElapsedEventArgs e)
+        //{
+        //    RefreshLastCalloutEvents();
+        //    SyncTimer();
+        //}
+        private void MakeAPICallout()
         {
-            
             // Define parameters of request.
+            //Only requesting vital information. 
             EventsResource.ListRequest request = _calendarReadService.Events.List("primary");
             request.TimeMin = DateTime.Now;
             request.TimeMax = DateTime.Today.AddHours(24);
@@ -105,6 +134,45 @@ namespace GoogleCalendar
             request.OrderBy = EventsResource.ListRequest.OrderByEnum.StartTime;
             _lastCalloutEvents = request.Execute();
             _calloutsMade++;
+            UpdateVariables();
+        }
+
+        private void UpdateVariables()
+        {
+            foreach (Event eventItem in _lastCalloutEvents.Items)
+            {
+                if (HasTheEventStarted(eventItem.Start.DateTime, eventItem.End.DateTime))
+                { 
+                   SetCurrentEvent(eventItem);
+                    break;
+                }
+            }
+
+            SetCurrentEvent(null);
+        }
+
+        private void ParseURIs()
+        {
+            _uriList=URIParser.ReadText( GetCurrentEventDescription());
+        }
+
+        public void InvokeURIs()
+        {
+            foreach(URI u in _uriList)
+            {
+                u.LaunchURI();
+            }
+        }
+
+        private void SetCurrentEvent(Event eventItem)
+        {
+            //_currentEvent != null && 
+            if (_currentEvent != eventItem)
+            {
+                _currentEvent = eventItem;
+                ParseURIs();
+            }
+
         }
 
         private void UpdateNextPageToken()
@@ -114,20 +182,21 @@ namespace GoogleCalendar
                 _nextPageToken = _lastCalloutEvents.NextPageToken;
             }
         }
+
+
         //It would be bonkers to ask for all events from Google!
         //So we'll batch it until we find the current task!
 
         private void RefreshLastCalloutEvents()
         {
-            if (TimeSinceLastRefresh() >  _refreshTimeInMinutes || _calloutsMade ==0)
+            if (DataNeedsRefreshing()| _calloutsMade ==0)
             {
                 _nextPageToken = "";
 
                 MakeAPICallout();
                 int requestDepth = 1;
 
-                // Define parameters of request.
-                //Only requesting vital information. 
+
 
                 while (!OneTaskWasReturned() && requestDepth < MAXRECURSIONDEPTH)
                 {
@@ -140,9 +209,19 @@ namespace GoogleCalendar
 
         }
 
-        public int TimeSinceLastRefresh()
+        private bool DataNeedsRefreshing()
         {
-            return (int)DateTime.Now.Subtract(_lastRefreshTime).TotalMinutes;
+            if (DateTime.Now.Subtract(_lastRefreshTime).TotalMinutes >= _refreshTimeInMinutes)
+                return true;
+            else if(_lastRefreshTime.Minute != DateTime.Now.Minute)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
         }
 
 
@@ -159,23 +238,27 @@ namespace GoogleCalendar
             return false;
         }
 
-        public Event GetCurrentEvent()
+
+        private Event GetCurrentEvent()
         {
             RefreshLastCalloutEvents();
-            foreach (Event eventItem in _lastCalloutEvents.Items)
-            {
-                if (CurrentEvent(eventItem.Start.DateTime,eventItem.End.DateTime)) 
-                {
-                    return eventItem;
-                }
-            }
-
-            return null;
+            return _currentEvent;
         }
 
+        public string GetCurrentEventDescription()
+        {
+            if (GetCurrentEvent() != null)
+                return _currentEvent.Description;
+            return "";
+        }
+        public string GetCurrentEventSummary()
+        {
+            if(GetCurrentEvent() != null) 
+                return _currentEvent.Summary;
+            return "";
+        }
 
-
-        private bool CurrentEvent(DateTime? startTime, DateTime? endTime)
+        private bool HasTheEventStarted(DateTime? startTime, DateTime? endTime)
         {
             if (startTime != null && endTime != null)
             {

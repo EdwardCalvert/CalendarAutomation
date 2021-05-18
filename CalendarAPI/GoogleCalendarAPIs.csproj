@@ -24,8 +24,4 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\EDDEV101.HelperMethods.V2\EDDEV101.HelperMethods.V2\EDDEV101.HelperMethods.V2.csproj" />
-  </ItemGroup>
-
 </Project>

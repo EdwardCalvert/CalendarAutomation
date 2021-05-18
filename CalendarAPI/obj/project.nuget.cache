@@ -1,18 +1,18 @@
 {
   "version": 2,
-  "dgSpecHash": "ndVhWqJ0hBSTAEE2+kmgK4NFeRd8LgVPH5mFJwqpoKHIgMPzRokVxt/3FUMaeEhmW3HYjgdCDZCUnjs73h5+bg==",
-  "success": false,
+  "dgSpecHash": "C6xwSbi7KrsMoLH2w/e0TX1rAX5V6TSXj+kxZTSg8DGwjYpByfMi/a0JOCVrPS/lO0oARQHx6hGL5zNRrpr8hg==",
+  "success": true,
   "projectFilePath": "C:\\Users\\ed\\OneDrive\\Documents\\repos\\CalenderCallout\\CalenderClock\\CalendarAPI\\GoogleCalendarAPIs.csproj",
-  "expectedPackageFiles": [],
-  "logs": [
-    {
-      "code": "NU1201",
-      "level": "Error",
-      "message": "Project EDDEV101.HelperMethods.V2 is not compatible with netstandard2.0 (.NETStandard,Version=v2.0). Project EDDEV101.HelperMethods.V2 supports: net5.0 (.NETCoreApp,Version=v5.0)",
-      "libraryId": "EDDEV101.HelperMethods.V2",
-      "targetGraphs": [
-        ".NETStandard,Version=v2.0"
-      ]
-    }
-  ]
+  "expectedPackageFiles": [
+    "C:\\Users\\ed\\.nuget\\packages\\google.apis\\1.51.0\\google.apis.1.51.0.nupkg.sha512",
+    "C:\\Users\\ed\\.nuget\\packages\\google.apis.auth\\1.51.0\\google.apis.auth.1.51.0.nupkg.sha512",
+    "C:\\Users\\ed\\.nuget\\packages\\google.apis.calendar.v3\\1.51.0.2312\\google.apis.calendar.v3.1.51.0.2312.nupkg.sha512",
+    "C:\\Users\\ed\\.nuget\\packages\\google.apis.classroom.v1\\1.51.0.2235\\google.apis.classroom.v1.1.51.0.2235.nupkg.sha512",
+    "C:\\Users\\ed\\.nuget\\packages\\google.apis.core\\1.51.0\\google.apis.core.1.51.0.nupkg.sha512",
+    "C:\\Users\\ed\\.nuget\\packages\\htmlagilitypack\\1.11.33\\htmlagilitypack.1.11.33.nupkg.sha512",
+    "C:\\Users\\ed\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\ed\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\ed\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
+  "logs": []
 }
