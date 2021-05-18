@@ -16,6 +16,7 @@ namespace GoogleCalendar
         public bool MonitorBrightnessControl;
         public DateTime StartWorkHour;
         public DateTime FinishtWorkHour;
+        public int PullForwardTime;
 
 
     }

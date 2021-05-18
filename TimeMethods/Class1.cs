@@ -37,5 +37,10 @@ namespace TimeMethods
                 return time;
             }
         }
+
+        public static int GetMinutesLeftInDay()
+        {
+            return (int)DateTime.Today.AddHours(24).Subtract(DateTime.Now).TotalMinutes;
+        }
     }
 }

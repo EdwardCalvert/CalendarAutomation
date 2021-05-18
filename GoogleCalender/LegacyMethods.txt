@@ -1,4 +1,16 @@
-﻿ //private void MarkTabAsOpen(string url)
+﻿ //Oauth
+ // private System.Timers.Timer _oauthRefreshTimer;
+ //_oauthRefreshTimer = new System.Timers.Timer(3596400); //one hour in milliseconds
+
+            // _oauthRefreshTimer.Elapsed += new ElapsedEventHandler(RefreshOauthToken);
+            // _oauthRefreshTimer.Start();
+
+ private void RefreshOauthToken(object source, ElapsedEventArgs e)
+        {
+            _calendarReadCredential.RefreshTokenAsync(CancellationToken.None);
+        }
+ 
+ //private void MarkTabAsOpen(string url)
         //{
         //    if (DateTime.Now.Day == day)
         //    {

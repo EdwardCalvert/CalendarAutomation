@@ -138,14 +138,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GoogleCalender.exe" size="190976">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GoogleCalender.exe" size="199168">
       <assemblyIdentity name="GoogleCalender" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>ZpVtiFRdygOTPXLblV5TpGy7si7ffVshSyvHFNvZs68=</dsig:DigestValue>
+        <dsig:DigestValue>mJWaOgyyMkF5mQtbl21L9JpKkw6gPqsNEkBZYuM4Xus=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -203,13 +203,22 @@
       <dsig:DigestValue>ntiGQNDJjxDt0fo4cCG0gHifpyE9AzZZPpwvBwGdBvI=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="LegacyMethods.txt" size="8901">
+  <file name="Input.wav" size="207438">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>P5zHAWoxwZ+n0RfVb09yu+UrrG8TcBkpw6ujf0twlRw=</dsig:DigestValue>
+      <dsig:DigestValue>oNH1IjU2GCNIyHWSMUEzFiAyetYpCVuIJ6bHytmaHRE=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="LegacyMethods.txt" size="9361">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>OeMvJQ4/nQQzTLdLSDOu+kxxSgpCP6ClibQdKlXJE3M=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

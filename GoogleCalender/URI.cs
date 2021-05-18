@@ -2,7 +2,7 @@
 
 namespace GoogleCalendar
 {
-    public class URI
+    public class URI : IEquatable<URI>
     {
         private string _uri;
         public bool validUri { get
@@ -63,6 +63,24 @@ namespace GoogleCalendar
             _uri = uri;
         }
 
+        public string GetUri()
+        {
+            return _uri;
+        }
 
+        public bool Equals(URI uri)
+        {
+            if (this._uri == uri._uri)
+                return true;
+
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return  _uri == null ? 0 :23* _uri.GetHashCode();
+
+            
+        }
     }
 }

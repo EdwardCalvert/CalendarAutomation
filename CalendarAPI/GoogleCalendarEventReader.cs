@@ -13,7 +13,7 @@ namespace GoogleCalendarAPIs
     /// <summary>
     /// A Class which encapsulates all the Google Calendar methods. Self updating. Use data from this class to keep everything up-to date. 
     /// </summary>
-    public class GoogleCalendarEventReader
+    public class BJGDJDFJKFJDKFJDKLFJ
     {
         static string[] CalendarScope = { CalendarService.Scope.CalendarReadonly };
         static string CalendarAppName = "EDDEV101 Google Calendar API Service";
@@ -36,7 +36,7 @@ namespace GoogleCalendarAPIs
             Success,
         }
 
-        public GoogleCalendarEventReader(int pagesize, int refreshTime)
+        public BJGDJDFJKFJDKFJDKLFJ(int pagesize, int refreshTime)
         {
             //Create new credeintial set.
             using (var stream =
@@ -68,7 +68,7 @@ namespace GoogleCalendarAPIs
             });
         }
 
-        public GoogleCalendarEventReader() : this(5,1)
+        public BJGDJDFJKFJDKFJDKLFJ() : this(5,1)
         {
 
         }
