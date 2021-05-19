@@ -112,3 +112,4 @@ C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalende
 C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\obj\Debug\GoogleCalendarWPF.Form1.resources
 C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\credentials.json
 C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Input.wav
+C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Open.wav

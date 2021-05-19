@@ -1,12 +1,13 @@
-﻿using GoogleCalendar;
+﻿using Google.Apis.Calendar.v3.Data;
+using GoogleCalendar;
+using GoogleCalender;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
+using System.Media;
 using System.Windows.Forms;
 using WinAPIBrightnessControl;
-using Google.Apis.Calendar.v3.Data;
-using System.Collections.Generic;
-using GoogleCalender;
-using System.Media;
 
 namespace GoogleCalendarWPF
 {
@@ -18,23 +19,29 @@ namespace GoogleCalendarWPF
         private MemoryManager<URI> memoryManager = new MemoryManager<URI>();
         private GoogleCalendarEventUpdater eventUpdater = new GoogleCalendarEventUpdater();
         private Event @event;
-        SoundPlayer simpleSound = new SoundPlayer(Environment.CurrentDirectory + @"\Input.wav");
+        private SoundPlayer simpleSound = new SoundPlayer(Environment.CurrentDirectory + @"\Input.wav");
+        private GoogleCalendar.Settings _settings;
+        
+        private const string SETTINGSNAME = "settings.json";
 
         public Form1()
         {
             InitializeComponent();
             SetWindowStartLocation();
             CalibrateClockTimer();
-            
+
             clockTimer.Tick += new EventHandler(this.ClockTimerCallback);
             clockTimer.Start();
 
-
-            
-
             _eventReader = new GoogleCalendarEventLister();
             UpdateUI();
+            _settings = new GoogleCalendar.Settings(SETTINGSNAME, Environment.CurrentDirectory + @"\");
+            _settings.ReadSettings();
+            
         }
+
+      
+        
 
         private void SetWindowStartLocation()
         {
@@ -100,7 +107,6 @@ namespace GoogleCalendarWPF
                 return time;
             }
         }
-            
 
         private void UpdateUI()
         {
@@ -108,11 +114,10 @@ namespace GoogleCalendarWPF
             CalibrateClockTimer();
             try
             {
-                 @event = _eventReader.ReturnSingleTask();
+                @event = _eventReader.ReturnSingleTask();
                 UpdateEventText(GoogleCalendarExtensionMethods.GetCurrentEventSummary(@event), 'o');
-                if (@event!= null && @event.Description != null)
+                if (@event != null && @event.Description != null && _settings._settingsStruct.LaunchURLs)
                 {
-                    
                     List<URI> uris = GoogleCalendarExtensionMethods.GetCurrentEventURIs(@event);
                     if (uris != null && uris.Count > 0)
                     {
@@ -123,16 +128,14 @@ namespace GoogleCalendarWPF
                                 memoryManager.MarkTabAsOpen(uRI, @event.Id);
                                 uRI.LaunchURI();
                                 simpleSound.Play();
-
                             }
                         }
-
                     }
                 }
             }
             catch (Exception exception)
             {
-                UpdateEventText( "Error occurred:" + exception ,'o');
+                UpdateEventText("Error occurred:" + exception, 'o');
                 CalibrateClockTimer();
             }
             //Sort GOOGLE STUFF HERE
@@ -164,7 +167,6 @@ namespace GoogleCalendarWPF
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -172,9 +174,10 @@ namespace GoogleCalendarWPF
             Event nextTask = _eventReader.ReturnNextTask();
             if (nextTask != null)
             {
-                if (nextTask.Start.DateTime != null) {
+                if (nextTask.Start.DateTime != null)
+                {
                     DateTime timeOfNextTask = nextTask.Start.DateTime.Value;
-                    int minutesToMoveForward = (int)timeOfNextTask.Subtract( DateTime.Now).TotalMinutes;
+                    int minutesToMoveForward = (int)timeOfNextTask.Subtract(DateTime.Now).TotalMinutes;
 
                     //Challenge is with static objects- need to work out what to do if there is
                     //a static object where this will be moved!.
@@ -188,11 +191,9 @@ namespace GoogleCalendarWPF
             else
             {
                 //eventUpdater.UpdateEvents(_eventReader.ReturnAllDaysTasks(
-                    //DateTime.Today.AddHours(24)), -10, "[static]","primary");
+                //DateTime.Today.AddHours(24)), -10, "[static]","primary");
                 UpdateEventText("Pulled forward for you.", 'o');
             }
-            
-            
         }
     }
 }

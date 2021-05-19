@@ -98,7 +98,7 @@ namespace GoogleCalendarWPF
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(777, 590);
+            this.ClientSize = new System.Drawing.Size(179, 49);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.refreshButton);
             this.Controls.Add(this.debugMode);

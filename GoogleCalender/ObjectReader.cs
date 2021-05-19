@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace GoogleCalendar
 {
-    public class ObjectReader<T> 
+    public class ObjectReader<T> :IDisposable
     {
         public enum result
         {
@@ -16,7 +16,9 @@ namespace GoogleCalendar
             FileNotFoundException,
             ArgumentException,
             IOException,
-            SecurityException,
+            SecurityException, 
+            JsonSerializationException,
+            Exception,
         }
         private string _filePath;
 
@@ -53,7 +55,18 @@ namespace GoogleCalendar
             {
                 return result.IOException;
             }
+            catch (JsonSerializationException)
+            {
+                return result.JsonSerializationException;
+            }
+            catch(Exception)
+            {
+                return result.Exception;
+            }
         }
-        
+
+        public void Dispose()
+        {
+        }
     }
 }

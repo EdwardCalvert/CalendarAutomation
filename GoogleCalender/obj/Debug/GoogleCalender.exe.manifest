@@ -145,7 +145,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>mJWaOgyyMkF5mQtbl21L9JpKkw6gPqsNEkBZYuM4Xus=</dsig:DigestValue>
+        <dsig:DigestValue>3gu/pPsvQpYk4oKZ9SlOG/gBO3W3lm/jLxoPlm70FLw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -219,6 +219,15 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
       <dsig:DigestValue>OeMvJQ4/nQQzTLdLSDOu+kxxSgpCP6ClibQdKlXJE3M=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Open.wav" size="11056">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>kUuqsbbIPFlAmEd/AuYZ82RnuATldhRMwu9SxioYwFo=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>
