@@ -4,8 +4,6 @@ using GoogleCalender;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.IO;
-using System.Media;
 using System.Windows.Forms;
 using WinAPIBrightnessControl;
 
@@ -19,13 +17,16 @@ namespace GoogleCalendarWPF
         private MemoryManager<URI> memoryManager = new MemoryManager<URI>();
         private GoogleCalendarEventUpdater eventUpdater = new GoogleCalendarEventUpdater();
         private Event @event;
-        private SoundPlayer simpleSound = new SoundPlayer(Environment.CurrentDirectory + @"\Input.wav");
-        private GoogleCalendar.Settings _settings;
-        
+        private GoogleCalendar.Settings<SettingsStruct> _settings;
+        GoogleCalendar.Settings<IntellisenseSettings> intellisenseSettings;
+
+
         private const string SETTINGSNAME = "settings.json";
 
         public Form1()
         {
+            _settings = new GoogleCalendar.Settings<SettingsStruct>(SETTINGSNAME, Environment.CurrentDirectory + @"\");
+            intellisenseSettings = new GoogleCalendar.Settings<IntellisenseSettings>("Intellisense.json", Environment.CurrentDirectory + @"\");
             InitializeComponent();
             SetWindowStartLocation();
             CalibrateClockTimer();
@@ -35,13 +36,13 @@ namespace GoogleCalendarWPF
 
             _eventReader = new GoogleCalendarEventLister();
             UpdateUI();
-            _settings = new GoogleCalendar.Settings(SETTINGSNAME, Environment.CurrentDirectory + @"\");
-            _settings.ReadSettings();
-            
+            Notification.PlaySound(_settings.settings.ProgramStartSound);
+            //Notification.BootNoise();
+
         }
 
-      
-        
+
+
 
         private void SetWindowStartLocation()
         {
@@ -116,8 +117,19 @@ namespace GoogleCalendarWPF
             {
                 @event = _eventReader.ReturnSingleTask();
                 UpdateEventText(GoogleCalendarExtensionMethods.GetCurrentEventSummary(@event), 'o');
-                if (@event != null && @event.Description != null && _settings._settingsStruct.LaunchURLs)
+                if (@event != null && @event.Summary != null && _settings.settings.LaunchURLs)
                 {
+                    if (_settings.settings.IntellisenseForEvents)
+                    {
+                        foreach (KeyValuePair<string,string> s in intellisenseSettings.settings.Values)
+                        {
+                            if (@event.Summary.Contains(s.Key))
+                            {
+                                @event.Description += s.Value;
+                            }
+                        }
+
+                    }
                     List<URI> uris = GoogleCalendarExtensionMethods.GetCurrentEventURIs(@event);
                     if (uris != null && uris.Count > 0)
                     {
@@ -127,7 +139,7 @@ namespace GoogleCalendarWPF
                             {
                                 memoryManager.MarkTabAsOpen(uRI, @event.Id);
                                 uRI.LaunchURI();
-                                simpleSound.Play();
+                                Notification.InputSound();
                             }
                         }
                     }

@@ -111,5 +111,33 @@ C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalende
 C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Topshelf.xml
 C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\obj\Debug\GoogleCalendarWPF.Form1.resources
 C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\credentials.json
-C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Input.wav
-C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Open.wav
+C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Sounds\Error.wav
+C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Sounds\Exclamation.wav
+C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Sounds\Exit Windows.wav
+C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Sounds\Input.wav
+C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Sounds\Open.wav
+C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Sounds\Program Error.wav
+C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Sounds\Airdrop.wav
+C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Sounds\Boop.wav
+C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Sounds\Breeze.wav
+C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Sounds\Bubble.wav
+C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Sounds\Charging.wav
+C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Sounds\Crystal.wav
+C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Sounds\Empty Trash.wav
+C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Sounds\Funky.wav
+C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Sounds\Heroine.wav
+C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Sounds\Jump.wav
+C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Sounds\Mezzo.wav
+C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Sounds\Moving File.wav
+C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Sounds\Pebble.wav
+C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Sounds\Pluck.wav
+C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Sounds\Pong.wav
+C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Sounds\Remove from Dock.wav
+C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Sounds\Siri Answering.wav
+C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Sounds\Siri Cancel.wav
+C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Sounds\Siri Start.wav
+C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Sounds\Sonar.wav
+C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Sounds\Sosumi.wav
+C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Sounds\Startup Chime.wav
+C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Sounds\Submerge.wav
+C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Sounds\Trash.wav

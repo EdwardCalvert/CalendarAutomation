@@ -228,7 +228,8 @@
 
         /// <param name="item"></param>
         /// <param name="mode"> Use 'a' for append or 'o' for override </param>
-        public void UpdateEventText(string text, char mode)
+        public void 
+        (string text, char mode)
         {
             if (mode == 'a')
             {

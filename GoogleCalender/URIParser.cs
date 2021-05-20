@@ -19,7 +19,8 @@ namespace GoogleCalendar
         {
             List <URI> uRIs= new List<URI>();
             //https://regexr.com/2vtcc
-            Regex urlRx = new Regex(@"(http|ftp|https)://([\w+?\.\w+])+([a-zA-Z0-9\~\!\@\#\$\%\^\&\*\(\)_\-\=\+\\\/\?\.\:\;\'\,]*)", RegexOptions.IgnoreCase);
+            //https://regexr.com/5tbqr
+            Regex urlRx = new Regex(@"(file:///|(http|ftp|https)://)([\w+?\.\w+])+([a-zA-Z0-9\~\!\@\#\$\%\^\&\*\(\)_\-\=\+\\\/\?\.\:\;\'\,]*)?", RegexOptions.IgnoreCase);
             MatchCollection UrlMatches = urlRx.Matches(text);
 
             //What about blank matches & the same matches??

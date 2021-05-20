@@ -12,14 +12,14 @@ namespace GoogleCalender
     {
         public static string GetCurrentEventDescription(Event e)
         {
-            if (e != null)
+            if (e != null && e.Description !=null)
                 return e.Description;
             return "";
         }
 
         public static string GetCurrentEventSummary(Event e)
         {
-            if (e != null)
+            if (e != null && e.Summary != null)
                 return e.Summary;
             return "";
         }

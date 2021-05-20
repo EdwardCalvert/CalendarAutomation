@@ -36,7 +36,7 @@ namespace GoogleCalendar
             try
             {
 
-                if (!_alreadyLaunched && validUri)
+                if (!_alreadyLaunched )
                 {
                     System.Diagnostics.Process.Start(_uri);
                     _alreadyLaunched = true;

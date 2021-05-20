@@ -1,34 +1,82 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
-using GoogleCalender;
+﻿using GoogleCalender;
 using Newtonsoft.Json;
-using System.Media;
+using System;
+using System.Collections.Generic;
+using System.IO;
 
 namespace GoogleCalendar
 {
+    public interface ISettings
+    {
+        void SetDefaultSettings();
 
-    public struct SettingsStruct
+    }
+
+    public class  SettingsStruct : ISettings
     {
         public bool DebugMode;
         public bool Notifications;
+        public string ProgramStartSound;
+        public string LaunchURLNotification;
         public bool LaunchURLs;
         public bool GoogleCalendarSync;
         public bool LaunchStartedURLsAfterReboot;
         public bool MonitorBrightnessControl;
         public Time StartWorkTime;
         public Time FinishWorkTime;
+        public bool IntellisenseForEvents;
+
+        public  void SetDefaultSettings()
+        {
+            DebugMode = false;
+            StartWorkTime = new Time(9, 0);
+            FinishWorkTime = new Time(17, 0);
+            LaunchStartedURLsAfterReboot = true;
+            LaunchURLs = true;
+            GoogleCalendarSync = true;
+            Notifications = true;
+            ProgramStartSound = "Exit Windows.wav";
+            LaunchURLNotification = "Input.wav";
+            IntellisenseForEvents = true;
+        }
     }
-    public class Settings
+
+    public class KeyPairSetting
     {
-        public SettingsStruct _settingsStruct;
-        private FileSystemWatcher _fileSystemWatcher;
-        private string _settingsName;
-        private string _filePath;
-        private SoundPlayer simpleSound = new SoundPlayer(Environment.CurrentDirectory + @"\Open.wav");
+        public string Key;
+        public string Value;
+        
+        public KeyPairSetting(string key, string value)
+        {
+            Key = key;
+            Value = value;
+        }
+    }
+
+    public class IntellisenseSettings : ISettings
+    {
+        public Dictionary<string,string> Values;
+
+        public void SetDefaultSettings()
+        {
+            if (Values != null)
+            {
+                Values.Clear();
+            }
+            else
+            {
+                Values = new Dictionary<string, string>();
+            }
+            Values.Add("CalendarAutomation", @"https://trello.com/b/LouzIk2O/homework-automation-calendar-clock-v2");
+        }
+    }
+    public class Settings< T> where T:ISettings
+    {
+        public  T settings;
+        protected  FileSystemWatcher _fileSystemWatcher;
+        protected string _settingsName;
+        protected string _filePath;
+
 
 
         public Settings(string settingsName, string filePath)
@@ -42,9 +90,10 @@ namespace GoogleCalendar
             else
                 throw new FileLoadException($"The given parameter, filePath {filePath} isn't considered a valid path.");
             InstantiateFileWatcher();
+            ReadSettings();
         }
 
-        private bool IsValidPath(string path, bool allowRelativePaths = false)
+        protected virtual bool IsValidPath(string path, bool allowRelativePaths = false)
         {
             bool isValid = true;
 
@@ -70,10 +119,13 @@ namespace GoogleCalendar
             return isValid;
         }
 
-        public void ReadSettings()
+        protected virtual bool SetToNullInstance()
         {
-            //try
-            //{
+            return settings == null;
+        }
+
+        protected virtual void ReadSettings()
+        {
             if (File.Exists(GetFullFilePath()))
             {
 
@@ -84,64 +136,66 @@ namespace GoogleCalendar
                         using (JsonTextReader JsonReader = new JsonTextReader(stream))
                         {
                             var serializer = new JsonSerializer();
-                            _settingsStruct = serializer.Deserialize<SettingsStruct>(JsonReader);
+                            settings = serializer.Deserialize<T>(JsonReader);
                         }
 
                     }
+                    if(settings == null)
+                    {
+                        RestoreCorruptFile();
+                    }
+                    else
+                    {
+                        Notification.OpenSound();
+                    }
                 }
                 catch
-                { 
+                {
                     //Corrupt File
-                    SetDefaultSettings();
-                    WriteSettings();
+                    RestoreCorruptFile();
+
                 }
 
             }
             else
             {
-                SetDefaultSettings();
-                WriteSettings();
-                
+                RestoreCorruptFile();
+
             }
+            
 
         }
-        //    catch
-        //    {
-        //        
-        //    }
-        //}
 
-        public void WriteSettings()
+        private void RestoreCorruptFile()
         {
+            settings = Activator.CreateInstance<T>();
+            settings.SetDefaultSettings();
+            WriteSettings();
+            Notification.ProgramErrorSound();
+        }
+
+        public virtual void WriteSettings()
+        {
+
             using (StreamWriter stream = new StreamWriter(GetFullFilePath()))
             {
                 using (JsonTextWriter JsonWriter = new JsonTextWriter(stream))
                 {
                     var serializer = new JsonSerializer();
-                    serializer.Serialize(JsonWriter, _settingsStruct);
+                    serializer.Serialize(JsonWriter, settings);
                 }
 
             }
         }
 
-        private string GetFullFilePath()
+        protected virtual string GetFullFilePath()
         {
             return _filePath + @"\" + _settingsName;
         }
 
-        private void SetDefaultSettings()
-        {
-            _settingsStruct = new SettingsStruct();
-            _settingsStruct.DebugMode = false;
-            _settingsStruct.StartWorkTime = new Time(9, 0);
-            _settingsStruct.FinishWorkTime = new Time(17, 0);
-            _settingsStruct.LaunchStartedURLsAfterReboot = true;
-            _settingsStruct.LaunchURLs = true;
-            _settingsStruct.GoogleCalendarSync = true;
-            _settingsStruct.Notifications = true;
-        }
+       
 
-        private void InstantiateFileWatcher()
+        protected virtual void InstantiateFileWatcher()
         {
             _fileSystemWatcher = new FileSystemWatcher(_filePath);
             _fileSystemWatcher.NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite | NotifyFilters.FileName | NotifyFilters.DirectoryName;
@@ -153,21 +207,23 @@ namespace GoogleCalendar
             _fileSystemWatcher.EnableRaisingEvents = true;
         }
 
-        private void OnChanged(object sender, FileSystemEventArgs e)
+        protected virtual void OnChanged(object sender, FileSystemEventArgs e)
         {
-            simpleSound.Play();
+
             try
             {
                 ReadSettings();
+                //Notification.OpenSound();
             }
             catch (Exception)
             {
-                SetDefaultSettings();
+                settings.SetDefaultSettings();
+                Notification.ProgramErrorSound();
             }
         }
 
 
     }
 
-   
+
 }
