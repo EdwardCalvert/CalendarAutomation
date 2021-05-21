@@ -138,14 +138,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GoogleCalender.exe" size="206336">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GoogleCalender.exe" size="207360">
       <assemblyIdentity name="GoogleCalender" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>r2OQDbhQZyFbKSMp5dxSHh8Dm8gXSVlFA0L4iNdBRdI=</dsig:DigestValue>
+        <dsig:DigestValue>fuivgwT80AvRE8GqkKpn64UbdJkr3jTizb0MGZM1aGs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -191,7 +191,7 @@
       <dsig:DigestValue>ntiGQNDJjxDt0fo4cCG0gHifpyE9AzZZPpwvBwGdBvI=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="LegacyMethods.txt" size="9508">
+  <file name="LegacyItems\LegacyMethods.txt" size="9508">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />

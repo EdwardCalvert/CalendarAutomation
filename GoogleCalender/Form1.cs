@@ -192,22 +192,9 @@ namespace GoogleCalendarWPF
                     DateTime timeOfNextTask = nextTask.Start.DateTime.Value;
                     int minutesToMoveForward = -(int)timeOfNextTask.Subtract(DateTime.Now).TotalMinutes;
 
-                    //Challenge is with static objects- need to work out what to do if there is
-                    //a static object where this will be moved!.
-
                     List<Event> events = _eventReader.ReturnAllDaysTasks(DateTime.Today.AddHours(24));
-                    //var (staticEvents, moveableEvents) = GCExtensionMethods.returnStaticEvents(events, "[static]");
 
-                    ////Set new start & End times on the events.
-                    
-                    //if (staticEvents != null && staticEvents.Count > 0)
-                    //{
-                    //    //List<Event> newEventTimes = GCExtensionMethods.UpdateEventsForward(moveableEvents, minutesToMoveForward, staticEvents);
-                    //}
-                    //else
-                    //{
                         List<Event> newEventTimes = GCExtensionMethods.UpdateEventsForward(events, minutesToMoveForward, "[static]");
-                    //}
 
                     eventUpdater.UpdateEvents(newEventTimes);
                     UpdateEventText("Pulled forward for you. " + minutesToMoveForward, 'o');
@@ -223,7 +210,28 @@ namespace GoogleCalendarWPF
 
         private void button2_Click(object sender, EventArgs e)
         {
+            Event nextTask = _eventReader.ReturnNextTask("[static]");
+            if (nextTask != null)
+            {
+                if (nextTask.Start.DateTime != null)
+                {
+                    DateTime timeOfNextTask = nextTask.Start.DateTime.Value;
+                    int minutesToMoveForward = 10;
 
+                    List<Event> events = _eventReader.ReturnAllDaysTasks(DateTime.Today.AddHours(24));
+
+                    List<Event> newEventTimes = GCExtensionMethods.UpdateEventsForward(events, minutesToMoveForward, "[static]");
+
+                    eventUpdater.UpdateEvents(newEventTimes);
+                    UpdateEventText("Pulled forward for you. " + minutesToMoveForward, 'o');
+                }
+            }
+            else
+            {
+                //eventUpdater.UpdateEvents(_eventReader.ReturnAllDaysTasks(
+                //DateTime.Today.AddHours(24)), -10, "[static]","primary");
+                UpdateEventText("Pulled forward for you.", 'o');
+            }
         }
     }
 }

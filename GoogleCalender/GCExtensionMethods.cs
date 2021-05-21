@@ -194,44 +194,51 @@ namespace GoogleCalender
         }
         public static List<Event> UpdateEventsForward(List<Event> allEvents, int offset, string keyword)
         {
-            int appliedOffset = offset;
             //SO new tactic, when updating events chronoglogically, check if there is sufficent time when event is being moved. If there isn't Then leave it there?
             for (int i = 0; i < allEvents.Count; i++)
             {
                 Event e = allEvents[i];
-
                 //If description is null, assumed non static. 
                 if (e != null && e.Start.DateTime != null && IsTask(e, keyword))//Non-static Event.
                 {
-                    if (StartedYet(e.Start.DateTime.Value))
+                    if ( offset <0 && StartedYet(e.Start.DateTime.Value  )) // Fires if the current event has started.
                         e.End.DateTime = DateTime.Now;
+                    else if (offset > 0 && StartedYet(e.Start.DateTime.Value))
+                        e.End.DateTime = e.End.DateTime.Value.AddMinutes(offset);
                     else
                     {
-                        int eventLength = (int)EventLength(e);
                         if (i == 0) //Assume it will fit?
                         {
                             e.Start.DateTime = e.Start.DateTime.Value.AddMinutes(offset);
                             e.End.DateTime = e.End.DateTime.Value.AddMinutes(offset);
                         }
-                        if (i > 0 && GapBetween(allEvents[i - 1], e) > eventLength)//Space to put event.
-                        {
-                            e.Start.DateTime = e.Start.DateTime.Value.AddMinutes(offset);
-                            e.End.DateTime = e.End.DateTime.Value.AddMinutes(offset);
-                        }
-                        else //Gap between event is not long enough. hm...
+                        if (offset < 0) //Indicates a move forward - shortening time.
                         {
 
+                            if (i > 0 && GapBetween(allEvents[i - 1], e) > EventLength(e))//Space to put event.
+                            {
+                                e.Start.DateTime = e.Start.DateTime.Value.AddMinutes(offset);
+                                e.End.DateTime = e.End.DateTime.Value.AddMinutes(offset);
+                            }
+                            else //Gap between event is not long enough. hm...
+                            {
+                                //Debug.Write("Hete");
+                            }
                         }
+                        else
+                        {
 
-
-
-
-                        //Get the static event, which has a start or end time in between the new times. 
-                        //If one exists, do new time. 
-
-                        //The rule is simple: foreach loop => times before are unable to change! (I count them as done!)
-                        //So you may only append afterward.
-                        //DO NOT SHORTEN EVENT LENGTHS!
+                            if(i == allEvents.Count)//Assume it will fit - unable to check?
+                            {
+                                e.Start.DateTime = e.Start.DateTime.Value.AddMinutes(offset);
+                                e.End.DateTime = e.End.DateTime.Value.AddMinutes(offset);
+                            }
+                            if (i > 0 && allEvents[i+1].Start.DateTime.Value.Subtract(allEvents[i-1].End.DateTime.Value).TotalMinutes > EventLength(e))//Not Firing.
+                            {
+                                e.Start.DateTime = e.Start.DateTime.Value.AddMinutes(offset);
+                                e.End.DateTime = e.End.DateTime.Value.AddMinutes(offset);
+                            }
+                        }
                     }
                 }
             }
@@ -240,7 +247,7 @@ namespace GoogleCalender
 
         public static bool IsTask(Event e, string keyword)
         {
-            return e.Description == null ||(e.Description !=null &&!e.Description.Contains(keyword));
+            return e.Description == null || (e.Description != null && !e.Description.Contains(keyword));
         }
 
         public static double EventLength(Event e)

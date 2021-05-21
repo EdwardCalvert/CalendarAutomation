@@ -204,7 +204,7 @@
     <Content Include="Sounds\Input.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="LegacyMethods.txt" />
+    <Content Include="LegacyItems\LegacyMethods.txt" />
     <Content Include="Sounds\Jump.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
