@@ -111,6 +111,11 @@
 
         //}
 
+        /public static bool InOrder(List<Event> events)
+        //{
+        //    var sorted = events.OrderBy(s => s.Start.DateTime);
+        //}
+
         //private bool StartedYet(DateTime dateTime)
         //{
         //    if (DateTime.Compare(DateTime.Now, dateTime) <= 0)

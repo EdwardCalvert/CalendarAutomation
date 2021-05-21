@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LegacyMonitorBrightnessDriv
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinAPIBrightnessControl", "DellBrighntessControl\WinAPIBrightnessControl.csproj", "{104FA3FE-506F-4E8E-AF57-02357394C708}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenWeatherAPI", "OpenWeatherAPI\OpenWeatherAPI.csproj", "{D2FD5AD8-E84D-4CA0-903E-6D88DBCD971E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{104FA3FE-506F-4E8E-AF57-02357394C708}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{104FA3FE-506F-4E8E-AF57-02357394C708}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{104FA3FE-506F-4E8E-AF57-02357394C708}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2FD5AD8-E84D-4CA0-903E-6D88DBCD971E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2FD5AD8-E84D-4CA0-903E-6D88DBCD971E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2FD5AD8-E84D-4CA0-903E-6D88DBCD971E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2FD5AD8-E84D-4CA0-903E-6D88DBCD971E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

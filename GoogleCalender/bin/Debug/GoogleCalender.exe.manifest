@@ -138,26 +138,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GoogleCalender.exe" size="201216">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GoogleCalender.exe" size="206336">
       <assemblyIdentity name="GoogleCalender" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>J7iYN1QgK7NdYiiJnDRBRFtpDy5XlFiZII4dlYoml/Q=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HtmlAgilityPack.dll" size="166912">
-      <assemblyIdentity name="HtmlAgilityPack" version="1.11.33.0" publicKeyToken="BD319B19EAF3B43A" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>X6+VaHslNOuyYc3r5thOk+4W7lBxpfZtqDGgKYAvdFw=</dsig:DigestValue>
+        <dsig:DigestValue>r2OQDbhQZyFbKSMp5dxSHh8Dm8gXSVlFA0L4iNdBRdI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -203,13 +191,13 @@
       <dsig:DigestValue>ntiGQNDJjxDt0fo4cCG0gHifpyE9AzZZPpwvBwGdBvI=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="LegacyMethods.txt" size="9356">
+  <file name="LegacyMethods.txt" size="9508">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>AQPw6LBYHpQ4h4ZXJSTf/jvuH6x9SaKw+UFohrIdG4M=</dsig:DigestValue>
+      <dsig:DigestValue>ZzRAGYW88kwTkJWUs1AgI2l96coNe5paWdKsqgIYtH4=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Sounds\Airdrop.wav" size="96618">

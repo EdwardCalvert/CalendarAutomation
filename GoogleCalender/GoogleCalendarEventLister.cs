@@ -8,6 +8,7 @@ using System.IO;
 using System.Threading;
 using System.Timers;
 using System.Collections.Generic;
+using GoogleCalender;
 
 namespace GoogleCalendar
 {
@@ -162,19 +163,38 @@ namespace GoogleCalendar
             return null;
         }
 
+        private static Event ReturnNextEvent(Events events, string keyword)
+        {
+            foreach(Event e in events.Items)
+            {
+                if(e.Start.DateTime.HasValue && e.Start.DateTime.Value.CompareTo(DateTime.Now) >= 0)
+                {
+                    if(e.Description == null)
+                    {
+                        return e;
+                    }
+                    else if (!e.Description.Contains(keyword))
+                    {
+                        return e;
+                    }
+                }
+            }
+            return null;
+        }
 
-        public Event ReturnNextTask()
+
+        public Event ReturnNextTask(string keyword)
         {
             Events events = RequestNMoreEvents("", 15);//Limiting to a search of 15 events. Otherwise could get crazy.
             if (HowManyTasks(events) >= 2)
             {
-                return ReturnNextEvent(events);
+                return ReturnNextEvent(events, keyword);
             }
             //Intentionally returning null to indicate that ther is no second task. 
             return null;
         }
 
-        public Events ReturnAllDaysTasks(DateTime endOfWorkingDay)
+        public List<Event> ReturnAllDaysTasks(DateTime endOfWorkingDay)
         {
             EventsResource.ListRequest request = _calendarReadService.Events.List("primary");
             request.TimeMin = DateTime.Now;
@@ -183,7 +203,8 @@ namespace GoogleCalendar
             request.SingleEvents = true;
             request.MaxResults = GetMinutesUntil(endOfWorkingDay)/5 ;
             request.OrderBy = EventsResource.ListRequest.OrderByEnum.StartTime;
-            return request.Execute();
+            Events events = request.Execute();
+             return GCExtensionMethods.OnlyShortEventsToList(events);
         }
 
         private int GetMinutesUntil(DateTime time)

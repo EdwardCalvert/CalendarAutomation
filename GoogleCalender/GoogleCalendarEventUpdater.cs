@@ -17,7 +17,7 @@ namespace GoogleCalender
     {
         //*************** Google calendar API Stuff
         private static string[] CalendarScope = { CalendarService.Scope.CalendarEvents };
-        private static string CalendarAppName = "EDDEV101 Google Calendar API Event Liseter Service";
+        private static string CalendarAppName = "EDDEV101 Google Calendar API Event Updater Service";
         private UserCredential _calendarReadCredential;
         private CalendarService _calendarReadService;
         //*******************************************
@@ -84,7 +84,7 @@ namespace GoogleCalender
             {
                 foreach(Event event1 in staticEvents)
                 {
-                    if (GoogleCalendarExtensionMethods.DistinctEvents(event1, e)) ;
+                    if (GCExtensionMethods.DistinctEvents(event1, e)) ;
                     {
 
                     }
@@ -93,13 +93,21 @@ namespace GoogleCalender
             return false;
         }
 
+        public void UpdateEvents(List<Event> events, string CalendarID = "primary")
+        {
+            foreach(Event e in events)
+            {
+                BringEventForward(e, CalendarID);
+            }
+        }
+
         public void UpdateEvents(Events events, 
             List<Event> staticEvents,
             int minutesMoveFowardard,
             string keyword, 
             string CalendarID)
         {
-            if (GoogleCalendarExtensionMethods.DataWasNotNull(events))
+            if (GCExtensionMethods.DataWasNotNull(events))
             {
                 foreach(Event e in events.Items)
                 {

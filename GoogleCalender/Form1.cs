@@ -116,7 +116,7 @@ namespace GoogleCalendarWPF
             try
             {
                 @event = _eventReader.ReturnSingleTask();
-                UpdateEventText(GoogleCalendarExtensionMethods.GetCurrentEventSummary(@event), 'o');
+                UpdateEventText(GCExtensionMethods.GetCurrentEventSummary(@event), 'o');
                 if (@event != null && @event.Summary != null && _settings.settings.LaunchURLs)
                 {
                     if (_settings.settings.IntellisenseForEvents)
@@ -130,7 +130,7 @@ namespace GoogleCalendarWPF
                         }
 
                     }
-                    List<URI> uris = GoogleCalendarExtensionMethods.GetCurrentEventURIs(@event);
+                    List<URI> uris = GCExtensionMethods.GetCurrentEventURIs(@event);
                     if (uris != null && uris.Count > 0)
                     {
                         foreach (URI uRI in uris)
@@ -183,20 +183,33 @@ namespace GoogleCalendarWPF
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Event nextTask = _eventReader.ReturnNextTask();
+            //What if next tasks 
+            Event nextTask = _eventReader.ReturnNextTask("[static]");
             if (nextTask != null)
             {
                 if (nextTask.Start.DateTime != null)
                 {
                     DateTime timeOfNextTask = nextTask.Start.DateTime.Value;
-                    int minutesToMoveForward = (int)timeOfNextTask.Subtract(DateTime.Now).TotalMinutes;
+                    int minutesToMoveForward = -(int)timeOfNextTask.Subtract(DateTime.Now).TotalMinutes;
 
                     //Challenge is with static objects- need to work out what to do if there is
                     //a static object where this will be moved!.
 
-                    Events events = _eventReader.ReturnAllDaysTasks(DateTime.Today.AddHours(24));
-                    List<Event> staticEvents = GoogleCalendarExtensionMethods.returnStaticEvents(events, "[static]");
-                    //eventUpdater.UpdateEvents(, -minutesToMoveForward, "[static]", "primary");
+                    List<Event> events = _eventReader.ReturnAllDaysTasks(DateTime.Today.AddHours(24));
+                    //var (staticEvents, moveableEvents) = GCExtensionMethods.returnStaticEvents(events, "[static]");
+
+                    ////Set new start & End times on the events.
+                    
+                    //if (staticEvents != null && staticEvents.Count > 0)
+                    //{
+                    //    //List<Event> newEventTimes = GCExtensionMethods.UpdateEventsForward(moveableEvents, minutesToMoveForward, staticEvents);
+                    //}
+                    //else
+                    //{
+                        List<Event> newEventTimes = GCExtensionMethods.UpdateEventsForward(events, minutesToMoveForward, "[static]");
+                    //}
+
+                    eventUpdater.UpdateEvents(newEventTimes);
                     UpdateEventText("Pulled forward for you. " + minutesToMoveForward, 'o');
                 }
             }
@@ -206,6 +219,11 @@ namespace GoogleCalendarWPF
                 //DateTime.Today.AddHours(24)), -10, "[static]","primary");
                 UpdateEventText("Pulled forward for you.", 'o');
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
