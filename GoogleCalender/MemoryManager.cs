@@ -23,6 +23,7 @@ namespace GoogleCalendar
             else
             {
                 commandHistory = new Dictionary<string, List<T>> { };
+                day = DateTime.Now.Day;
             }
         }
         public bool TabOpened(T obj, string id)

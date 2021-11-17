@@ -1,72 +1,14 @@
-﻿using System;
+﻿using ArduinoTest;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Timers;
-namespace WinAPIBrightnessControl
+namespace ArduninoBrightnessController
 {
-    public class BrightnessWorker
-    {
-        private readonly Timer _timer;
-
-        private PhisicalMonitorBrightnessController phisicalMonitorBrightnessController;
-        private SunsetAPI _sunsetAPI;
-
-        public BrightnessWorker()
-        {
-            phisicalMonitorBrightnessController = new PhisicalMonitorBrightnessController();
-            _sunsetAPI = new SunsetAPI();
-            _timer = new Timer(60000) { AutoReset = true };
-
-            _timer.Elapsed += TimerElapsed;
-            
-
-        }
-
-        public void TestMethod()
-        {
-
-            //for(uint i =0; i< 100; i++)
-            //{
-            //    phisicalMonitorBrightnessControllerv2.Set(i, false);
-            //}
-            //for (uint j = 0; j < 100; j++)
-            //{
-            //    phisicalMonitorBrightnessControllerv2.Set(j, false);
-            //}
-            for (double d = 0; d < 24; d += 0.5)
-            {
-                double brightness = _sunsetAPI.TestMethod(d);
-                phisicalMonitorBrightnessController.Set((uint)brightness);
-                Console.WriteLine($"Time is {d} and brightness is {brightness}");
-            }
-        }
-
-        private void TimerElapsed(object sender, ElapsedEventArgs e)
-        {
-            Console.WriteLine("Brightnes is :" + _sunsetAPI.Brightness);
-            phisicalMonitorBrightnessController.Set(_sunsetAPI.Brightness);
-
-        }
-
-        public void Start()
-        {
-            
-            _timer.Start();
-        }
-
-        public void Stop()      
-        {
-            _timer.Stop();
-        }
 
 
-    }
-
-
-
-        
-    }
     public class PhisicalMonitorBrightnessController : IDisposable
     {
         //https://stackoverflow.com/questions/4013622/adjust-screen-brightness-using-c-sharp
@@ -240,3 +182,82 @@ namespace WinAPIBrightnessControl
 
     }
 
+    public class ArduninoBrightnessWorker
+    {
+        private Timer _timer;
+        private PhisicalMonitorBrightnessController phisicalMonitorBrightnessController = new PhisicalMonitorBrightnessController();
+        private ArduinoUno uno;
+        private RealWorldDataMonitor realWorldDataMonitor;
+        private double lastBrightness = 0;
+
+        public ArduninoBrightnessWorker()
+        {
+            uno = new ArduinoUno("COM3", 57600, true, 0);
+            uno.pinMode(0, 2);
+            _timer = new Timer(3000) { AutoReset = true };
+            _timer.Elapsed += TimerElapsed;
+            realWorldDataMonitor = new RealWorldDataMonitor();
+            TimerElapsed(null, null);
+
+        }
+
+        private void TimerElapsed(object sender, ElapsedEventArgs e)
+        {
+
+            int bitValue = uno.analogRead(0);
+            realWorldDataMonitor.LogResult(bitValue);
+            double average = realWorldDataMonitor.ReturnAverage();
+            //Debug.WriteLine($"UNO READING{bitValue} Average {average}");
+            double percent = (average / 1024.0) * 120;
+            double newBrightness = percent +30;
+            //Need to check if the value is different enoguh. 
+            if (percent >= lastBrightness + 10 || percent <= lastBrightness - 10)
+            {
+                //Debug.WriteLine($"Significant Change: Data{percent} Previous Result = {lastBrightness}");
+                if (newBrightness < 40)
+                {
+                    newBrightness = 40;
+                }
+                else if (newBrightness > 100)
+                    {
+                        newBrightness = 100;
+                    }
+                phisicalMonitorBrightnessController.Set((uint)newBrightness);
+                lastBrightness = percent;
+            }
+            else
+            {
+                //Debug.WriteLine($"No change: Data{percent} Previous Result = {lastBrightness}");
+            }
+
+
+        }
+
+        public void Start()
+        {
+
+            _timer.Start();
+        }
+
+        public void Stop()
+        {
+            _timer.Stop();
+        }
+    }
+
+
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello!");
+            ArduninoBrightnessWorker worker = new ArduninoBrightnessWorker();
+            worker.Start();
+            Console.ReadLine();
+        }
+
+    }
+
+
+}

@@ -78,20 +78,20 @@ namespace GoogleCalender
             return e;
         }
 
-        private bool NewTimeConflictsWithStaticEvents(List<Event> staticEvents, Event e)
-        {
-            if(staticEvents != null)
-            {
-                foreach(Event event1 in staticEvents)
-                {
-                    if (GCExtensionMethods.DistinctEvents(event1, e)) ;
-                    {
+        //private bool NewTimeConflictsWithStaticEvents(List<Event> staticEvents, Event e)
+        //{
+        //    if(staticEvents != null)
+        //    {
+        //        foreach(Event event1 in staticEvents)
+        //        {
+        //            if (GCExtensionMethods.DistinctEvents(event1, e));
+        //            {
 
-                    }
-                }
-            }
-            return false;
-        }
+        //            }
+        //        }
+        //    }
+        //    return false;
+        //}
 
         public void UpdateEvents(List<Event> events, string CalendarID = "primary")
         {

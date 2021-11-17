@@ -78,7 +78,7 @@ namespace GoogleCalendar
             request.ShowDeleted = false;
             request.SingleEvents = true;
             request.PageToken = _nextPageToken;
-            request.Fields = "items(summary,description,start,end,id),nextPageToken";
+            request.Fields = "items(summary,description,start,end,id,htmlLink),nextPageToken";
             request.MaxResults = _pageSize;
             request.OrderBy = EventsResource.ListRequest.OrderByEnum.StartTime;
             _lastCalloutEvents = request.Execute();

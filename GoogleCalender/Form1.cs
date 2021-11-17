@@ -5,13 +5,15 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using WinAPIBrightnessControl;
+using ArduninoBrightnessController;
+using System.Threading;
+using GoogleCalender.AutoShutdown;
 
 namespace GoogleCalendarWPF
 {
     public partial class Form1 : System.Windows.Forms.Form
     {
-        public BrightnessWorker _brightnessWorker;
+        public ArduninoBrightnessWorker _brightnessWorker;
         private GoogleCalendarEventLister _eventReader;
         private System.Windows.Forms.Timer clockTimer = new System.Windows.Forms.Timer();
         private MemoryManager<URI> memoryManager = new MemoryManager<URI>();
@@ -30,6 +32,8 @@ namespace GoogleCalendarWPF
             InitializeComponent();
             SetWindowStartLocation();
             CalibrateClockTimer();
+            _brightnessWorker = new ArduninoBrightnessWorker();
+            _brightnessWorker.Start();
 
             clockTimer.Tick += new EventHandler(this.ClockTimerCallback);
             clockTimer.Start();
@@ -37,6 +41,10 @@ namespace GoogleCalendarWPF
             _eventReader = new GoogleCalendarEventLister();
             UpdateUI();
             Notification.PlaySound(_settings.settings.ProgramStartSound);
+
+            //https://github.com/noxad/windows-toast-notifications
+            //Alarm alarm = new Alarm();
+            //alarm.Start();
             //Notification.BootNoise();
 
         }
@@ -46,8 +54,8 @@ namespace GoogleCalendarWPF
 
         private void SetWindowStartLocation()
         {
-            this.Location = new Point(Screen.PrimaryScreen.Bounds.Right - 170,
-                          Screen.PrimaryScreen.Bounds.Height - 90);
+            this.Location = new Point(Screen.PrimaryScreen.Bounds.Right - 150,
+                          Screen.PrimaryScreen.Bounds.Height - 70);
             this.TopMost = true;
             this.StartPosition = FormStartPosition.Manual;
         }
@@ -143,6 +151,17 @@ namespace GoogleCalendarWPF
                             }
                         }
                     }
+                    else
+                    {
+                        string url = @event.HtmlLink;
+                        URI uRI = new URI(@event.HtmlLink);
+                        if (!memoryManager.TabOpened(uRI, @event.Id))
+                        {
+                            memoryManager.MarkTabAsOpen(uRI, @event.Id);
+                            uRI.LaunchURI();
+                            Notification.InputSound();
+                        }
+                    }
                 }
             }
             catch (Exception exception)
@@ -216,7 +235,7 @@ namespace GoogleCalendarWPF
                 if (nextTask.Start.DateTime != null)
                 {
                     DateTime timeOfNextTask = nextTask.Start.DateTime.Value;
-                    int minutesToMoveForward = 10;
+                    int minutesToMoveForward = 15;
 
                     List<Event> events = _eventReader.ReturnAllDaysTasks(DateTime.Today.AddHours(24));
 
@@ -232,6 +251,22 @@ namespace GoogleCalendarWPF
                 //DateTime.Today.AddHours(24)), -10, "[static]","primary");
                 UpdateEventText("Pulled forward for you.", 'o');
             }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://calendar.google.com/calendar/u/0/r");
+        }
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+
+
+                notifyIcon1.BalloonTipIcon = ToolTipIcon.Info;
+                notifyIcon1.BalloonTipText = "Welcome to TutorialsPanel.com!!";
+                notifyIcon1.BalloonTipTitle = "Welcome Message";
+                notifyIcon1.ShowBalloonTip(2000);
+            
         }
     }
 }

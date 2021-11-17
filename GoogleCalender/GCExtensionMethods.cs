@@ -227,13 +227,17 @@ namespace GoogleCalender
                         }
                         else
                         {
-
-                            if(i == allEvents.Count)//Assume it will fit - unable to check?
+                            //if(i == 0)
+                            //{
+                            //    //e.Start.DateTime = e.Start.DateTime.Value.AddMinutes(offset);
+                            //    e.End.DateTime = e.End.DateTime.Value.AddMinutes(offset);
+                            //}
+                             if(i == allEvents.Count -1)//Assume it will fit - unable to check?
                             {
                                 e.Start.DateTime = e.Start.DateTime.Value.AddMinutes(offset);
                                 e.End.DateTime = e.End.DateTime.Value.AddMinutes(offset);
                             }
-                            if (i > 0 && allEvents[i+1].Start.DateTime.Value.Subtract(allEvents[i-1].End.DateTime.Value).TotalMinutes > EventLength(e))//Not Firing.
+                            else if (i > 0 && allEvents[i+1].Start.DateTime.Value.Subtract(allEvents[i-1].End.DateTime.Value).TotalMinutes > EventLength(e))//Not Firing.
                             {
                                 e.Start.DateTime = e.Start.DateTime.Value.AddMinutes(offset);
                                 e.End.DateTime = e.End.DateTime.Value.AddMinutes(offset);

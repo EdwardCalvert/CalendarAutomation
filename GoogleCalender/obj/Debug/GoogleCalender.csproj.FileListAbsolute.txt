@@ -68,7 +68,6 @@ C:\Users\ed\source\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\
 C:\Users\ed\source\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\APIMethods.pdb
 C:\Users\ed\source\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\MonitorBrightnessDriver.dll
 C:\Users\ed\source\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\MonitorBrightnessDriver.pdb
-C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\obj\Debug\GoogleCalender.csprojAssemblyReference.cache
 C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\obj\Debug\GoogleCalender.Properties.Resources.resources
 C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\obj\Debug\GoogleCalender.csproj.GenerateResource.cache
 C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\obj\Debug\GoogleCalender.exe
@@ -87,16 +86,10 @@ C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalende
 C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Google.Apis.PlatformServices.dll
 C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Newtonsoft.Json.dll
 C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Google.Apis.pdb
-C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Google.Apis.xml
 C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Google.Apis.Auth.pdb
-C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Google.Apis.Auth.xml
 C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Google.Apis.Calendar.v3.pdb
-C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Google.Apis.Calendar.v3.xml
 C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Google.Apis.Classroom.v1.pdb
-C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Google.Apis.Classroom.v1.xml
 C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Google.Apis.Core.pdb
-C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Google.Apis.Core.xml
-C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Newtonsoft.Json.xml
 C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\obj\Debug\GoogleCalender.csproj.CoreCompileInputs.cache
 C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\obj\Debug\GoogleCalender.exe.manifest
 C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\obj\Debug\GoogleCalender.application
@@ -138,3 +131,10 @@ C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalende
 C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Sounds\Startup Chime.wav
 C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Sounds\Submerge.wav
 C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Sounds\Trash.wav
+C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\ArduinoBrightnessController.exe
+C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\ArduinoBrightnessController.pdb
+C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\ArduinoBrightnessController.exe.config
+C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\obj\Debug\GoogleCalender.csproj.AssemblyReference.cache
+C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Microsoft.Toolkit.Uwp.Notifications.dll
+C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\Microsoft.Toolkit.Uwp.Notifications.pdb
+C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\GoogleCalender\bin\Debug\System.ValueTuple.dll

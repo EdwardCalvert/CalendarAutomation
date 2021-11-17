@@ -10,9 +10,9 @@ C:\Users\ed\source\repos\CalenderCallout\CalenderClock\TimeMethods\obj\Debug\net
 C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\TimeMethods\bin\Debug\netstandard2.0\TimeMethods.deps.json
 C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\TimeMethods\bin\Debug\netstandard2.0\TimeMethods.dll
 C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\TimeMethods\bin\Debug\netstandard2.0\TimeMethods.pdb
-C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\TimeMethods\obj\Debug\netstandard2.0\TimeMethods.csprojAssemblyReference.cache
 C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\TimeMethods\obj\Debug\netstandard2.0\TimeMethods.AssemblyInfoInputs.cache
 C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\TimeMethods\obj\Debug\netstandard2.0\TimeMethods.AssemblyInfo.cs
 C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\TimeMethods\obj\Debug\netstandard2.0\TimeMethods.csproj.CoreCompileInputs.cache
 C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\TimeMethods\obj\Debug\netstandard2.0\TimeMethods.dll
 C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\TimeMethods\obj\Debug\netstandard2.0\TimeMethods.pdb
+C:\Users\ed\OneDrive\Documents\repos\CalenderCallout\CalenderClock\TimeMethods\obj\Debug\netstandard2.0\TimeMethods.csproj.AssemblyReference.cache
