@@ -150,14 +150,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GoogleCalender.exe" size="388096">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GoogleCalender.exe" size="381440">
       <assemblyIdentity name="GoogleCalender" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>kmy7dRN/Z5o+HPQq1AWieny3eY0zs1kkDOhJmUATRpE=</dsig:DigestValue>
+        <dsig:DigestValue>k/JOjneINZBWX6NubNdi5H5TMnM/2eNNaM9GBZsXhNk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

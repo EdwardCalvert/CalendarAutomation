@@ -7,7 +7,6 @@ using System.Drawing;
 using System.Windows.Forms;
 using ArduninoBrightnessController;
 using System.Threading;
-using GoogleCalender.AutoShutdown;
 
 namespace GoogleCalendarWPF
 {
